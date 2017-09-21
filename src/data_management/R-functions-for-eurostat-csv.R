@@ -50,7 +50,7 @@ Eurostat_quarterly <- function(inpath,
                                var_keep = c("TIME", "GEO", "CITIZEN", "Value"),
                                begin_year = 1,
                                end_year = 4,
-                               pos_quarter= 7){
+                               pos_quarter= 6){
   data <- read.csv(file = inpath, stringsAsFactors = FALSE)
   
   data <- data[,var_keep]
