@@ -66,7 +66,7 @@ Eurostat_monthly(inpath = "./src/original_data/asylum_data/refugee-status-02-07-
 # Rejected decisions monthly 2002 - 2007
 Eurostat_monthly(inpath = "./src/original_data/asylum_data/rejected-02-07-m.csv",
                  name = "rejected", 
-                 outpath = "./bld/out/data/temp/other-rejected-02-07-m.dta")
+                 outpath = "./bld/out/data/temp/rejected-02-07-m.dta")
 
 # Other positive decisions monthly 2002 - 2007
 Eurostat_monthly(inpath = "./src/original_data/asylum_data/other-positive-02-07-m.csv",
@@ -81,7 +81,7 @@ Eurostat_monthly(inpath = "./src/original_data/asylum_data/other-non-status-02-0
 # Humanitarian status decisions monthly 2002 - 2007
 Eurostat_monthly(inpath = "./src/original_data/asylum_data/humanitarian-status-02-07-m.csv",
                  name = "humanitarian", 
-                 outpath = "./bld/out/data/temp/other-humanitarian-status-02-07-m.dta")
+                 outpath = "./bld/out/data/temp/humanitarian-status-02-07-m.dta")
 
 
 
