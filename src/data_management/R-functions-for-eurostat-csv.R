@@ -15,6 +15,9 @@ Eurostat_monthly <- function(inpath,
   
   data <- data[,var_keep]
   
+  # delete commas as thousand separators
+  data$Value <- gsub(",", "", data$Value)
+  
   year <- substr(data$TIME, begin_year, end_year)
   month <- substr(data$TIME, begin_month, end_month)
   data<- data.frame(data, year, month, stringsAsFactors = FALSE) 
@@ -27,7 +30,7 @@ Eurostat_monthly <- function(inpath,
   
   #destring data
   for (i in 3:ncol(data)){
-    data[[i]] <- suppressWarnings(as.numeric(data[[i]]))
+    data[[i]] <- as.numeric(data[[i]])
   }
   
   #add column with quarters infered from month variable
@@ -52,6 +55,9 @@ Eurostat_quarterly <- function(inpath,
   
   data <- data[,var_keep]
   
+  # delete commas as thousand separators
+  data$Value <- gsub(",", "", data$Value)
+  
   year <- substr(data$TIME, begin_year, end_year)
   quarter <- substr(data$TIME, pos_quarter, pos_quarter)
   data<- data.frame(data, year, quarter, stringsAsFactors = FALSE) 
@@ -64,7 +70,7 @@ Eurostat_quarterly <- function(inpath,
   
   #destring data
   for (i in 3:ncol(data)){
-    data[[i]] <- suppressWarnings(as.numeric(data[[i]]))
+    data[[i]] <- as.numeric(data[[i]])
   }
 
   write.dta(data, outpath) 
@@ -79,9 +85,12 @@ Eurostat_yearly <- function(inpath,
   
   data <- data[,var_keep]
   
+  # delete commas as thousand separators
+  data$Value <- gsub(",", "", data$Value)
+  
   #destring data
   data$TIME <- as.numeric(data$TIME)
-  data$Value <- suppressWarnings(as.numeric(data$Value))
+  data$Value <- as.numeric(data$Value)
   
   var_name <- c("year", "destination", "origin", name)
   
