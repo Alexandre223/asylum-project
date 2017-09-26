@@ -43,7 +43,6 @@ replace origin="Democratic Republic of the Congo" if origin=="Congo, Dem. Rep. o
 replace origin="Gambia" if origin=="Gambia, The"
 replace origin="Côte d'Ivoire" if origin=="Cote d'Ivoire"
 replace origin="Congo" if origin=="Congo, Rep. of the"
-replace origin="Palestine" if origin=="Occupied Palestinian Territory"
 replace origin="Former Serbia Montenegro" if origin=="Serbia and Montenegro" 
 
 merge m:m origin destination using ./bld/out/data/temp/origin_destination_help.dta
@@ -77,9 +76,6 @@ import excel ./src/original_data/bilateral_data/ida.xlsx, sheet("Tabelle2") firs
 	replace origin="Kosovo" if origin=="Kosovo (under United Nations Security Council Resolution 1244/99)"
 	replace origin="Belarus" if origin=="Belarus (Byelorussia)"
 	replace origin="Former Serbia Montenegro" if origin=="Yugoslavia"
-	replace origin="Palestine" if origin=="Israel" 
-	* Note capital of Palestine as well as of Israel Jerusalem
-	* Use data for Israel for Palestine
 
 merge 1:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
 keep if _merge==3
@@ -127,5 +123,9 @@ save ./bld/out/data/temp/bilateral_distance_data.dta, replace
 ****************************
 ** Combine bilateral data **
 ****************************
- use ./bld/out/data/temp/bilateral_immigrant_stock.dta
- merge 1:1 origin destination using ./bld/out/data/temp/bilateral_distance_data.dta
+use ./bld/out/data/temp/bilateral_immigrant_stock.dta
+
+merge 1:1 origin destination using ./bld/out/data/temp/bilateral_distance_data.dta
+
+save ./bld/out/data/temp/bilateral_data.dta, replace
+ 

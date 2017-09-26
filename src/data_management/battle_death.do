@@ -148,4 +148,16 @@ keep origin year quarter battle_death_ucdp battle_death_vdc
 
 append using ./bld/out/data/temp/quarterly_deaths_01_16_no_Syria.dta
 
+
+******************************************************************
+** Scale up to contain all origin countries, quarters and years **
+******************************************************************
+merge 1:1 origin year quarter using ./bld/out/data/temp/origin_quarter_help.dta
+
+drop if _merge == 1
+drop _merge
+
+replace battle_death_ucdp=0 if battle_death_ucdp==.
+replace battle_death_vdc=0 if battle_death_vdc==.
+
 save ./bld/out/data/temp/battle_death_quarterly_01_16.dta, replace

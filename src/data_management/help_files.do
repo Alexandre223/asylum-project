@@ -28,3 +28,16 @@ replace destination="Czech Republic" if destination=="CzechRepublic"
 
 save ./bld/out/data/temp/origin_destination_help.dta, replace
 
+* 4, help file for all relevent origin countries and all quarters
+
+import excel ./src/original_data/help/origin_quarter.xlsx, sheet("Tabelle1") firstrow clear
+
+reshape long test, i(origin) j(quarteryear) string
+	split quarteryear, parse(_) destring ignore( `"_"')
+	rename quarteryear1 quarter
+	rename quarteryear2 year
+	drop test quarteryear
+	sort origin year quarter
+	
+save ./bld/out/data/temp/origin_quarter_help.dta, replace
+
