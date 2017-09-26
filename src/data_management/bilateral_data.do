@@ -54,6 +54,12 @@ drop _merge
 append using ./bld/out/data/temp/imm_stock_Kosovo.dta
 append using ./bld/out/data/temp/imm_stock_Serbia.dta
 
+* Note Bulgaria, Romania and Slovakia are both origin and destination countries
+foreach v in Bulgaria Romania Slovakia {
+	drop if origin == "`v'" & destination == "`v'"
+}
+*
+
 save ./bld/out/data/temp/bilateral_immigrant_stock.dta, replace
 
 
@@ -115,3 +121,11 @@ keep origin destination kmdist
 append using ./bld/out/data/temp/kmdist_Kosovo.dta
 
 save ./bld/out/data/temp/bilateral_distance_data.dta, replace
+
+
+
+****************************
+** Combine bilateral data **
+****************************
+ use ./bld/out/data/temp/bilateral_immigrant_stock.dta
+ merge 1:1 origin destination using ./bld/out/data/temp/bilateral_distance_data.dta
