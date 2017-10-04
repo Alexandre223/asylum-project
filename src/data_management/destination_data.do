@@ -4,7 +4,7 @@
 
 clear 
 set more off, permanently
-cd F:/research/asylum-project
+
 
 *********************
 ** Population size **
@@ -14,17 +14,17 @@ import delimited ./src/original_data/destination_country/population_destination.
 
 rename time year
 rename geo destination
-rename value pop_size
+rename value pop_destination
 
 drop age sex unit
 
-destring pop_size, ignore(",") replace
+destring pop_destination, ignore(",") replace
 
 replace destination="Germany" if destination=="Germany (until 1990 former territory of the FRG)"
 
-drop if year < 2001
+drop if year < 2002
 
-save ./bld/out/data/temp/destination_population.dta, replace
+save ./out/data/temp/destination_population.dta, replace
 
 
 
@@ -54,15 +54,18 @@ replace destination="Germany" if destination=="Germany (until 1990 former territ
 
 
 **Add population size data**
-merge m:1 destination year using ./bld/out/data/temp/destination_population.dta, nogen
+merge m:1 destination year using ./out/data/temp/destination_population.dta, nogen
 
 
 **Generate real GDP per capita**
-gen rGDPpc=(rGDP*1000000)/pop_size
+gen rGDPpc=(rGDP*1000000)/pop_destination
 
 label variable rGDPpc "real GDP per capita in destination country"
 
-save ./bld/out/data/temp/destination_gdp.dta, replace
+drop if year < 2002
+
+save ./out/data/temp/destination_gdp.dta, replace
+
 
 
 **************************************************
@@ -104,7 +107,7 @@ drop quarteryear1 quarteryear3 quarteryear
 
 destring year, replace
 
-save ./bld/out/data/temp/unemployment_Switzerland.dta, replace
+save ./out/data/temp/unemployment_Switzerland.dta, replace
 
 
 **Prepare OECD data for Germany and France**
@@ -132,9 +135,9 @@ drop if year < 2002 | year > 2016
 
 collapse (mean) unemployment, by (destination year quarter)
 
-save ./bld/out/data/temp/unemployment_germany_france.dta, replace
+save ./out/data/temp/unemployment_germany_france.dta, replace
 
-**Data for other countries**
+* prepare data for other countries**
 
 import delimited ./src/original_data/destination_country/quarterly_unemployment_EUROSTAT.csv, ///
  varnames(1) encoding(UTF-8) clear
@@ -154,10 +157,37 @@ destring unemployment, replace
 
 keep destination year quarter unemployment
 
-append using ./bld/out/data/temp/unemployment_germany_france.dta
+drop if year < 2002
 
-append using ./bld/out/data/temp/unemployment_Switzerland.dta
+append using ./out/data/temp/unemployment_germany_france.dta
+
+append using ./out/data/temp/unemployment_Switzerland.dta
 
 
-save ./bld/out/data/temp/destination_unemployment.dta, replace
+save ./out/data/temp/destination_unemployment.dta, replace
+
+
+**********************************
+** Combine all destination data **
+**********************************
+
+use ./out/data/temp/destination_unemployment.dta, clear
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/destination_gdp.dta, nogen
+
+merge m:1 destination year using ///
+	./out/data/temp/destination_population.dta, nogen
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/election_data_quarterly.dta, nogen
+
+merge m:1 destination year using ///
+	./out/data/temp/past_applications.dta, nogen
+	
+
+* Note: no asylum Data from Eurostat for Switzerland before 2008
+drop if destination == "Switzerland" & year < 2008
+
+save ./out/data/destination_data.dta, replace
 
