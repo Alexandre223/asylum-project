@@ -8,19 +8,19 @@ set more off, permanently
 * 1, combine all data
 
 * use asylum data
-use ./out/data/combined-asylum-data-02-16-q.dta, clear
+use ./out/data/temp/combined-asylum-data-02-16-q.dta, clear
 
 * match destination country data
 merge m:1 destination year quarter using ///
-		./out/data/destination_data.dta, nogen
+		./out/data/temp/destination_data.dta, nogen
 
 * match bilateral data
 merge m:1 origin destination using ///
-		./out/data/bilateral_data.dta, nogen
+		./out/data/temp/bilateral_data.dta, nogen
 
 * match origin country data		
 merge m:1 origin year quarter using ///
-		./out/data/origin_data.dta, nogen
+		./out/data/temp/origin_data.dta, nogen
 
 		
 

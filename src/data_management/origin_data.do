@@ -283,4 +283,4 @@ foreach var of varlist ///
 
 drop if year==2001
 
-save ./out/data/origin_data.dta, replace
+save ./out/data/temp/origin_data.dta, replace

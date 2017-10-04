@@ -189,5 +189,5 @@ merge m:1 destination year using ///
 * Note: no asylum Data from Eurostat for Switzerland before 2008
 drop if destination == "Switzerland" & year < 2008
 
-save ./out/data/destination_data.dta, replace
+save ./out/data/temp/destination_data.dta, replace
 

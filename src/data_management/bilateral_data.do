@@ -129,5 +129,5 @@ merge 1:1 origin destination using ./out/data/temp/bilateral_distance_data.dta, 
 * Note: no combination Switzerland & Former Serbia Montenegro
 drop if origin == "Former Serbia Montenegro" & destination == "Switzerland"
 
-save ./out/data/bilateral_data.dta, replace
+save ./out/data/temp/bilateral_data.dta, replace
  
