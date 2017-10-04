@@ -3,8 +3,6 @@
 **********************************************************
 clear
 set more off, permanently
-cd F:/research/asylum-project
-
 
 ****************************
 ***Political Terror Scale***
@@ -31,7 +29,7 @@ drop if origin=="Yugoslavia" & year>2003
 drop if origin=="Former Serbia Montenegro" & year<2004
 replace origin="Former Serbia Montenegro" if origin=="Yugoslavia"
 
-merge m:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
+merge m:1 origin using ./out/data/temp/list_of_origin_countries.dta
 keep if _merge==3
 
 keep origin year PTS_A PTS_S
@@ -46,7 +44,7 @@ egen PTS = rowmean(PTS_A PTS_S)
 
 drop PTS_A PTS_S
 
-save ./bld/out/data/temp/political_terror_scale.dta, replace
+save ./out/data/temp/political_terror_scale.dta, replace
 
 
 *************************
@@ -63,7 +61,7 @@ replace origin="Congo" if origin=="Congo (Brazzaville)"
 replace origin="Congo" if origin=="Congo (Brazzaville)"
 replace origin="Former Serbia Montenegro" if origin=="Former Serbia and Montenegro"
 
-merge 1:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
+merge 1:1 origin using ./out/data/temp/list_of_origin_countries.dta
 
 keep if _merge==3
 drop _merge
@@ -83,14 +81,14 @@ drop if year <=2000
 replace PR=3 if origin=="Former Serbia Montenegro" & year==2006
 replace CL=2 if origin=="Former Serbia Montenegro" & year==2006
 
-save ./bld/out/data/temp/freedom_house_index.dta, replace
+save ./out/data/temp/freedom_house_index.dta, replace
 
 
 *********************
 ** Data for region **
 *********************
 import excel ./src/original_data/origin_country/origin_areas.xlsx, sheet("Tabelle1") firstrow clear
-save ./bld/out/data/temp/origin_areas.dta, replace
+save ./out/data/temp/origin_areas.dta, replace
 
 
 
@@ -135,34 +133,34 @@ replace origin="Syria" if origin=="Syrian Arab Republic"
 replace origin="Gambia" if origin=="Gambia, The"
 replace origin="Slovakia" if origin=="Slovak Republic"
 
-save ./bld/out/data/temp/population_wb_temp.dta, replace
+save ./out/data/temp/population_wb_temp.dta, replace
 
 * Sum population of Serbia, Montenegro + Kosovo 
 * to get population for Former Serbia Montenegro until 2006
-use ./bld/out/data/temp/population_wb_temp.dta
+use ./out/data/temp/population_wb_temp.dta
 keep if origin == "Serbia" | origin == "Montenegro" | origin == "Kosovo"
 drop if year > 2006
 replace origin = "Former Serbia Montenegro" 
 collapse (sum) pop_origin, by(origin year)
 
-save ./bld/out/data/temp/population_wb_fsm.dta, replace
+save ./out/data/temp/population_wb_fsm.dta, replace
 
 
 * add population of Kosovo to population of Serbia in 2007 and 2008
-use ./bld/out/data/temp/population_wb_temp.dta
+use ./out/data/temp/population_wb_temp.dta
 keep if origin == "Serbia" | origin == "Kosovo"
 drop if year < 2007
 replace pop_origin = . if origin == "Kosovo" & year > 2008
 replace origin = "Serbia" 
 collapse (sum) pop_origin, by(origin year)
 
-save ./bld/out/data/temp/population_wb_serbia.dta, replace
+save ./out/data/temp/population_wb_serbia.dta, replace
 
 
 * prepare world bank data for other countries**
-use ./bld/out/data/temp/population_wb_temp.dta, replace
+use ./out/data/temp/population_wb_temp.dta, replace
 
-merge m:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
+merge m:1 origin using ./out/data/temp/list_of_origin_countries.dta
 keep if _merge == 3
 drop _merge
 drop if origin == "Eritrea" | origin == "Serbia"
@@ -170,10 +168,10 @@ drop if origin == "Kosovo" & year <=2008
 
 * add data for Serbia and Former Serbia Montenegro
 
-append using ./bld/out/data/temp/population_wb_fsm.dta
-append using ./bld/out/data/temp/population_wb_serbia.dta
+append using ./out/data/temp/population_wb_fsm.dta
+append using ./out/data/temp/population_wb_serbia.dta
 
-save ./bld/out/data/temp/population_wb.dta, replace
+save ./out/data/temp/population_wb.dta, replace
 
 * 2, UN data for Erirea
 
@@ -190,7 +188,7 @@ rename G pop_origin
 replace pop_origin=pop_origin*1000
 gen year = 2016
 
-save ./bld/out/data/temp/population_un_2016.dta, replace
+save ./out/data/temp/population_un_2016.dta, replace
 
 * get data for years 2001 - 2015
 import excel .\src\original_data\origin_country\population_un.xlsx, ///
@@ -211,30 +209,78 @@ destring pop_origin*, replace
 reshape long pop_origin, i(origin) j(year)
 replace pop_origin=pop_origin*1000
 
-append using ./bld/out/data/temp/population_un_2016.dta
-append using ./bld/out/data/temp/population_wb.dta
+append using ./out/data/temp/population_un_2016.dta
+append using ./out/data/temp/population_wb.dta
 
-save ./bld/out/data/temp/origin_population.dta, replace
+save ./out/data/temp/origin_population.dta, replace
 
 
 
 *****************************
 ** Combine all origin data **
 *****************************
-use ./bld/out/data/temp/battle_death_quarterly_01_16.dta, clear
+use ./out/data/temp/battle_death_quarterly_01_16.dta, clear
 
-merge m:1 origin year using ./bld/out/data/temp/political_terror_scale.dta, nogen
+merge m:1 origin year using ./out/data/temp/political_terror_scale.dta, nogen
 
-merge m:1 origin year using ./bld/out/data/temp/freedom_house_index.dta, nogen 
+merge m:1 origin year using ./out/data/temp/freedom_house_index.dta, nogen 
 
-merge m:1 origin using ./bld/out/data/temp/origin_areas.dta, nogen
+merge m:1 origin using ./out/data/temp/origin_areas.dta, nogen
 
 drop if origin=="Kosovo" & year<=2008
 drop if origin=="Former Serbia Montenegro" & year>=2007
 drop if origin=="Serbia" & year<=2006
 
-merge m:1 origin year using ./bld/out/data/temp/origin_population.dta, nogen
+merge m:1 origin year using ./out/data/temp/origin_population.dta, nogen
 
-merge m:1 origin year using ./bld/out/data/temp/origin_rGDP_pc.dta, nogen
+merge m:1 origin year using ./out/data/temp/origin_rGDP_pc.dta, nogen
 
-save ./bld/out/data/temp/origin_data.dta, replace
+
+
+**********************************************************************
+** Impute missing values for real GDP pc and political terror scale **
+**********************************************************************
+
+* Impute missing information for real GDP pc
+* Somalia missing 2011-2016, Kosovo missing 2016
+* Syria missing 2015 and 2016
+
+* Use value of last observed year for missing years
+sort origin year quarter
+replace realGDPpc = realGDPpc[_n-1] if realGDPpc == .
+gen log_rGDPpc_orig = log(realGDPpc)
+
+* Impute missing information for political terror scale
+
+* Use 2015 value also for 2016**
+sort origin year quarter
+replace PTS = PTS[_n-1] if PTS == .
+
+
+*********************************************************
+** Calculate lagged variables for all yearly variables **
+**          and quarterly battle death 				   **
+*********************************************************
+
+* Note all origin country variables are yearly - 
+* idea use moving averages  - mean of current quarter and past 3 quarters**
+
+***Generate quarterly averages**
+sort  origin year quarter
+
+foreach var of varlist ///
+		PTS PR CL battle_death_vdc battle_death_ucdp log_rGDPpc_orig {
+	
+	* generate lags
+	by  origin: gen lag1_`var'=`var'[_n-1]
+	by  origin: gen lag2_`var'=`var'[_n-2]
+	by  origin: gen lag3_`var'=`var'[_n-3]
+	
+	* generate sum of decisions in the past year (includuing current quarter)
+	egen `var'_average=rowmean(`var' lag1_`var' lag2_`var' lag3_`var')
+}
+*
+
+drop if year==2001
+
+save ./out/data/origin_data.dta, replace

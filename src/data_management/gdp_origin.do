@@ -3,8 +3,6 @@
 *********************************************
 clear
 set more off, permanently
-cd F:/research/asylum-project
-
 
 
 ** 1, Calculate Growth rates from IMF World Economic Outlook **
@@ -17,12 +15,12 @@ import excel .\src\original_data\origin_country\WEOAPr2017all.xlsx, ///
 rename Country origin
 keep origin WEOSubjectCode AE - AT
 
-save ./bld/out/data/temp/world_economic_outlook.dta, replace
+save ./out/data/temp/world_economic_outlook.dta, replace
 
 * extract data for different variables
 foreach v in PPPPC NGDP_D {
 	
-	use ./bld/out/data/temp/world_economic_outlook.dta, clear
+	use ./out/data/temp/world_economic_outlook.dta, clear
 
 	keep if WEOSubjectCode == "`v'"
 
@@ -38,13 +36,13 @@ foreach v in PPPPC NGDP_D {
 	drop WEOSubjectCode
 	destring `v', ignore ("n/a") replace
 	
-	save ./bld/out/data/temp/weo_`v'.dta, replace
+	save ./out/data/temp/weo_`v'.dta, replace
 }
 *
 
 * Combine two datasets
-use ./bld/out/data/temp/weo_PPPPC.dta, clear 
-merge 1:1  origin year using ./bld/out/data/temp/weo_NGDP_D.dta, nogen
+use ./out/data/temp/weo_PPPPC.dta, clear 
+merge 1:1  origin year using ./out/data/temp/weo_NGDP_D.dta, nogen
 
 rename PPPPC GDPpcPPP
 rename NGDP_D GDPdeflator
@@ -57,7 +55,7 @@ replace origin="Slovakia" if origin=="Slovak Republic"
 
 replace origin="Former Serbia Montenegro" if origin=="Serbia" & year<2007	
 
-merge m:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
+merge m:1 origin using ./out/data/temp/list_of_origin_countries.dta
 keep if _merge==3
 drop if origin == "Kosovo"
 drop _merge
@@ -81,7 +79,7 @@ sort origin year
 *Calculate Growth rates*
 bysort origin: gen IMF_rGDPpc_growth=(realGDPpcPPP[_n]-realGDPpcPPP[_n-1])/realGDPpcPPP[_n-1]
 
-save ./bld/out/data/temp/IMF_GDPpcPPP_growth.dta, replace
+save ./out/data/temp/IMF_GDPpcPPP_growth.dta, replace
 
 
 * 2, use Penn World Tables to get data on real GDP per capita in PPP
@@ -106,12 +104,12 @@ replace origin="Syria" if origin=="Syrian Arab Republic"
 replace origin="Macedonia" if origin=="TFYR of Macedonia"
 replace origin="Vietnam" if origin=="Viet Nam"
 
-merge m:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
+merge m:1 origin using ./out/data/temp/list_of_origin_countries.dta
 
 keep if _merge==3 | origin=="Montenegro"
 drop _merge
 
-save ./bld/out/data/temp/PWT9_01_14_temp.dta, replace
+save ./out/data/temp/PWT9_01_14_temp.dta, replace
 
 * Use Serbia and Montenegro before 2007 to calculate real GDP and population
 * for Former Serbia Montenegro
@@ -125,7 +123,7 @@ collapse (sum) rgdpe pop, by (origin year)
 replace rgdpe=. if year>=2007
 replace pop=. if year>=2007
 
-append using ./bld/out/data/temp/PWT9_01_14_temp.dta
+append using ./out/data/temp/PWT9_01_14_temp.dta
 
 drop if origin=="Montenegro"
 
@@ -134,7 +132,7 @@ drop if origin=="Montenegro"
 	* and also GDP is expressed in million 2011 US $**
 gen rGDPpcPPP=rgdpe/pop
 
-save ./bld/out/data/temp/PWT9_01_14.dta, replace 
+save ./out/data/temp/PWT9_01_14.dta, replace 
 
 
 
@@ -160,7 +158,7 @@ replace pop = pop/1000
 
 keep origin year pop rGDPpcPPP
 
-save ./bld/out/data/temp/PWT71_01_10.dta, replace
+save ./out/data/temp/PWT71_01_10.dta, replace
 
 
 * 3, use World Bank data to get rGDPpcPPP data for Kosovo**
@@ -177,17 +175,17 @@ drop countrycode seriescode timecode seriesname
 
 rename value rGDPpcPPP
 
-save ./bld/out/data/temp/WB_rGDPpcPPP_Kosovo.dta, replace
+save ./out/data/temp/WB_rGDPpcPPP_Kosovo.dta, replace
 
 
 * 4, Combine real GDP per capita in PPP data
 
-use ./bld/out/data/temp/PWT9_01_14.dta, clear
-append using ./bld/out/data/temp/PWT71_01_10.dta
-append using ./bld/out/data/temp/WB_rGDPpcPPP_Kosovo.dta
+use ./out/data/temp/PWT9_01_14.dta, clear
+append using ./out/data/temp/PWT71_01_10.dta
+append using ./out/data/temp/WB_rGDPpcPPP_Kosovo.dta
 
 * Merge with IMF data**
-merge 1:1 origin year using ./bld/out/data/temp/IMF_GDPpcPPP_growth.dta
+merge 1:1 origin year using ./out/data/temp/IMF_GDPpcPPP_growth.dta
 drop _merge
 
 
@@ -205,7 +203,7 @@ drop if origin=="Kosovo" & year<=2008
 drop if origin=="Former Serbia Montenegro" & year>=2007
 drop if origin=="Serbia" & year<=2006
 
-save ./bld/out/data/temp/origin_rGDP_pc.dta, replace
+save ./out/data/temp/origin_rGDP_pc.dta, replace
 
 * Note: no data for Somalia after 2010
 *		no data for Kosovo 2016

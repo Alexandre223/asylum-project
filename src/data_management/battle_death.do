@@ -4,7 +4,6 @@
 
 clear 
 set more off, permanently
-cd F:/research/asylum-project
 
 
 ***********************************************************************
@@ -28,11 +27,11 @@ import excel ./src/original_data/origin_country/ged171.xlsx, sheet("ged171") fir
 	gen end_year = year(end_date)
 	gen end_quarter = quarter(end_date)
 
-save ./bld/out/data/temp/ged171.dta, replace
+save ./out/data/temp/ged171.dta, replace
 
 * 2, sum deaths per quarter and country if event is within a quarter
 
-use ./bld/out/data/temp/ged171.dta, clear
+use ./out/data/temp/ged171.dta, clear
 
 keep if start_quarter == end_quarter
 
@@ -41,12 +40,12 @@ rename start_year year
 
 collapse (sum) best, by(country year quarter)
 
-save ./bld/out/data/temp/deaths_prel.dta, replace
+save ./out/data/temp/deaths_prel.dta, replace
 
 * 3, sum deaths per quarter and country if event goes beyond a quarter
 	* (no events go beyond a year)
 
-use ./bld/out/data/temp/ged171.dta, clear
+use ./out/data/temp/ged171.dta, clear
 
 * check whether any events go beyond one year**
 compare start_year end_year
@@ -71,22 +70,22 @@ replace add_quarter1=start_quarter+1 if end_quarter-start_quarter==2
 replace add_quarter1=start_quarter+1 if end_quarter-start_quarter==3
 replace add_quarter2=start_quarter+2 if end_quarter-start_quarter==3
 
-save ./bld/out/data/temp/death_quarter_temp.dta, replace
+save ./out/data/temp/death_quarter_temp.dta, replace
 
 * create a file for each of the four quarters and append it to one file
 
-use ./bld/out/data/temp/death_quarter_temp.dta, clear
+use ./out/data/temp/death_quarter_temp.dta, clear
 keep country year best_pq start_quarter
 rename start_quarter quarter
-save ./bld/out/data/temp/death_quarter_temp1.dta, replace
+save ./out/data/temp/death_quarter_temp1.dta, replace
 
 foreach var in end_quarter add_quarter1 add_quarter2 {
 
-	use ./bld/out/data/temp/death_quarter_temp.dta, clear
+	use ./out/data/temp/death_quarter_temp.dta, clear
 	keep country year best_pq `var'
 	rename `var' quarter
-	append using ./bld/out/data/temp/death_quarter_temp1.dta
-	save ./bld/out/data/temp/death_quarter_temp1.dta, replace
+	append using ./out/data/temp/death_quarter_temp1.dta
+	save ./out/data/temp/death_quarter_temp1.dta, replace
 }
 *
 	
@@ -96,7 +95,7 @@ collapse (sum) best_pq, by(country year quarter)
 
 * 4, combine with death data from events that happen within a quarter
 
-merge 1:1 country year quarter using ./bld/out/data/temp/deaths_prel.dta
+merge 1:1 country year quarter using ./out/data/temp/deaths_prel.dta
 
 egen battle_death_ucdp=rowtotal(best best_pq)
 
@@ -114,7 +113,7 @@ replace origin="Democratic Republic of the Congo" if origin=="DR Congo (Zaire)"
 
 gen battle_death_vdc=battle_death_ucdp
 
-save ./bld/out/data/temp/quarterly_deaths_01_16_no_Syria.dta, replace
+save ./out/data/temp/quarterly_deaths_01_16_no_Syria.dta, replace
 
 
 
@@ -146,13 +145,13 @@ keep origin year quarter battle_death_ucdp battle_death_vdc
 ** Combine data for Syria with data for all other countries ***
 ***************************************************************
 
-append using ./bld/out/data/temp/quarterly_deaths_01_16_no_Syria.dta
+append using ./out/data/temp/quarterly_deaths_01_16_no_Syria.dta
 
 
 ******************************************************************
 ** Scale up to contain all origin countries, quarters and years **
 ******************************************************************
-merge 1:1 origin year quarter using ./bld/out/data/temp/origin_quarter_help.dta
+merge 1:1 origin year quarter using ./out/data/temp/origin_quarter_help.dta
 
 drop if _merge == 1
 drop _merge
@@ -160,4 +159,4 @@ drop _merge
 replace battle_death_ucdp=0 if battle_death_ucdp==.
 replace battle_death_vdc=0 if battle_death_vdc==.
 
-save ./bld/out/data/temp/battle_death_quarterly_01_16.dta, replace
+save ./out/data/temp/battle_death_quarterly_01_16.dta, replace
