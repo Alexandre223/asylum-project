@@ -6,19 +6,25 @@
 
 clear
 set more off, permanently
-cd F:/research/asylum-project/bld/out/data/temp
+
+
+* Note: special carracters are not coded correctly 
+*		when converting data through R -> translate
+unicode analyze *
+unicode encoding set ASCII
+unicode translate *, invalid
 
 ****************************************************************
 ** Merge monthly asylum data and collapse it to quarterly data *
 ****************************************************************
 
 * 1. Combine all data
-use applications-08-16-m.dta, clear
+use ./out/data/temp/applications-08-16-m.dta, clear
 
-merge 1:1 origin destination year month using first-time-applications-08-16-m.dta
-drop _merge
+merge 1:1 origin destination year month using ///
+	./out/data/temp/first-time-applications-08-16-m.dta, nogen
 
-append using first-time-applications-02-07-m.dta
+append using ./out/data/temp/first-time-applications-02-07-m.dta
 
 * 2. Collapse the data
 
@@ -28,33 +34,23 @@ append using first-time-applications-02-07-m.dta
 	foreach var of varlist firsttimeapp applications {
 		* identify non-missing quarters
 		sort origin destination year quarter month
-		by origin destination year quarter: egen non_missing_`var'=count(`var')
+		by origin destination year quarter: egen non_missing_`var' = count(`var')
 		
 		* create a variable that contains only non-missing quarters
-		gen `var'_nmq=.
-		replace `var'_nmq=`var' if non_missing_`var'==3
+		gen `var'_nmq = .
+		replace `var'_nmq = `var' if non_missing_`var' == 3
 		
 		* calculate total within one quarter, use mean *3 
 		* in order to avoid having zeros in those quarters with missing data
-		by origin destination year quarter: egen `var'_q=mean(`var'_nmq)
-		replace `var'=`var'_q*3
+		by origin destination year quarter: egen `var'_q = mean(`var'_nmq)
+		replace `var' = `var'_q*3
 }
 *
    * b, collapse to quarterly data
 	collapse (mean) firsttimeapp applications, by (destination origin year quarter)
 
-* 3. rename certain countries to match with list of source and destination countries later on   
 
-replace origin="Former Serbia Montenegro" if origin=="Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
-replace origin="Kosovo" if origin=="Kosovo (under United Nations Security Council Resolution 1244/99)"
-replace origin="Macedonia" if origin=="Former Yugoslav Republic of Macedonia, the"
-replace origin="China" if origin=="China (including Hong Kong)"
-replace origin="Gambia" if origin=="Gambia, The"
-
-replace destination="Germany" if destination=="Germany (until 1990 former territory of the FRG)"
-
-
-save application-data-02-16-q.dta, replace
+save ./out/data/temp/application-data-02-16-q.dta, replace
 
 *******************************
 *** Merge all decision data ***
@@ -62,13 +58,19 @@ save application-data-02-16-q.dta, replace
 
 ** 1. Merge decision data 2002 - 2007
 
-use total-decisions-02-07-m.dta, clear
-merge 1:1 origin destination month year using total-positive-02-07-m.dta, nogen
-merge 1:1 origin destination month year using refugee-status-02-07-m.dta, nogen
-merge 1:1 origin destination month year using other-positive-02-07-m.dta, nogen
-merge 1:1 origin destination month year using rejected-02-07-m.dta, nogen 
-merge 1:1 origin destination month year using humanitarian-status-02-07-m.dta, nogen
-merge 1:1 origin destination month year using other-non-status-02-07-m.dta, nogen
+use ./out/data/temp/total-decisions-02-07-m.dta, clear
+merge 1:1 origin destination month year using ///
+	./out/data/temp/total-positive-02-07-m.dta, nogen
+merge 1:1 origin destination month year using ///
+	./out/data/temp/refugee-status-02-07-m.dta, nogen
+merge 1:1 origin destination month year using ///
+	./out/data/temp/other-positive-02-07-m.dta, nogen
+merge 1:1 origin destination month year using ///
+	./out/data/temp/rejected-02-07-m.dta, nogen 
+merge 1:1 origin destination month year using ///
+	./out/data/temp/humanitarian-status-02-07-m.dta, nogen
+merge 1:1 origin destination month year using ///
+	./out/data/temp/other-non-status-02-07-m.dta, nogen
 
 
 ** 2. Recalculate total decisions
@@ -76,7 +78,7 @@ merge 1:1 origin destination month year using other-non-status-02-07-m.dta, noge
 	* othernonstatus decisions =  neither positive nor rejected
 	* --> deduct othernonstatus decisions from total decisions
 
-replace totaldecisions=totaldecisions-othernonstatus if othernonstatus!=.
+replace totaldecisions = totaldecisions - othernonstatus if othernonstatus != .
 
 
 ** 3. Collapse data to quarterly data
@@ -89,16 +91,16 @@ replace totaldecisions=totaldecisions-othernonstatus if othernonstatus!=.
 							humanitarian {
 		* identify non-missing quarters
 		sort origin destination year quarter month
-		by origin destination year quarter: egen non_missing_`var'=count(`var')
+		by origin destination year quarter: egen non_missing_`var' = count(`var')
 		
 		* create a variable that contains only non-missing quarters
-		gen `var'_nmq=.
-		replace `var'_nmq=`var' if non_missing_`var'==3
+		gen `var'_nmq = .
+		replace `var'_nmq = `var' if non_missing_`var' == 3
 		
 		* calculate total within one quarter, use mean *3 
 		* in order to avoid having zeros in those quarters with missing data
-		by origin destination year quarter: egen `var'_q=mean(`var'_nmq)
-		replace `var'=`var'_q*3
+		by origin destination year quarter: egen `var'_q = mean(`var'_nmq)
+		replace `var' = `var'_q*3
 }
 *
 
@@ -107,39 +109,62 @@ replace totaldecisions=totaldecisions-othernonstatus if othernonstatus!=.
 					otherpositive rejected othernonstatus ///
 					humanitarian, by (destination origin year quarter)
 
-	save decision-data-02-07-q.dta, replace
+	save ./out/data/temp/decision-data-02-07-q.dta, replace
 
 ** 4. Merge decision data 2008 - 2016
 	
-use total-decisions-08-16-q.dta, clear
-merge 1:1 origin destination quarter year using total-positive-08-16-q.dta, nogen
-merge 1:1 origin destination quarter year using refugee-status-08-16-q.dta, nogen
-merge 1:1 origin destination quarter year using rejected-08-16-q.dta, nogen
-merge 1:1 origin destination quarter year using humanitarian-status-08-16-q.dta, nogen
-merge 1:1 origin destination quarter year using temporary-protection-08-16-q.dta, nogen
-merge 1:1 origin destination quarter year using subsidiary-protection-08-16-q.dta, nogen
+use ./out/data/temp/total-decisions-08-16-q.dta, clear
+merge 1:1 origin destination quarter year using ./out/data/temp/total-positive-08-16-q.dta, nogen
+merge 1:1 origin destination quarter year using ./out/data/temp/refugee-status-08-16-q.dta, nogen
+merge 1:1 origin destination quarter year using ./out/data/temp/rejected-08-16-q.dta, nogen
+merge 1:1 origin destination quarter year using ./out/data/temp/humanitarian-status-08-16-q.dta, nogen
+merge 1:1 origin destination quarter year using ./out/data/temp/temporary-protection-08-16-q.dta, nogen
+merge 1:1 origin destination quarter year using ./out/data/temp/subsidiary-protection-08-16-q.dta, nogen
 
 ** 5. Combine with 2002 - 2007 decision data
 
-append using decision-data-02-07-q.dta
+append using ./out/data/temp/decision-data-02-07-q.dta
 
-** 6. rename certain countries to match with list of source and destination countries later on   
-
-replace origin="Former Serbia Montenegro" if origin=="Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
-replace origin="Kosovo" if origin=="Kosovo (under United Nations Security Council Resolution 1244/99)"
-replace origin="Macedonia" if origin=="Former Yugoslav Republic of Macedonia, the"
-replace origin="China" if origin=="China (including Hong Kong)"
-replace origin="Gambia" if origin=="Gambia, The"
-
-replace destination="Germany" if destination=="Germany (until 1990 former territory of the FRG)"
-
-save decision-data-02-16-q.dta, replace
+save ./out/data/temp/decision-data-02-16-q.dta, replace
 
 *********************************************
 *** Combine decision and application data ***
 *********************************************
 
-use application-data-02-16-q.dta, clear
-merge 1:1 origin destination year quarter using decision-data-02-16-q.dta
+use ./out/data/temp/application-data-02-16-q.dta, clear
 
-save combined-asylum-data-02-16-q.dta, replace
+* match decision data
+* Note: Former Serbia Montenegro and Hong Kong missing in decision data
+merge 1:1 origin destination year quarter using ./out/data/temp/decision-data-02-16-q.dta, nogen
+
+
+* rename certain countries to match with list of source and destination countries later on   
+replace origin = "Former Serbia Montenegro" if origin == "Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
+replace origin = "Kosovo" if origin == "Kosovo (under United Nations Security Council Resolution 1244/99)"
+replace origin = "Macedonia" if origin == "Former Yugoslav Republic of Macedonia, the"
+replace origin = "China" if origin == "China (including Hong Kong)"
+replace origin = "Gambia" if origin == "Gambia, The"
+replace origin = "Côte d'Ivoire" if origin == "C%XF4te d'Ivoire"
+
+replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
+
+
+* match with relevant origin and destination countries
+merge m:1 origin destination using ./out/data/temp/origin_destination_help.dta
+* note: no data for the combination Switzerland and Former Serbia Montenegro, 
+* 		because data for Switzerland is only available from 2008 onwards
+keep if _merge == 3
+drop _merge
+
+* Note Bulgaria, Romania and Slovakia are both origin and destination countries
+foreach v in Bulgaria Romania Slovakia {
+	drop if origin == "`v'" & destination == "`v'"
+}
+*
+
+* delete irrelevant years for Kosovo, Former Serbia Montenegro and Serbia
+drop if origin == "Kosovo" & year <= 2008
+drop if origin == "Former Serbia Montenegro" & year >= 2007
+drop if origin == "Serbia" & year <= 2006
+
+save ./out/data/combined-asylum-data-02-16-q.dta, replace
