@@ -4,7 +4,6 @@
 
 clear 
 set more off, permanently
-cd F:/research/asylum-project
 
 
 ***********************************
@@ -24,11 +23,11 @@ foreach v in Kosovo Serbia {
 	
 	replace origin="`v'" if origin=="Serbia and Montenegro"
 	
-	merge m:m origin destination using ./bld/out/data/temp/origin_destination_help.dta
+	merge m:m origin destination using ./out/data/temp/origin_destination_help.dta
 	keep if _merge==3 & origin=="`v'" 
 	drop _merge
 	
-	save ./bld/out/data/temp/imm_stock_`v'.dta, replace
+	save ./out/data/temp/imm_stock_`v'.dta, replace
 }
 *
 
@@ -45,13 +44,13 @@ replace origin="Côte d'Ivoire" if origin=="Cote d'Ivoire"
 replace origin="Congo" if origin=="Congo, Rep. of the"
 replace origin="Former Serbia Montenegro" if origin=="Serbia and Montenegro" 
 
-merge m:m origin destination using ./bld/out/data/temp/origin_destination_help.dta
+merge m:m origin destination using ./out/data/temp/origin_destination_help.dta
 keep if _merge==3
 drop _merge
 
 
-append using ./bld/out/data/temp/imm_stock_Kosovo.dta
-append using ./bld/out/data/temp/imm_stock_Serbia.dta
+append using ./out/data/temp/imm_stock_Kosovo.dta
+append using ./out/data/temp/imm_stock_Serbia.dta
 
 * Note Bulgaria, Romania and Slovakia are both origin and destination countries
 foreach v in Bulgaria Romania Slovakia {
@@ -59,7 +58,7 @@ foreach v in Bulgaria Romania Slovakia {
 }
 *
 
-save ./bld/out/data/temp/bilateral_immigrant_stock.dta, replace
+save ./out/data/temp/bilateral_immigrant_stock.dta, replace
 
 
 ****************************************
@@ -77,55 +76,58 @@ import excel ./src/original_data/bilateral_data/ida.xlsx, sheet("Tabelle2") firs
 	replace origin="Belarus" if origin=="Belarus (Byelorussia)"
 	replace origin="Former Serbia Montenegro" if origin=="Yugoslavia"
 
-merge 1:1 origin using ./bld/out/data/temp/list_of_origin_countries.dta
+merge 1:1 origin using ./out/data/temp/list_of_origin_countries.dta
 keep if _merge==3
 drop _merge
 
-save ./bld/out/data/temp/country_codes_origin.dta, replace
+save ./out/data/temp/country_codes_origin.dta, replace
 
 
 * Country codes for destination countries
 import excel ./src/original_data/bilateral_data/idb.xlsx, sheet("Tabelle2") firstrow clear
 	replace destination="Germany" if destination=="Germany (until 1990 former territory of the FRG)"
 
-merge 1:1 destination using ./bld/out/data/temp/list_of_destination_countries.dta
+merge 1:1 destination using ./out/data/temp/list_of_destination_countries.dta
 keep if _merge==3
 drop _merge
 
-save ./bld/out/data/temp/country_codes_destination.dta, replace
+save ./out/data/temp/country_codes_destination.dta, replace
 
 
 * 2, prepare data for Kosovo (own data collection because Kosovo is missing)
 
 import excel ./src/original_data/bilateral_data/kmdist_Kosovo.xlsx, sheet("Tabelle1") firstrow clear
-save ./bld/out/data/temp/kmdist_Kosovo.dta, replace
+save ./out/data/temp/kmdist_Kosovo.dta, replace
 
 * 3, select relevant countries from kmdist data set and add data for Kosovo
 
 import delimited ./src/original_data/bilateral_data/capdist.csv, clear
 
-merge m:1 ida using ./bld/out/data/temp/country_codes_origin.dta
+merge m:1 ida using ./out/data/temp/country_codes_origin.dta
 keep if _merge==3
 drop _merge
 
-merge m:1 idb using ./bld/out/data/temp/country_codes_destination.dta
+merge m:1 idb using ./out/data/temp/country_codes_destination.dta
 keep if _merge==3
 drop _merge
 
 keep origin destination kmdist
 
-append using ./bld/out/data/temp/kmdist_Kosovo.dta
+append using ./out/data/temp/kmdist_Kosovo.dta
 
-save ./bld/out/data/temp/bilateral_distance_data.dta, replace
+save ./out/data/temp/bilateral_distance_data.dta, replace
 
 
 
 ****************************
 ** Combine bilateral data **
 ****************************
-use ./bld/out/data/temp/bilateral_immigrant_stock.dta
+use ./out/data/temp/bilateral_immigrant_stock.dta, clear
 
-merge 1:1 origin destination using ./bld/out/data/temp/bilateral_distance_data.dta
+merge 1:1 origin destination using ./out/data/temp/bilateral_distance_data.dta, nogen
 
-save ./bld/out/data/temp/bilateral_data.dta, replace
+* Note: no combination Switzerland & Former Serbia Montenegro
+drop if origin == "Former Serbia Montenegro" & destination == "Switzerland"
+
+save ./out/data/bilateral_data.dta, replace
  
