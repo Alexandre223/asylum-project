@@ -11,7 +11,7 @@ Eurostat_monthly <- function(inpath,
                              end_year = 4,
                              begin_month = 6,
                              end_month = 7){
-  data <- read.csv(file = inpath, stringsAsFactors = FALSE)
+  data <- read.csv(file = inpath, stringsAsFactors = FALSE, encoding = "UFT-8")
   
   data <- data[,var_keep]
   
@@ -51,7 +51,7 @@ Eurostat_quarterly <- function(inpath,
                                begin_year = 1,
                                end_year = 4,
                                pos_quarter= 6){
-  data <- read.csv(file = inpath, stringsAsFactors = FALSE)
+  data <- read.csv(file = inpath, stringsAsFactors = FALSE, encoding = "UFT-8")
   
   data <- data[,var_keep]
   
@@ -81,7 +81,7 @@ Eurostat_yearly <- function(inpath,
                             name, 
                             outpath,
                             var_keep = c("TIME", "GEO", "CITIZEN", "Value")){
-  data <- read.csv(file = inpath, stringsAsFactors = FALSE)
+  data <- read.csv(file = inpath, stringsAsFactors = FALSE, encoding = "UFT-8")
   
   data <- data[,var_keep]
   
