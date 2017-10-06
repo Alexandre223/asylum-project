@@ -1,7 +1,7 @@
 # Convent Eurostat asylum data into stata dta files making use of the created functions
 
 setwd("F:/research/asylum-project")
-source("./src/data_management/R-functions-for-eurostat-csv.R")
+source("./src/data_management/convert_asylum_data_with_R/R-functions-for-eurostat-csv.R")
 
 
 ###############################
