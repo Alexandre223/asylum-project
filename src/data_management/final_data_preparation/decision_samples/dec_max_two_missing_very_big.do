@@ -1,12 +1,8 @@
 
-*	             USE ONLY COUNTRIES THAT ARE BOTH IN                  *
-*             BASELINE APPLICATION AND DECISION ANALYSIS              *
+*  VERY BIG COUNTRIES WITH LESS THAN TWO YEARS MISSING DECISION DATA  *
 * =================================================================== *
-* SAMPLE: all big countries that have a maximum of two missing years  *
-*		  in first-time application data                              *
-*		  exclude Cyprus because of several irregular cabinet changes *
-*         exclude Norway, Beglium, Netherlands because countries are  * 
-*         not in decision analysis                                    *
+* SAMPLE: very big countries that have a maximum of two missing years *
+*		  in total decision data (>= 20000 decisions)                 *
 * YEARS: 2002 - 2014                                                  *
 * CABINET POSITION: left, right, split at median                      *
 * QUARTERS: 6 quarters around the election                            *
@@ -25,32 +21,27 @@ drop if year > 2014
 
 * Use only big countries that have a maximum of two missing years
 * Determine countries that have data in at least 44 out of 52 quarters**
-bysort origin destination: egen non_missing = count(firsttimeapp_NI)
+bysort origin destination: egen non_missing = count(totaldecisions_IM)
 bysort destination: egen max_non_missing = max(non_missing) 
 tab destination if max_non_missing >= 44
 keep if max_non_missing >= 44
 
 * Determine big destination countries
-bysort destination: egen total_FTapp = total(firsttimeapp)
-tab destination total_FTapp
-drop if total_FTapp < 30000
-
-* exclude Cyprus because of irregular cabinet changes
-* exlcude Belgium, Norway, Netherlands because of not being in decision analysis
-drop if destination == "Cyprus"| destination=="Belgium" | ///
-		destination=="Netherlands" | destination=="Norway"
-
+bysort destination: egen total_dec = total(totaldecisions_IM)
+tab destination total_dec
+drop if total_dec < 20000
 tab destination
 	
-* Use 49 most important source countries for these countries 
-*(together more than 90% of first time applications during the period)
-drop if origin=="Sierra Leone" | origin=="Uganda" | ///
-		origin=="Burundi" |  origin=="Rwanda"|  ///
-		origin=="Slovakia" |	origin=="Togo" | ///
-		origin=="Uzbekistan"
+* Use 47 most important source countries for these countries 
+*(together more than 90% of total decisions during the period)
+drop if origin=="Gambia" | origin=="Uganda" | origin=="Burundi" | ///
+		origin=="Uzbekistan" | origin=="Slovakia" | ///
+		origin=="Former Serbia Montenegro" | origin=="Rwanda" | ///
+		origin=="Lybia" |  origin=="Togo" 
+
 		
 * 2, Calculate mean dyadic first-time applications per quarter
-do ./src/data_management/final_data_preparation/modules/calc_mean_dyadic_ft_applications.do
+do ./src/data_management/final_data_preparation/modules/calc_mean_dyadic_decisions.do
 
 * 3, Create two dummies for cabinet position  split at the median
 do ./src/data_management/final_data_preparation/modules/cabinet_position_median.do
@@ -64,5 +55,5 @@ do ./src/data_management/final_data_preparation/modules/dummies_and_interactions
 do ./src/data_management/final_data_preparation/modules/indicator_variables.do
 
 
-save ./out/data/final_application/only_decision_countries.dta, replace
+save ./out/data/final_decision/max_two_missing_very_big.dta, replace
 

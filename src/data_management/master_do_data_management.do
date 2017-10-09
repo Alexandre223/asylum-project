@@ -62,7 +62,7 @@ do ./src/data_management/final_data_preparation/application_samples/app_baseline
 * Prepare data for the baseline sample with cabinet position slpit at 5
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample_cabinet_split_at_5.do
 
-* Prepare data for a sample of all destination countries will max 2 years of missing data
+* Prepare data for a sample of all destination countries with max 2 years of missing data
 do ./src/data_management/final_data_preparation/application_samples/app_all_max_two_missing.do
 
 * Prepare data for a sample of all destination countries with 
@@ -78,4 +78,43 @@ do ./src/data_management/final_data_preparation/application_samples/app_only_dec
 
 * Prepare data for the baseline sample with non imputed first-time applications
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample_non_imputed_fta.do
+
+
+
+*** Prepare different samples for the decision analysis ***
+
+* Prepare data for the baseline sample *
+do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample.do
+
+* Prepare data for the baseline sample of destination countries
+* including years 2015 and 2016 *
+do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_up_to_2016.do
+
+* Prepare data for the baseline sample of countries using only 5 quarters
+do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_5_quarters.do
+
+* Prepare data for the baseline sample of countries using only 4 quarters
+do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_4_quarters.do
+
+* Prepare data for the baseline sample with normalized cabinet position
+do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_normalized_cabinet.do
+
+* Prepare data for the baseline sample with cabinet position slpit at 5
+do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_cabinet_split_at_5.do
+
+* Prepare data for a sample of all destination countries with max 2 years of missing data
+do ./src/data_management/final_data_preparation/decision_samples/dec_all_max_two_missing.do
+
+* Prepare data for a sample of very big destination countries with max 2 years of missing data
+* > 20000 total decisions
+do ./src/data_management/final_data_preparation/decision_samples/dec_max_two_missing_very_big.do
+
+* Prepare data for a sample of all destination countries with 
+* data on decisions in all years
+do ./src/data_management/final_data_preparation/decision_samples/dec_no_missings.do
+
+* Prepare data for a sample of all destination countries that are both in the decision
+* and the application analysis (overlapping baseline sample)
+do ./src/data_management/final_data_preparation/decision_samples/dec_only_application_countries.do
+
 
