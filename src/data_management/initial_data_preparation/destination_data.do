@@ -176,9 +176,6 @@ use ./out/data/temp/destination_unemployment.dta, clear
 merge 1:1 destination year quarter using ///
 	./out/data/temp/destination_gdp.dta, nogen
 
-merge m:1 destination year using ///
-	./out/data/temp/destination_population.dta, nogen
-
 merge 1:1 destination year quarter using ///
 	./out/data/temp/election_data_quarterly.dta, nogen
 

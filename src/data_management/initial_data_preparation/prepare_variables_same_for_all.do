@@ -1,30 +1,16 @@
-***************************************************
-*** Combine all data and prepare final data set ***
-***************************************************
+******************************
+** Prepare asylum variables **
+******************************
+
 clear
 set more off, permanently
 
 
-* 1, combine all data
+use ./out/data/temp/combined_data.dta, clear
 
-* use asylum data
-use ./out/data/temp/combined-asylum-data-02-16-q.dta, clear
 
-* match destination country data
-merge m:1 destination year quarter using ///
-		./out/data/temp/destination_data.dta, nogen
-
-* match bilateral data
-merge m:1 origin destination using ///
-		./out/data/temp/bilateral_data.dta, nogen
-
-* match origin country data		
-merge m:1 origin year quarter using ///
-		./out/data/temp/origin_data.dta, nogen
-
-		
-
-* 2, Impute missing data on first-time applications after 2007 
+	
+* 1, Impute missing data on first-time applications after 2007 
 *	 		from application data from these years 
 
 * Calculate share of first-time applications in total applications
@@ -57,7 +43,7 @@ replace firsttimeapp = round(firsttimeapp)
 
 
 
-* 3, Calculate different recognition rates
+* 2, Calculate different recognition rates
 
 gen acceptance_rate = totalpositive / totaldecisions
 replace acceptance_rate = 1 if acceptance_rate > 1 & acceptance_rate != .
@@ -87,7 +73,8 @@ gen refugeestatus_rate_IM = refugeestatus / totaldecisions_IM
 gen otherpositive_rate_IM = (totalpositive - refugeestatus) / totaldecisions_IM
 
 
-* 4, Calculate log yearly total and dyadic decisions per capita in destination 
+
+* 3, Calculate log yearly total and dyadic decisions per capita in destination 
 * 		use mean of current quarter and past 3 quarters
 
 * DAYADIC DECISIONS
@@ -128,7 +115,7 @@ gen log_dest_decisions_pc = log(yearly_dest_decisions_mean / pop_destination)
 
 
 
-* 5, Calculate log yearly total and dyadic decisions per capita in destination
+* 4, Calculate log yearly total and dyadic decisions per capita in destination
 *                     with imputed total decisions  
 
 * DAYADIC DECISIONS
@@ -168,10 +155,8 @@ egen yearly_dest_decisions_mean_IM = ///
 gen log_dest_decisions_pc_IM = log(yearly_dest_decisions_mean_IM / pop_destination)
 
 
-* 6, generate log variables and other important variables
 
-gen imm_stock_2000_plus1 = imm_stock_2000 + 1
-gen log_imm_stock_2000 = log(imm_stock_2000_plus1)
+* 5, generate log variables
 
 gen firsttimeapp_plus1 = firsttimeapp + 1
 gen log_firsttimeapp_pc = log(firsttimeapp_plus1 / pop_destination)
@@ -183,15 +168,21 @@ gen log_applications_pc = log(applications_plus1 / pop_destination)
 gen firsttimeapp_NI_plus1 = firsttimeapp_NI + 1
 gen log_firsttimeapp_NI_pc = log(firsttimeapp_NI_plus1 / pop_destination)
 
-gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 10000
-gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 10000
-gen applications_pc = (applications / pop_destination) * 10000
+gen imm_stock_2000_plus1 = imm_stock_2000 + 1
+gen log_imm_stock_2000 = log(imm_stock_2000_plus1)
 
 gen log_kmdist=log(kmdist)
 
 gen log_av_app_pc=log(av_app_pc)
 
 gen log_rGDPpc_dest = log(rGDPpc)
+
+
+* 6, generate rescaled variables and post 2007 dummy
+
+gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 10000
+gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 10000
+gen applications_pc = (applications / pop_destination) * 10000
 
 gen death_thousands_ucdp = battle_death_ucdp / 1000
 gen death_thousands_vdc = battle_death_vdc / 1000
@@ -203,7 +194,30 @@ gen post_2007 = 0
 replace post_2007 = 1 if year > 2007
 
 
-* 7, label important variables
+* 7, lable variables
+
+label variable log_dest_decisions_pc "Log average past total asylum decisions per capita"
+label variable log_dyadic_decisions_pc "Log average past dyadic asylum decisions per capita"
+
+label variable log_dest_decisions_pc_IM "Log average past total asylum decisions per capita"
+label variable log_dyadic_decisions_pc_IM "Log average past dyadic asylum decisions per capita"
+
+label variable acceptance_rate "Acceptance rate"
+label variable otherpositive_rate "Temporary protection"
+label variable refugeestatus_rate "Refugee status rate"
+
+label variable acceptance_rate_IM "Acceptance rate"
+label variable otherpositive_rate_IM "Temporary protection"
+label variable refugeestatus_rate_IM "Refugee status rate"
+
+label variable firsttimeapp "Quarterly fist-time asylum applications"
+label variable firsttimeapp_pc "Quarterly first-time asylum applications per 10000 inhabitants"
+
+label variable pop_destination "Destination country population"
+
+label variable unemployment "Quarterly unemployment rate at destination"
+
+label variable post_2007 "after 2007"
 
 foreach var of varlist 	death_thousands_ucdp ///
 						death_thousands_vdc ///
@@ -245,28 +259,18 @@ label variable MENA "Middle East and North Africa"
 label variable ECA "Europe and Central Asia"
 label variable SEA "South and East Asia"
 
-label variable log_dest_decisions_pc "Log average past total asylum decisions per capita"
-label variable log_dyadic_decisions_pc "Log average past dyadic asylum decisions per capita"
-
-label variable log_dest_decisions_pc_IM "Log average past total asylum decisions per capita"
-label variable log_dyadic_decisions_pc_IM "Log average past dyadic asylum decisions per capita"
-
-label variable acceptance_rate "Acceptance rate"
-label variable otherpositive_rate "Temporary protection"
-label variable refugeestatus_rate "Refugee status rate"
-
-label variable acceptance_rate_IM "Acceptance rate"
-label variable otherpositive_rate_IM "Temporary protection"
-label variable refugeestatus_rate_IM "Refugee status rate"
-
-label variable firsttimeapp "Quarterly fist-time asylum applications"
-label variable firsttimeapp_pc "Quarterly first-time asylum applications per 10000 inhabitants"
-
-label variable pop_destination "Destination country population"
-
-label variable unemployment "Quarterly unemployment rate at destination"
-
-label variable post_2007 "after 2007"
+local t=1
+while `t'<=6 {
+label variable bef`t' " `t' quarters before the election"
+ local t=`t'+1
+ }
+*
+local t=1
+while `t'<=6 {
+label variable post`t' " `t' quarters after the election"
+ local t=`t'+1
+ }
+*
 
 
 * 8, drop origin countries that are not in the top 90% of any sample used at the moment
@@ -274,6 +278,5 @@ label variable post_2007 "after 2007"
 drop if origin=="Bulgaria" | origin=="Liberia" | ///
 		origin=="Senegal" | origin=="Tunisia"
 
-		
-save ./out/data/combined_data.dta, replace
-		
+
+save ./out/data/temp/combined_data_for_final_adjustments.dta, replace
