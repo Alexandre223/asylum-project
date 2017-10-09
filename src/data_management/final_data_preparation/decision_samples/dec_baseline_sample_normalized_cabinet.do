@@ -45,7 +45,7 @@ drop if origin=="Gambia" | origin=="Uganda" | origin=="Burundi" | ///
 do ./src/data_management/final_data_preparation/modules/calc_mean_dyadic_decisions.do
 
 * 3, Create two dummies for cabinet position  split at the median
-do ./src/data_management/final_data_preparation/modules/cabinet_position_median_normailzed.do
+do ./src/data_management/final_data_preparation/modules/cabinet_position_median_normalized.do
 
 * 4, Create before after dummies and all interaction terms 
 *    for 6 quarters around the election

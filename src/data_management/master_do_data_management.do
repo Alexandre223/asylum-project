@@ -6,6 +6,10 @@ clear
 set more off, permanently
 cd F:/research/asylum-project
 
+*****************************************************
+** Prepare and combine data from different sources **
+*****************************************************
+
 * Create help files with all origin and destination countries *
 do ./src/data_management/initial_data_preparation/help_files.do
 
@@ -41,7 +45,9 @@ do ./src/data_management/initial_data_preparation/prepare_variables_same_for_all
 
 
 
-*** Prepare different samples for the application analysis ***
+************************************************************
+** Prepare different samples for the application analysis **
+************************************************************
 
 * Prepare data for the baseline sample *
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample.do
@@ -81,7 +87,9 @@ do ./src/data_management/final_data_preparation/application_samples/app_baseline
 
 
 
-*** Prepare different samples for the decision analysis ***
+*********************************************************
+** Prepare different samples for the decision analysis **
+*********************************************************
 
 * Prepare data for the baseline sample *
 do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample.do
