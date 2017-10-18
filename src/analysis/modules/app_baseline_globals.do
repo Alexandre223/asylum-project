@@ -7,7 +7,7 @@ global dependent_variable log_firsttimeapp_pc
 
 global origin_variables ///
 		PTS_average CL_average PR_average ///
-		death_thousands_ucdp_average log_rGDPpc_orig_average 
+		death_thousands_vdc_average log_rGDPpc_orig_average 
 	
 global destination_variables log_rGDPpc_dest unemployment
  

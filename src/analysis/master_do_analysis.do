@@ -6,6 +6,13 @@ clear
 set more off, permanently
 cd F:/research/asylum-project
 
+
+************************
+** Summary statistics **
+************************
+do ./src/analysis/application_analysis/app_summary_statistics.do
+
+
 **************************
 ** Application analysis **
 **************************

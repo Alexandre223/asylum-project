@@ -3,7 +3,7 @@
 *****************************************************************
 
 eststo clear
-xtset DO 
+xtset $xt_main 
 eststo: quietly xtreg 	$dependent_variable ///
 						$origin_variables $destination_variables ///
 						$interactions_left_m2 $interactions_right_m2 ///

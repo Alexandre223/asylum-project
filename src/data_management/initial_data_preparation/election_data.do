@@ -114,8 +114,6 @@ collapse (mean) year quarter month election_date start_date  ///
 		
 rename country_name destination
 
-label variable cabinet_left_right "average left - right position of the cabinet"
-
 
 * merge with help file with all years and quarters
 merge 1:1 destination month quarter year using ///
@@ -147,6 +145,8 @@ collapse (first) election_quarter past_cabinet_left_right cabinet_left_right, //
 		 by (destination year quarter)
 
 rename election_quarter election
+
+label variable cabinet_left_right "average left - right position of the cabinet"
 
 
 * 4, create before and after dummies and correct for early elections

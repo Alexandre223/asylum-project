@@ -171,7 +171,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * change origin country globals 
-global origin_variables PTS CL PR death_thousands_ucdp log_rGDPpc_orig
+global origin_variables PTS CL PR death_thousands_vdc log_rGDPpc_orig
 
 * Define gobals for output paths for figures and tables
 global path_tab1 "./out/analysis/applications/tables/app_table1_R6.tex"
@@ -197,7 +197,7 @@ do ./src/analysis/modules/graph_2.do
 
 
 ***********************************************
-** R7: Use Syrain battle death data from VDC **
+** R7: Use Syrain battle death data from UCDP **
 ***********************************************
 
 * use same globals as in the baseline analysis
@@ -206,7 +206,7 @@ do ./src/analysis/modules/app_baseline_globals.do
 * change variable for battle death data in origin globals 
 global origin_variables ///
 		PTS_average CL_average PR_average ///
-		death_thousands_vdc_average log_rGDPpc_orig_average 
+		death_thousands_ucdp_average log_rGDPpc_orig_average 
 
 * Define gobals for output paths for figures and tables
 global path_tab1 "./out/analysis/applications/tables/app_table1_R7.tex"
@@ -255,7 +255,7 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R8_co
 
 
 * Run do files to create tables and figures
-do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/table_1_no_OT_specification.do
 do ./src/analysis/modules/graph_1.do
 
 do ./src/analysis/modules/table_2.do
