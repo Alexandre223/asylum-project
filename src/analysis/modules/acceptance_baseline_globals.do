@@ -1,15 +1,15 @@
-**********************
-** Baseline globals **
-**********************
+***************************************************
+** Baseline globals for acceptance rate analysis **
+***************************************************
 
 * Define globals that are similar in both models *
-global dependent_variable log_firsttimeapp_pc
+global dependent_variable acceptance_rate
 
 global origin_variables ///
 		PTS_average CL_average PR_average ///
 		death_thousands_vdc_average log_rGDPpc_orig_average 
 	
-global destination_variables log_rGDPpc_dest unemployment
+global destination_variables log_rGDPpc_dest unemployment log_dest_decisions_pc_IM  log_dyadic_decisions_pc_IM
  
 global bilateral_variables log_imm_stock_2000 log_kmdist
 
@@ -31,5 +31,6 @@ global xt_main DO
 global fe_var i.T
 
 * Define global for the scale of the y-axis in the graph
-global y_scale (-0.2 -0.1 0 0.1 0.2)
+global y_scale (-0.04 -0.02 0 0.02  0.04)
+
 

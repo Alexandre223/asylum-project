@@ -30,13 +30,15 @@ do ./src/analysis/application_analysis/app_robustness_with_other_data.do
 do ./src/analysis/application_analysis/app_by_region.do
 
 
-
+/*
 ***********************
 ** Decision analysis **
 ***********************
 
+** Acceptance rate **
+
 * Baseline specification *
-do ./src/analysis/decision_analysis/dec_baseline.do
+do ./src/analysis/decision_analysis/acceptance_baseline.do
 
 * Robustness checks with baseline data *
 do ./src/analysis/decision_analysis/dec_robustness_with_baseline_data.do

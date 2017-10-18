@@ -59,8 +59,8 @@ coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			xscale(range(1 (1) 11)) ///
 			xlabel(1 "-5" 2 "-4" 3 "-3" 4 "-2"  5 "-1" 6 "0" ///
 				   7 "1" 8 "2" 9 "3" 10 "4" 11 "5") ///
-			yscale(range(-0.2 -0.1 0 0.1 0.2)) ///
-			ylabel(-0.2 -0.1 0 0.1 0.2) ///
+			yscale(range$y_scale) ///
+			ylabel $y_scale ///
 			ytitle(estimated coefficient) ///
 			xtitle (quarters around the election) ///
 			title($graph_title)

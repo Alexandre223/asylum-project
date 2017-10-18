@@ -65,8 +65,8 @@ foreach var in MENA Africa SEA ECA {
 				xscale(range(1 (1) 13)) ///
 				xlabel(1 "-6" 2 "-5" 3 "-4" 4 "-3"  5 "-2" 6 "-1" 7 "0" ///
 						8 "1" 9 "2" 10 "3" 11 "4" 12 "5" 13 "6") ///
-				yscale(range(-0.2 -0.1 0 0.1 0.2)) ///
-				ylabel(-0.2 -0.1 0 0.1 0.2) ///
+				yscale(range$y_scale) ///
+				ylabel $y_scale ///
 				ytitle(estimated coefficient) ///
 				title(`var')
 				

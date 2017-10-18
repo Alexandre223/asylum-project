@@ -41,8 +41,8 @@ foreach var in MENA Africa SEA ECA {
 				legend (rows(1)) ///
 				xscale(range(1 (1) 2)) ///
 				xlabel(1 "before the election"  2 "after the election") ///
-				yscale(range(-0.2 -0.1 0 0.1 0.2)) ///
-				ylabel(-0.2 -0.1 0 0.1 0.2) ///
+				yscale(range$y_scale) ///
+				ylabel $y_scale  ///
 				ytitle(estimated coefficient) ///
 				title(`var')
 				
