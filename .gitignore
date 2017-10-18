@@ -40,7 +40,6 @@ waf3-*
 .*pdfsvn
 __pycache__
 analysis_out
-out
 build
 debug
 Debug
