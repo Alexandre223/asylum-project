@@ -36,11 +36,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R10_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -74,11 +72,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R11_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -117,11 +113,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R12_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -155,11 +149,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R13_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -200,11 +192,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R14_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2_Q5.do
-do ./src/analysis/modules/graph_2_coef_table_Q5.do
 
 
 *******************************************************
@@ -240,11 +230,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R15_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2_Q4.do
-do ./src/analysis/modules/graph_2_coef_table_Q4.do
 
 
 
@@ -285,11 +273,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R16_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -327,11 +313,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R17_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -369,11 +353,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R18_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -407,11 +389,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R19_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -445,11 +425,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R20_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 *****************************************************************************
@@ -482,8 +460,6 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R21_c
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do

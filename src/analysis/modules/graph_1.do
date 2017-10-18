@@ -26,6 +26,14 @@ nlcom 	(before:  _b[right_bef] ) ///
 		,post
 est sto right
 
+esttab left right using $path_coef_tab1, ///
+replace se label mtitle nodepvars nogaps fragment ///
+keep($time_m1) title($coef_tab_title)
+
+esttab  left  right using $path_coef_tab1_paper, ///
+replace se label mtitle nodepvars  ///
+keep($time_m1) title($coef_tab_title)
+
 coefplot 	(left, keep($time_m1) label(cabinet left) msymbol(S) mcolor(maroon) lcolor(maroon)) ///
 			(right, keep($time_m1) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))   ///
 			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///

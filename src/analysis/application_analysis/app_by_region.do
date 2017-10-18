@@ -22,7 +22,6 @@ global path_graph2 "./out/analysis/applications/figures/app_graph2_by_region.pdf
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1_by_region.do
 do ./src/analysis/modules/graph_1_by_region.do
-do ./src/analysis/modules/graph_1_coef_table_by_region.do
 
 do ./src/analysis/modules/graph_2_by_region.do
-do ./src/analysis/modules/graph_2_coef_table.do
+

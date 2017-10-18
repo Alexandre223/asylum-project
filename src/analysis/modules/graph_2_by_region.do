@@ -48,6 +48,14 @@ foreach var in MENA Africa SEA ECA {
 			,post
 	est sto right
 	
+	esttab left right using ./out/analysis/applications/tables/app_graph2_`var'_coef, ///
+	replace se label mtitle nodepvars nogaps fragment ///
+	keep($time_m2) title($coef_tab_title)
+
+	esttab  left  right using ./out/analysis/applications/tables/app_graph2_`var'_coef_paper, ///
+	replace se label mtitle nodepvars  ///
+	keep($time_m2) title($coef_tab_title)
+	
 	coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lcolor(maroon)) ///
 				(right, keep($time_m2) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))   ///
 				,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///

@@ -28,8 +28,7 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_basel
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
+

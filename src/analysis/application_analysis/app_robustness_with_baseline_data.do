@@ -33,10 +33,8 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R1_co
 * Run do files to create tables and figures
 
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -62,10 +60,8 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R2_co
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 **********************************************
@@ -95,11 +91,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R3_co
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -130,11 +124,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R4_co
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -165,11 +157,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R5_co
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -200,11 +190,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R6_co
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -237,11 +225,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R7_co
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -271,11 +257,9 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R8_co
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
 
 
 
@@ -304,7 +288,5 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R9_co
 * in this specification clustering on DO level is not possible
 do ./src/analysis/modules/table_1_just_DO_specification.do
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_1_coef_table.do
 
 do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_2_coef_table.do
