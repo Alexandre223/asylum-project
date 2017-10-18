@@ -20,6 +20,7 @@ do ./src/analysis/application_analysis/app_robustness_with_baseline_data.do
 do ./src/analysis/application_analysis/app_robustness_with_other_data.do
 
 * Analysis by origin country region *
+do ./src/analysis/application_analysis/app_by_region.do
 
 ***********************
 ** Decision analysis **

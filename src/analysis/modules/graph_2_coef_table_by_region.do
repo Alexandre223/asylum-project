@@ -1,0 +1,59 @@
+
+
+foreach var in MENA Africa SEA ECA {
+	eststo clear
+	xtset DO 
+	eststo: quietly xtreg 	$dependent_variable ///
+							$origin_variables $destination_variables ///
+							$interactions_left_m2 $interactions_right_m2 ///
+							i.T ///
+							if `var'==1 , ///
+							fe vce(cluster $se_clus)
+	nlcom 	(bef6: _b[bef6_left]) ///
+			(bef5: _b[bef5_left]) ///
+			(bef4: _b[bef4_left]) ///
+			(bef3: _b[bef3_left]) ///
+			(bef2: _b[bef2_left]) ///
+			(bef1: _b[bef1_left]) ///
+			(election: _b[elec_left]) ///
+			(post1: _b[post1_left]) ///
+			(post2: _b[post2_left]) ///
+			(post3: _b[post3_left]) ///
+			(post4: _b[post4_left]) ///
+			(post5: _b[post5_left]) ///
+			(post6: _b[post6_left]) ///
+			,post
+	est sto left
+	
+	eststo: quietly xtreg 	$dependent_variable ///
+							$origin_variables $destination_variables ///
+							$interactions_left_m2 $interactions_right_m2 ///
+							i.T ///
+							if `var'==1 , ///
+							fe vce(cluster $se_clus)
+	nlcom 	(bef6: _b[bef6_right] ) ///
+			(bef5: _b[bef5_right] ) ///
+			(bef4: _b[bef4_right] ) ///
+			(bef3: _b[bef3_right] ) ///
+			(bef2: _b[bef2_right] ) ///
+			(bef1: _b[bef1_right] ) ///
+			(election: _b[elec_right] ) ///
+			(post1: _b[post1_right] ) ///
+			(post2: _b[post2_right] ) ///
+			(post3: _b[post3_right] ) ///
+			(post4: _b[post4_right] ) ///
+			(post5: _b[post5_right] ) ///
+			(post6: _b[post6_right] ) ///
+			,post
+	est sto right
+	
+esttab left right using ./out/analysis/applications/tables/app_graph2_`var'_coef, ///
+replace se label mtitle nodepvars nogaps fragment ///
+keep($time_m2) title($coef_tab_title)
+
+esttab  left  right using ./out/analysis/applications/tables/app_graph2_`var'_coef_paper, ///
+replace se label mtitle nodepvars  ///
+keep($time_m2) title($coef_tab_title)
+}
+*				
+
