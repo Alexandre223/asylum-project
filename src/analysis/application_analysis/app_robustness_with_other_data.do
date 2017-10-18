@@ -305,7 +305,7 @@ do ./src/analysis/modules/graph_2_coef_table.do
 use ./out/data/final_application/baseline_2016.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter_NI < 2
+drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
@@ -347,7 +347,7 @@ do ./src/analysis/modules/graph_2_coef_table.do
 use ./out/data/final_application/all_max_two_missing_data.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter_NI < 2
+drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
@@ -385,7 +385,7 @@ do ./src/analysis/modules/graph_2_coef_table.do
 use ./out/data/final_application/no_missing_data.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter_NI < 2
+drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
@@ -423,7 +423,7 @@ do ./src/analysis/modules/graph_2_coef_table.do
 use ./out/data/final_application/baseline_plus_Cyprus.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter_NI < 2
+drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
@@ -460,7 +460,7 @@ do ./src/analysis/modules/graph_2_coef_table.do
 use ./out/data/final_application/only_decision_countries.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter_NI < 2
+drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
