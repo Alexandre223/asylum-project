@@ -13,10 +13,10 @@ egen not_missing = count(totaldecisions), by (destination origin)
 gen mean_dyadic_decisions_pq = sum_dyadic_decisions / not_missing
 
 
-** Calculate mean dyadic decisions with imputed totaldecisions (rejected + totalpositive)
+** Calculate mean dyadic decisions with npn-imputed totaldecisions
 
-egen sum_dyadic_decisions_IM = sum(totaldecisions_IM), by (destination origin)
+egen sum_dyadic_decisions_NI = sum(totaldecisions_NI), by (destination origin)
 
-egen not_missing_IM = count(totaldecisions_IM), by (destination origin)
+egen not_missing_NI = count(totaldecisions_NI), by (destination origin)
 
-gen mean_dyadic_decisions_pq_IM = sum_dyadic_decisions_IM / not_missing_IM
+gen mean_dyadic_decisions_pq_NI = sum_dyadic_decisions_NI / not_missing_NI

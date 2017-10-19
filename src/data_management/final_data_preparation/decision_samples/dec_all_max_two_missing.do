@@ -21,7 +21,7 @@ drop if year > 2014
 
 * Use only countries that have a maximum of two missing years
 * Determine countries that have data in at least 44 out of 52 quarters**
-bysort origin destination: egen non_missing = count(totaldecisions_IM)
+bysort origin destination: egen non_missing = count(totaldecisions)
 bysort destination: egen max_non_missing = max(non_missing) 
 tab destination if max_non_missing >= 44
 keep if max_non_missing >= 44

@@ -45,6 +45,16 @@ replace firsttimeapp = round(firsttimeapp)
 
 * 2, Calculate different recognition rates
 
+* Note: many cases where rejected + total positive is not equal to totaldecisions
+*       and some cases where totaldecisions = 5 and rejected = 0 and totalpositive = 0,
+*		probably due to rounding to the neares five
+ 
+* Calculate total decisions as sum of rejected and total positive and 
+* then calculate different recognition rates
+rename totaldecisions totaldecisions_NI
+
+gen totaldecisions = rejected + totalpositive
+
 gen acceptance_rate = totalpositive / totaldecisions
 replace acceptance_rate = 1 if acceptance_rate > 1 & acceptance_rate != .
 
@@ -58,19 +68,15 @@ gen otherpositive_rate = (totalpositive - refugeestatus) / totaldecisions
 replace otherpositive_rate = 1 if otherpositive_rate > 1 & otherpositive_rate != .
 
 
-* Note: some cases where rejected + total positive is not equal to totaldecisions
-* Calculate total decisions as sum of rejected and total positive and 
-* then recalculate different recognition rates
+* Also calculate non imputed versions of the recognition rates
 
-gen totaldecisions_IM = rejected + totalpositive
+gen acceptance_rate_NI = totalpositive / totaldecisions_NI
 
-gen acceptance_rate_IM = totalpositive / totaldecisions_IM
+gen rejection_rate_NI = rejected / totaldecisions_NI
 
-gen rejection_rate_IM = rejected / totaldecisions_IM
+gen refugeestatus_rate_NI = refugeestatus / totaldecisions_NI
 
-gen refugeestatus_rate_IM = refugeestatus / totaldecisions_IM
-
-gen otherpositive_rate_IM = (totalpositive - refugeestatus) / totaldecisions_IM
+gen otherpositive_rate_NI = (totalpositive - refugeestatus) / totaldecisions_NI
 
 
 
@@ -126,55 +132,55 @@ gen log_dest_decisions_pc = log(yearly_dest_decisions_pc_plus1)
 
 
 * 4, Calculate log yearly total and dyadic decisions per capita in destination
-*                     with imputed total decisions  
+*                     with non-imputed total decisions  
 
 * DAYADIC DECISIONS
 sort destination origin year quarter
 
 * generate lags of dyadic decisions
-by destination origin: gen lag1_totaldecisions_IM = totaldecisions_IM[_n-1]
-by destination origin: gen lag2_totaldecisions_IM = totaldecisions_IM[_n-2]
-by destination origin: gen lag3_totaldecisions_IM = totaldecisions_IM[_n-3]
+by destination origin: gen lag1_totaldecisions_NI = totaldecisions_NI[_n-1]
+by destination origin: gen lag2_totaldecisions_NI = totaldecisions_NI[_n-2]
+by destination origin: gen lag3_totaldecisions_NI = totaldecisions_NI[_n-3]
 
 * generate sum of decisions in the past year (includuing current quarter)
-egen yearly_dyadic_decisions_mean_IM = ///
-	rowmean(totaldecisions_IM lag1_totaldecisions_IM ///
-			lag2_totaldecisions_IM lag3_totaldecisions_IM)
+egen yearly_dyadic_decisions_mean_NI = ///
+	rowmean(totaldecisions_NI lag1_totaldecisions_NI ///
+			lag2_totaldecisions_NI lag3_totaldecisions_NI)
 
 			
 * calculate average per capita
-gen yearly_dyadic_decisions_pc_IM = (yearly_dyadic_decisions_mean_IM / pop_destination)*10000
-label variable yearly_dyadic_decisions_pc_IM "Average dyadic quarterly decisions per 10000 inhabitants in the previous year"
+gen yearly_dyadic_decisions_pc_NI = (yearly_dyadic_decisions_mean_NI / pop_destination)*10000
+label variable yearly_dyadic_decisions_pc_NI "Average dyadic quarterly decisions per 10000 inhabitants in the previous year"
 								
 **gen log per capita*
-gen yearly_dyadic_dec_pc_plus1IM = (yearly_dyadic_decisions_mean_IM / pop_destination) + 1
-gen log_dyadic_decisions_pc_IM = log(yearly_dyadic_dec_pc_plus1IM)
+gen yearly_dyadic_dec_pc_plus1NI = (yearly_dyadic_decisions_mean_NI / pop_destination) + 1
+gen log_dyadic_decisions_pc_NI = log(yearly_dyadic_dec_pc_plus1NI)
 			
 
 			
 * TOTAL DECISIONS AT DESTINATION
 
 **generate total quarterly decisions in destination + lags** 
-bysort destination year quarter: egen sum_dest_decisions_IM = total(totaldecisions_IM)
+bysort destination year quarter: egen sum_dest_decisions_NI = total(totaldecisions_NI)
 
 sort origin destination year quarter
 
-by origin destination: gen lag1_sum_dest_decisions_IM = sum_dest_decisions_IM[_n-1]
-by origin destination: gen lag2_sum_dest_decisions_IM = sum_dest_decisions_IM[_n-2]
-by origin destination: gen lag3_sum_dest_decisions_IM = sum_dest_decisions_IM[_n-3]
+by origin destination: gen lag1_sum_dest_decisions_NI = sum_dest_decisions_NI[_n-1]
+by origin destination: gen lag2_sum_dest_decisions_NI = sum_dest_decisions_NI[_n-2]
+by origin destination: gen lag3_sum_dest_decisions_NI = sum_dest_decisions_NI[_n-3]
 
 **generate sum of decisions in the past year (includuing current quarter)**
-egen yearly_dest_decisions_mean_IM = ///
-		rowmean(sum_dest_decisions_IM lag1_sum_dest_decisions_IM ///
-				lag2_sum_dest_decisions_IM lag3_sum_dest_decisions_IM)
+egen yearly_dest_decisions_mean_NI = ///
+		rowmean(sum_dest_decisions_NI lag1_sum_dest_decisions_NI ///
+				lag2_sum_dest_decisions_NI lag3_sum_dest_decisions_NI)
 				
 * calculate average per capita
-gen yearly_dest_decisions_pc_IM = (yearly_dest_decisions_mean_IM / pop_destination)*10000
-label variable yearly_dest_decisions_pc_IM "Average total quarterly decisions per 10000 inhabitants in the previous year"
+gen yearly_dest_decisions_pc_NI = (yearly_dest_decisions_mean_NI / pop_destination)*10000
+label variable yearly_dest_decisions_pc_NI "Average total quarterly decisions per 10000 inhabitants in the previous year"
 
 * generate logs 
-gen yearly_dest_dec_pc_plus1IM = (yearly_dest_decisions_mean_IM / pop_destination) + 1
-gen log_dest_decisions_pc_IM = log(yearly_dest_dec_pc_plus1IM)
+gen yearly_dest_dec_pc_plus1NI = (yearly_dest_decisions_mean_NI / pop_destination) + 1
+gen log_dest_decisions_pc_NI = log(yearly_dest_dec_pc_plus1NI)
 
 
 * 5, generate log variables
@@ -220,16 +226,16 @@ replace post_2007 = 1 if year > 2007
 label variable log_dest_decisions_pc "Log average past total asylum decisions per capita"
 label variable log_dyadic_decisions_pc "Log average past dyadic asylum decisions per capita"
 
-label variable log_dest_decisions_pc_IM "Log average past total asylum decisions per capita"
-label variable log_dyadic_decisions_pc_IM "Log average past dyadic asylum decisions per capita"
+label variable log_dest_decisions_pc_NI "Log average past total asylum decisions per capita"
+label variable log_dyadic_decisions_pc_NI "Log average past dyadic asylum decisions per capita"
 
 label variable acceptance_rate "Acceptance rate"
 label variable otherpositive_rate "Temporary protection"
 label variable refugeestatus_rate "Refugee status rate"
 
-label variable acceptance_rate_IM "Acceptance rate"
-label variable otherpositive_rate_IM "Temporary protection"
-label variable refugeestatus_rate_IM "Refugee status rate"
+label variable acceptance_rate_NI "Acceptance rate"
+label variable otherpositive_rate_NI "Temporary protection"
+label variable refugeestatus_rate_NI "Refugee status rate"
 
 label variable firsttimeapp "Quarterly fist-time asylum applications"
 label variable firsttimeapp_pc "Quarterly first-time asylum applications per 10000 inhabitants"

@@ -305,20 +305,20 @@ do ./src/analysis/modules/graph_2_Q4.do
 
 
 * ================================================================================ *
-* Impute data on totaldecisions by adding all positive and all rejected decisions
+* Use non-imputed data on total decisions
 * ================================================================================ *
 
-********************************************
-**    R15: Impute data on totaldecisions  **
-********************************************
+******************************************************
+**    R15: Use non-imputed data on total decisions  **
+******************************************************
 
 * Specify data set to be used *
 use ./out/data/final_decision/baseline_data.dta, clear
 
 * Drop country pairs with less than 2 decisions per quarter on average *
-drop if mean_dyadic_decisions_pq_IM < 2
+drop if mean_dyadic_decisions_pq_NI < 2
 
-foreach dec in acceptance_rate_IM refugeestatus_rate_IM otherpositive_rate_IM{
+foreach dec in acceptance_rate_NI refugeestatus_rate_NI otherpositive_rate_NI{
 
 * Define global for dependent variable
 global dependent_variable `dec'
@@ -332,7 +332,7 @@ global coef_tab_title "Predicted pattern `dec'"
 do ./src/analysis/modules/dec_baseline_globals.do
 
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc_IM  log_dyadic_decisions_pc_IM
+		log_dest_decisions_pc_NI  log_dyadic_decisions_pc_NI
 
 * Define gobals for output paths for figures and tables
 global path_tab1 ./out/analysis/decisions/tables/`dec'_table1_R15.tex

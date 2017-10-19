@@ -105,7 +105,7 @@ do ./src/analysis/modules/dec_baseline_globals.do
 
 * Add past applications to destination globals
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc_IM  log_dyadic_decisions_pc_IM log_av_app_pc 
+		log_dest_decisions_pc  log_dyadic_decisions_pc log_av_app_pc 
 
 * Define gobals for output paths for figures and tables
 global path_tab1 ./out/analysis/decisions/tables/`dec'_table1_R3.tex
@@ -150,7 +150,7 @@ do ./src/analysis/modules/dec_baseline_globals.do
 
 * Add cabinet right dummy to destination globals
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc_IM  log_dyadic_decisions_pc_IM cabinet_right
+		log_dest_decisions_pc  log_dyadic_decisions_pc cabinet_right
 
 * Define gobals for output paths for figures and tables
 global path_tab1 ./out/analysis/decisions/tables/`dec'_table1_R4.tex
@@ -286,7 +286,7 @@ do ./src/analysis/modules/dec_baseline_globals.do
 
 * Add a post 2007 dummy to destination globals 
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc_IM  log_dyadic_decisions_pc_IM ///
+		log_dest_decisions_pc  log_dyadic_decisions_pc ///
 		post_2007 
 
 * Define gobals for output paths for figures and tables
