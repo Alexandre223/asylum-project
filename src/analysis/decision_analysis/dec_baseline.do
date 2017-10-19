@@ -1,6 +1,6 @@
-**********************************************
-*** Acceptance rate baseline specification ***
-**********************************************
+****************************************
+*** Decisions baseline specification ***
+****************************************
 
 
 foreach dec in acceptance_rate refugeestatus_rate otherpositive_rate{
@@ -13,6 +13,11 @@ drop if mean_dyadic_decisions_pq < 2
 
 * Define global for dependent variable
 global dependent_variable `dec'
+
+* Define globals for graph and table titles
+global tab_title "Determinants of `dec'"
+global graph_title "Predicted pattern `dec'"
+global coef_tab_title "Predicted pattern `dec'"
 
 * Define globals for baseline analysis *
 do ./src/analysis/modules/dec_baseline_globals.do

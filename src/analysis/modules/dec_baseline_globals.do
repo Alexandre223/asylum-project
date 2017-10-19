@@ -8,17 +8,13 @@ global origin_variables ///
 		PTS_average CL_average PR_average ///
 		death_thousands_vdc_average log_rGDPpc_orig_average 
 	
-global destination_variables log_rGDPpc_dest unemployment log_dest_decisions_pc_IM  log_dyadic_decisions_pc_IM
+global 	destination_variables log_rGDPpc_dest unemployment ///
+		log_dest_decisions_pc  log_dyadic_decisions_pc
  
 global bilateral_variables log_imm_stock_2000 log_kmdist
 
 * Define globals for interaction terms
 do ./src/analysis/modules/globals_interactions.do
-
-* Define globals for graph and table titles
-global tab_title "Determinants of log(First time asylum applications per capita)"
-global graph_title " "Log First Time Applications per Capita:" "Predicted Pattern" "
-global coef_tab_title " Log First Time Applications per Capita: Predicted Pattern "
 
 * Define global for standard error clustering
 global se_clus O

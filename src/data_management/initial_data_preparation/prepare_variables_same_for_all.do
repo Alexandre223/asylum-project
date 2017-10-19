@@ -90,8 +90,13 @@ egen yearly_dyadic_decisions_mean = ///
 		rowmean(totaldecisions lag1_totaldecisions ///
 				lag2_totaldecisions lag3_totaldecisions)
 
+* calculate average per capita
+gen yearly_dyadic_decisions_pc = (yearly_dyadic_decisions_mean / pop_destination)*10000
+label variable yearly_dyadic_decisions_pc "Average dyadic quarterly decisions per 10000 inhabitants in the previous year"
+								
 **gen log per capita*
-gen log_dyadic_decisions_pc = log(yearly_dyadic_decisions_mean / pop_destination)
+gen yearly_dyadic_decisions_pc_plus1 = (yearly_dyadic_decisions_mean / pop_destination) + 1
+gen log_dyadic_decisions_pc = log(yearly_dyadic_decisions_pc_plus1)
 
 
 * TOTAL DECISIONS AT DESTINATION
@@ -110,8 +115,13 @@ egen yearly_dest_decisions_mean = ///
 		rowmean(sum_dest_decisions lag1_sum_dest_decisions  ///
 				lag2_sum_dest_decisions lag3_sum_dest_decisions)
 
-* gen log per capita
-gen log_dest_decisions_pc = log(yearly_dest_decisions_mean / pop_destination)
+* calculate average per capita
+gen yearly_dest_decisions_pc = (yearly_dest_decisions_mean / pop_destination)*10000
+label variable yearly_dest_decisions_pc "Average total quarterly decisions per 10000 inhabitants in the previous year"
+
+* generate logs 
+gen yearly_dest_decisions_pc_plus1 = (yearly_dest_decisions_mean / pop_destination) + 1
+gen log_dest_decisions_pc = log(yearly_dest_decisions_pc_plus1)
 
 
 
@@ -130,11 +140,18 @@ by destination origin: gen lag3_totaldecisions_IM = totaldecisions_IM[_n-3]
 egen yearly_dyadic_decisions_mean_IM = ///
 	rowmean(totaldecisions_IM lag1_totaldecisions_IM ///
 			lag2_totaldecisions_IM lag3_totaldecisions_IM)
+
 			
-* gen log per capita
-gen log_dyadic_decisions_pc_IM = log(yearly_dyadic_decisions_mean_IM / pop_destination)
+* calculate average per capita
+gen yearly_dyadic_decisions_pc_IM = (yearly_dyadic_decisions_mean_IM / pop_destination)*10000
+label variable yearly_dyadic_decisions_pc_IM "Average dyadic quarterly decisions per 10000 inhabitants in the previous year"
+								
+**gen log per capita*
+gen yearly_dyadic_dec_pc_plus1IM = (yearly_dyadic_decisions_mean_IM / pop_destination) + 1
+gen log_dyadic_decisions_pc_IM = log(yearly_dyadic_dec_pc_plus1IM)
+			
 
-
+			
 * TOTAL DECISIONS AT DESTINATION
 
 **generate total quarterly decisions in destination + lags** 
@@ -151,9 +168,13 @@ egen yearly_dest_decisions_mean_IM = ///
 		rowmean(sum_dest_decisions_IM lag1_sum_dest_decisions_IM ///
 				lag2_sum_dest_decisions_IM lag3_sum_dest_decisions_IM)
 				
-**gen log per capita*
-gen log_dest_decisions_pc_IM = log(yearly_dest_decisions_mean_IM / pop_destination)
+* calculate average per capita
+gen yearly_dest_decisions_pc_IM = (yearly_dest_decisions_mean_IM / pop_destination)*10000
+label variable yearly_dest_decisions_pc_IM "Average total quarterly decisions per 10000 inhabitants in the previous year"
 
+* generate logs 
+gen yearly_dest_dec_pc_plus1IM = (yearly_dest_decisions_mean_IM / pop_destination) + 1
+gen log_dest_decisions_pc_IM = log(yearly_dest_dec_pc_plus1IM)
 
 
 * 5, generate log variables

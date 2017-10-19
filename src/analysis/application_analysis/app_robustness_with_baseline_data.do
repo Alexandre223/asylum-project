@@ -274,6 +274,8 @@ do ./src/analysis/modules/app_baseline_globals.do
 global se_clus DO 
 
 * Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R9.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R9_paper.tex"
 global path_graph1 "./out/analysis/applications/figures/app_graph1_R9.pdf"
 global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R9_coef.tex"
 global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R9_coef_paper.tex"
