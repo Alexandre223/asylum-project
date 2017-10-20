@@ -4,7 +4,8 @@
 
 clear 
 set more off, permanently
-cd F:/research/asylum-project
+*cd F:/research/asylum-project
+cd G:/PROJ/asylum-project
 
 *****************************************************
 ** Prepare and combine data from different sources **
