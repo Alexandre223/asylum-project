@@ -1,6 +1,6 @@
-***************************************************
-** Baseline globals for acceptance rate analysis **
-***************************************************
+********************************************
+** Baseline globals for decision analysis **
+********************************************
 
 * Define globals that are similar in both models *
 
@@ -9,7 +9,7 @@ global origin_variables ///
 		death_thousands_vdc_average log_rGDPpc_orig_average 
 	
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc  log_dyadic_decisions_pc
+		log_dest_decisions_pc  log_dyadic_decisions_pc cabinet_right
  
 global bilateral_variables log_imm_stock_2000 log_kmdist
 

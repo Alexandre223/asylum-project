@@ -105,7 +105,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * add cabinet right dummy to destination globals
-global destination_variables log_rGDPpc_dest unemployment cabinet_right 
+global destination_variables log_rGDPpc_dest unemployment cabinet_right
 
 * Define gobals for output paths for figures and tables
 global path_tab1 "./out/analysis/applications/tables/app_table1_R4.tex"
@@ -123,10 +123,10 @@ global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R4_co
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 
 
 

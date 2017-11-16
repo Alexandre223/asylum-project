@@ -45,10 +45,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R9_coef
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -92,10 +92,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R10_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -145,10 +145,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R11_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -192,10 +192,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R12_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -246,7 +246,7 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R13_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2_Q5.do
@@ -295,7 +295,7 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R14_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
 do ./src/analysis/modules/graph_2_Q4.do
@@ -350,10 +350,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R15_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -402,10 +402,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R16_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -454,10 +454,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R17_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -501,10 +501,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R18_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -549,10 +549,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R19_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -596,9 +596,9 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R20_coe
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *

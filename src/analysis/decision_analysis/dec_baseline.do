@@ -38,9 +38,9 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_baselin
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *

@@ -268,7 +268,7 @@ label variable realGDPpc "Yearly real GDP per capita at origin"
 label variable log_rGDPpc_dest "Log destination country real GDP per capita"
 label variable rGDPpc "Quarterly real GDP per capita at destination"
 
-label variable log_av_app_pc "Log average past asylum applications at destination"
+label variable log_av_app_pc "Log average past asylum applications at destination per capita"
 
 label variable PR "Political Rights (FHI)"
 label variable PR_average "Political Rights (FHI)"

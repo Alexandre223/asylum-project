@@ -40,9 +40,9 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R1_coef
 
 
 * Run do files to create tables and figures
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -79,9 +79,9 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R2_coef
 
 
 * Run do files to create tables and figures
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -123,17 +123,17 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R3_coef
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
 
-**************************************
-** R4:  Include cabinet right dummy **
-**************************************
+*********************************************
+** R4:  Do not include cabinet right dummy **
+*********************************************
 
 foreach dec in acceptance_rate refugeestatus_rate otherpositive_rate{
 
@@ -150,7 +150,7 @@ do ./src/analysis/modules/dec_baseline_globals.do
 
 * Add cabinet right dummy to destination globals
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc  log_dyadic_decisions_pc cabinet_right
+		log_dest_decisions_pc  log_dyadic_decisions_pc
 
 * Define gobals for output paths for figures and tables
 global path_tab1 ./out/analysis/decisions/tables/`dec'_table1_R4.tex
@@ -212,10 +212,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R5_coef
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -258,10 +258,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R6_coef
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -305,10 +305,10 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R7_coef
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1_no_OT_specification.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
 do ./src/analysis/modules/table_2.do
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
@@ -348,9 +348,9 @@ global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R8_coef
 
 * Run do files to create tables and figures
 do ./src/analysis/modules/table_1_just_DO_specification.do
-do ./src/analysis/modules/graph_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
 
-do ./src/analysis/modules/graph_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
 }
 *
 
