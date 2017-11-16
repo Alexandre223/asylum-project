@@ -2,6 +2,9 @@
 *** Applications baseline specification ***
 *******************************************
 
+
+cd "G:\PROJ\asylum-project"
+
 * Specify data set to be used *
 use ./out/data/final_application/baseline_data.dta, clear
 
