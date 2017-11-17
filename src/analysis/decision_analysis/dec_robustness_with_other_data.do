@@ -332,7 +332,7 @@ global coef_tab_title "Predicted pattern `dec'"
 do ./src/analysis/modules/dec_baseline_globals.do
 
 global 	destination_variables log_rGDPpc_dest unemployment ///
-		log_dest_decisions_pc_NI  log_dyadic_decisions_pc_NI
+		log_dest_decisions_pc_NI  log_dyadic_decisions_pc_NI cabinet_right
 
 * Define gobals for output paths for figures and tables
 global path_tab1 ./out/analysis/decisions/tables/`dec'_table1_R15.tex
