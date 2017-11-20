@@ -52,6 +52,7 @@ label variable right_post "Cabinet position right * After the election"
 
 
 *, 3 create interaction terms with all before, after and election dummies
+sort destination origin year quarter
 
 * Left
 local t = 1
