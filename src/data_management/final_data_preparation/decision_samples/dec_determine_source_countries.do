@@ -117,7 +117,7 @@ use ./out/data/temp/decision-data-02-16-q.dta, clear
 
 * Determine most important source countries
 	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
-	save  ./out/data/temp/source_countries_very_big.dta, replace	
+	save  ./out/data/temp/source_countries_dec_very_big.dta, replace	
 
 
 **************************************************************
