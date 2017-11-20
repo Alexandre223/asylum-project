@@ -314,6 +314,44 @@ replace origin = "Gambia" if origin == "Gambia, The"
 
 replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
 
+
+* Calculate different recognition rates
+
+* Note: many cases where rejected + total positive is not equal to totaldecisions
+*       and some cases where totaldecisions = 5 and rejected = 0 and totalpositive = 0,
+*		probably due to rounding to the neares five
+ 
+* Calculate total decisions as sum of rejected and total positive and 
+* then calculate different recognition rates
+rename totaldecisions totaldecisions_NI
+
+gen totaldecisions = rejected + totalpositive
+
+gen acceptance_rate = totalpositive / totaldecisions
+replace acceptance_rate = 1 if acceptance_rate > 1 & acceptance_rate != .
+
+gen rejection_rate = rejected / totaldecisions
+replace rejection_rate = 1 if rejection_rate > 1 & rejection_rate != .
+
+gen refugeestatus_rate = refugeestatus / totaldecisions
+replace refugeestatus_rate = 1 if refugeestatus_rate > 1 & refugeestatus_rate != .
+
+gen otherpositive_rate = (totalpositive - refugeestatus) / totaldecisions
+replace otherpositive_rate = 1 if otherpositive_rate > 1 & otherpositive_rate != .
+
+
+* Also calculate non imputed versions of the recognition rates
+
+gen acceptance_rate_NI = totalpositive / totaldecisions_NI
+
+gen rejection_rate_NI = rejected / totaldecisions_NI
+
+gen refugeestatus_rate_NI = refugeestatus / totaldecisions_NI
+
+gen otherpositive_rate_NI = (totalpositive - refugeestatus) / totaldecisions_NI
+
+
+
 save ./out/data/temp/decision-data-02-16-q.dta, replace
 
 

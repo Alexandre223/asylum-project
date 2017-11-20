@@ -93,6 +93,8 @@ do ./src/data_management/final_data_preparation/application_samples/app_baseline
 *********************************************************
 ** Prepare different samples for the decision analysis **
 *********************************************************
+* Determine most important source countries for different samples 
+do ./src/data_management/final_data_preparation/decision_samples/dec_determine_source_countries.do
 
 * Prepare data for the baseline sample *
 do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample.do

@@ -33,12 +33,10 @@ tab destination total_dec
 drop if total_dec < 10000
 tab destination
 	
-* Use 47 most important source countries for these countries 
-*(together more than 90% of total decisions during the period)
-drop if origin=="Gambia" | origin=="Uganda" | origin=="Burundi" | ///
-		origin=="Uzbekistan" | origin=="Slovakia" | ///
-		origin=="Former Serbia Montenegro" | origin=="Rwanda" | ///
-		origin=="Lybia" |  origin=="Togo" 
+* Match with top 90% origin countries
+merge m:1 origin using ./out/data/temp/source_countries_dec_baseline.dta
+keep if _merge == 3
+drop _merge  
 
 		
 * 2, Calculate mean dyadic first-time applications per quarter

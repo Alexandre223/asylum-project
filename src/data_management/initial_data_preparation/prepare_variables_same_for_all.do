@@ -9,44 +9,7 @@ set more off, permanently
 use ./out/data/temp/combined_data.dta, clear
 
 
-* 1, Calculate different recognition rates
-
-* Note: many cases where rejected + total positive is not equal to totaldecisions
-*       and some cases where totaldecisions = 5 and rejected = 0 and totalpositive = 0,
-*		probably due to rounding to the neares five
- 
-* Calculate total decisions as sum of rejected and total positive and 
-* then calculate different recognition rates
-rename totaldecisions totaldecisions_NI
-
-gen totaldecisions = rejected + totalpositive
-
-gen acceptance_rate = totalpositive / totaldecisions
-replace acceptance_rate = 1 if acceptance_rate > 1 & acceptance_rate != .
-
-gen rejection_rate = rejected / totaldecisions
-replace rejection_rate = 1 if rejection_rate > 1 & rejection_rate != .
-
-gen refugeestatus_rate = refugeestatus / totaldecisions
-replace refugeestatus_rate = 1 if refugeestatus_rate > 1 & refugeestatus_rate != .
-
-gen otherpositive_rate = (totalpositive - refugeestatus) / totaldecisions
-replace otherpositive_rate = 1 if otherpositive_rate > 1 & otherpositive_rate != .
-
-
-* Also calculate non imputed versions of the recognition rates
-
-gen acceptance_rate_NI = totalpositive / totaldecisions_NI
-
-gen rejection_rate_NI = rejected / totaldecisions_NI
-
-gen refugeestatus_rate_NI = refugeestatus / totaldecisions_NI
-
-gen otherpositive_rate_NI = (totalpositive - refugeestatus) / totaldecisions_NI
-
-
-
-* 2, Calculate log yearly total and dyadic decisions per capita in destination 
+* 1, Calculate log yearly total and dyadic decisions per capita in destination 
 * 		use mean of current quarter and past 3 quarters
 
 * DAYADIC DECISIONS
@@ -97,7 +60,7 @@ gen log_dest_decisions_pc = log(yearly_dest_decisions_pc_plus1)
 
 
 
-* 3, Calculate log yearly total and dyadic decisions per capita in destination
+* 2, Calculate log yearly total and dyadic decisions per capita in destination
 *                     with non-imputed total decisions  
 
 * DAYADIC DECISIONS
@@ -149,7 +112,7 @@ gen yearly_dest_dec_pc_plus1NI = (yearly_dest_decisions_mean_NI / pop_destinatio
 gen log_dest_decisions_pc_NI = log(yearly_dest_dec_pc_plus1NI)
 
 
-* 4, generate log variables
+* 3, generate log variables
 
 gen firsttimeapp_plus1 = firsttimeapp + 1
 gen log_firsttimeapp_pc = log(firsttimeapp_plus1 / pop_destination)
@@ -171,7 +134,7 @@ gen log_av_app_pc=log(av_app_pc)
 gen log_rGDPpc_dest = log(rGDPpc)
 
 
-* 5, generate rescaled variables and post 2007 dummy
+* 4, generate rescaled variables and post 2007 dummy
 
 gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 10000
 gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 10000
@@ -187,7 +150,7 @@ gen post_2007 = 0
 replace post_2007 = 1 if year > 2007
 
 
-* 6, lable variables
+* 5, lable variables
 
 label variable log_dest_decisions_pc "Log average past total asylum decisions per capita"
 label variable log_dyadic_decisions_pc "Log average past dyadic asylum decisions per capita"
@@ -266,7 +229,7 @@ label variable post`t' " `t' quarters after the election"
 *
 
 
-* 7, drop origin countries that are not in the top 90% of any sample used at the moment
+* 6, drop origin countries that are not in the top 90% of any sample used at the moment
 
 drop if origin=="Bulgaria" | origin=="Liberia" | ///
 		origin=="Senegal" | origin=="Tunisia"
