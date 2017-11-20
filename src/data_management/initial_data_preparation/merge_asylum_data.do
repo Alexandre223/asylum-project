@@ -1,18 +1,24 @@
 **************************************
 **************************************
-*** MERGE ASYLUM AND DECISION DATA ***
+*** PREPARE AND MERGE ASYLUM AND DECISION DATA ***
 **************************************
 **************************************
 
 clear
 set more off, permanently
 
+***********************************************
+** Convert asylum data from csv to dta files **
+***********************************************
 
-* Note: special carracters are not coded correctly 
-*		when converting data through R -> translate
-unicode analyze *
-unicode encoding set ASCII
-unicode translate *, invalid
+* First time asylum applications monthly 2002 - 2007
+import delimited .\src\original_data\asylum_data\first-time-applications-02-07-m.csv, varnames(1) clear 
+
+do ./convert_asylum_data_monthly.do
+
+rename value firsttimeapp
+
+save ./out/data/temp/first-time-applications-02-07-m.dta
 
 ****************************************************************
 ** Merge monthly asylum data and collapse it to quarterly data *
@@ -49,8 +55,50 @@ append using ./out/data/temp/first-time-applications-02-07-m.dta
    * b, collapse to quarterly data
 	collapse (mean) firsttimeapp applications, by (destination origin year quarter)
 
+* 3, Impute missing data on first-time applications after 2007 
+*	 		from application data from these years 
+
+* Calculate share of first-time applications in total applications
+* use only values until 2014 because during the refugee crisis values might be different
+gen share_ftapp = firsttimeapp/ applications
+replace share_ftapp = . if year > 2015
+
+* Note 104 cases where first- time applications > applications 
+* Must be mistakes in the data because applications should include first-time applications
+* replace share with 1 if it is larger than 1
+replace share_ftapp = 1 if share_ftapp > 1 & share_ftapp != .
+
+sort destination origin year quarter
+by destination origin: egen share_average = mean(share_ftapp)
+
+* calcuate first-time applications from applications 
+* when firsttime applications are not available
+gen firsttimeapp_NI = firsttimeapp
+replace firsttimeapp =(applications * share_average) if firsttimeapp == .
+
+* replace first-time applications with 0 if applications are zero**
+replace firsttimeapp = 0 if firsttimeapp == . & applications == 0
+
+* Use applications as proxy for first time applications if no share is available
+* because applications are 0 in all years where first time applications are available
+
+replace firsttimeapp = applications if firsttimeapp == . & applications != .
+
+replace firsttimeapp = round(firsttimeapp)		
+
+* rename certain countries to match with list of source and destination countries later on   
+replace origin = "Former Serbia Montenegro" if origin == "Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
+replace origin = "Kosovo" if origin == "Kosovo (under United Nations Security Council Resolution 1244/99)"
+replace origin = "Macedonia" if origin == "Former Yugoslav Republic of Macedonia, the"
+replace origin = "China" if origin == "China (including Hong Kong)"
+replace origin = "Gambia" if origin == "Gambia, The"
+replace origin = "Côte d'Ivoire" if origin == "C%XF4te d'Ivoire"
+
+replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
+
 
 save ./out/data/temp/application-data-02-16-q.dta, replace
+
 
 *******************************
 *** Merge all decision data ***
@@ -125,6 +173,16 @@ merge 1:1 origin destination quarter year using ./out/data/temp/subsidiary-prote
 
 append using ./out/data/temp/decision-data-02-07-q.dta
 
+* rename certain countries to match with list of source and destination countries later on   
+replace origin = "Former Serbia Montenegro" if origin == "Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
+replace origin = "Kosovo" if origin == "Kosovo (under United Nations Security Council Resolution 1244/99)"
+replace origin = "Macedonia" if origin == "Former Yugoslav Republic of Macedonia, the"
+replace origin = "China" if origin == "China (including Hong Kong)"
+replace origin = "Gambia" if origin == "Gambia, The"
+replace origin = "Côte d'Ivoire" if origin == "C%XF4te d'Ivoire"
+
+replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
+
 save ./out/data/temp/decision-data-02-16-q.dta, replace
 
 *********************************************
@@ -138,15 +196,7 @@ use ./out/data/temp/application-data-02-16-q.dta, clear
 merge 1:1 origin destination year quarter using ./out/data/temp/decision-data-02-16-q.dta, nogen
 
 
-* rename certain countries to match with list of source and destination countries later on   
-replace origin = "Former Serbia Montenegro" if origin == "Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
-replace origin = "Kosovo" if origin == "Kosovo (under United Nations Security Council Resolution 1244/99)"
-replace origin = "Macedonia" if origin == "Former Yugoslav Republic of Macedonia, the"
-replace origin = "China" if origin == "China (including Hong Kong)"
-replace origin = "Gambia" if origin == "Gambia, The"
-replace origin = "Côte d'Ivoire" if origin == "C%XF4te d'Ivoire"
 
-replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
 
 
 * match with relevant origin and destination countries

@@ -15,7 +15,7 @@ cd F:/research/asylum-project
 do ./src/data_management/initial_data_preparation/help_files.do
 
 * Merge all asylum application and decision data to one quarterly file *
-do ./src/data_management/initial_data_preparation/merge_asylum_data.do
+do ./src/data_management/initial_data_preparation/asylum_data.do
 
 * Combine all bilateral control variables *
 do ./src/data_management/initial_data_preparation/bilateral_data.do
@@ -49,6 +49,8 @@ do ./src/data_management/initial_data_preparation/prepare_variables_same_for_all
 ************************************************************
 ** Prepare different samples for the application analysis **
 ************************************************************
+* Determine most important source countries for different samples 
+do ./src/data_management/final_data_preparation/application_samples/app_determine_source_countries.do
 
 * Prepare data for the baseline sample *
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample.do

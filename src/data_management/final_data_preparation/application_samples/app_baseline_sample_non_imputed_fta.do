@@ -37,10 +37,10 @@ drop if destination == "Cyprus"
 
 tab destination
 	
-* Use 51 most important source countries for these countries 
-*(together more than 90% of first time applications during the period)
-drop if origin == "Gambia" | origin == "Uganda" | origin == "Burundi" | ///
-		origin == "Uzbekistan" | origin == "Slovakia" 
+* Match with top 90% origin countries
+merge m:1 origin using ./out/data/temp/source_countries_app_baseline.dta
+keep if _merge == 3
+drop _merge
 
 		
 * 2, Calculate mean dyadic first-time applications per quarter

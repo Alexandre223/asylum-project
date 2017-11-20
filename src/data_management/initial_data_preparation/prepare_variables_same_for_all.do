@@ -9,41 +9,7 @@ set more off, permanently
 use ./out/data/temp/combined_data.dta, clear
 
 
-	
-* 1, Impute missing data on first-time applications after 2007 
-*	 		from application data from these years 
-
-* Calculate share of first-time applications in total applications
-* use only values until 2014 because during the refugee crisis values might be different
-gen share_ftapp = firsttimeapp/ applications
-replace share_ftapp = . if year > 2015
-
-* Note 104 cases where first- time applications > applications 
-* Must be mistakes in the data because applications should include first-time applications
-* replace share with 1 if it is larger than 1
-replace share_ftapp = 1 if share_ftapp > 1 & share_ftapp != .
-
-sort destination origin year quarter
-by destination origin: egen share_average = mean(share_ftapp)
-
-* calcuate first-time applications from applications 
-* when firsttime applications are not available
-gen firsttimeapp_NI = firsttimeapp
-replace firsttimeapp =(applications * share_average) if firsttimeapp == .
-
-* replace first-time applications with 0 if applications are zero**
-replace firsttimeapp = 0 if firsttimeapp == . & applications == 0
-
-* Use applications as proxy for first time applications if no share is available
-* because applications are 0 in all years where first time applications are available
-
-replace firsttimeapp = applications if firsttimeapp == . & applications != .
-
-replace firsttimeapp = round(firsttimeapp)		
-
-
-
-* 2, Calculate different recognition rates
+* 1, Calculate different recognition rates
 
 * Note: many cases where rejected + total positive is not equal to totaldecisions
 *       and some cases where totaldecisions = 5 and rejected = 0 and totalpositive = 0,
@@ -80,7 +46,7 @@ gen otherpositive_rate_NI = (totalpositive - refugeestatus) / totaldecisions_NI
 
 
 
-* 3, Calculate log yearly total and dyadic decisions per capita in destination 
+* 2, Calculate log yearly total and dyadic decisions per capita in destination 
 * 		use mean of current quarter and past 3 quarters
 
 * DAYADIC DECISIONS
@@ -131,7 +97,7 @@ gen log_dest_decisions_pc = log(yearly_dest_decisions_pc_plus1)
 
 
 
-* 4, Calculate log yearly total and dyadic decisions per capita in destination
+* 3, Calculate log yearly total and dyadic decisions per capita in destination
 *                     with non-imputed total decisions  
 
 * DAYADIC DECISIONS
@@ -183,7 +149,7 @@ gen yearly_dest_dec_pc_plus1NI = (yearly_dest_decisions_mean_NI / pop_destinatio
 gen log_dest_decisions_pc_NI = log(yearly_dest_dec_pc_plus1NI)
 
 
-* 5, generate log variables
+* 4, generate log variables
 
 gen firsttimeapp_plus1 = firsttimeapp + 1
 gen log_firsttimeapp_pc = log(firsttimeapp_plus1 / pop_destination)
@@ -205,7 +171,7 @@ gen log_av_app_pc=log(av_app_pc)
 gen log_rGDPpc_dest = log(rGDPpc)
 
 
-* 6, generate rescaled variables and post 2007 dummy
+* 5, generate rescaled variables and post 2007 dummy
 
 gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 10000
 gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 10000
@@ -221,7 +187,7 @@ gen post_2007 = 0
 replace post_2007 = 1 if year > 2007
 
 
-* 7, lable variables
+* 6, lable variables
 
 label variable log_dest_decisions_pc "Log average past total asylum decisions per capita"
 label variable log_dyadic_decisions_pc "Log average past dyadic asylum decisions per capita"
@@ -300,7 +266,7 @@ label variable post`t' " `t' quarters after the election"
 *
 
 
-* 8, drop origin countries that are not in the top 90% of any sample used at the moment
+* 7, drop origin countries that are not in the top 90% of any sample used at the moment
 
 drop if origin=="Bulgaria" | origin=="Liberia" | ///
 		origin=="Senegal" | origin=="Tunisia"
