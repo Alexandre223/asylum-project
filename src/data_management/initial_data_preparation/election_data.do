@@ -146,7 +146,7 @@ collapse (first) election_quarter past_cabinet_left_right cabinet_left_right, //
 
 rename election_quarter election
 
-label variable cabinet_left_right "average left - right position of the cabinet"
+label variable cabinet_left_right "Left-right position of the cabinet"
 
 
 * 4, create before and after dummies and correct for early elections

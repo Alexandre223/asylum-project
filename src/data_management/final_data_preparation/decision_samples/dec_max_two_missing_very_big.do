@@ -52,6 +52,9 @@ do ./src/data_management/final_data_preparation/modules/dummies_and_interactions
 * 5, Generate indicator variables
 do ./src/data_management/final_data_preparation/modules/indicator_variables.do
 
+* 6, Calculate number of elections and cabinet positions
+do ./src/data_management/final_data_preparation/modules/number_elections_and_cabinet_changes.do
+
 
 save ./out/data/final_decision/max_two_missing_very_big.dta, replace
 

@@ -26,8 +26,8 @@ egen yearly_dyadic_decisions_mean = ///
 				lag2_totaldecisions lag3_totaldecisions)
 
 * calculate average per capita
-gen yearly_dyadic_decisions_pc = (yearly_dyadic_decisions_mean / pop_destination)*10000
-label variable yearly_dyadic_decisions_pc "Average dyadic quarterly decisions per 10000 inhabitants in the previous year"
+gen yearly_dyadic_decisions_pc = (yearly_dyadic_decisions_mean / pop_destination)*100000
+label variable yearly_dyadic_decisions_pc "Average dyadic quarterly decisions per 100,000 inhabitants in the previous year"
 								
 **gen log per capita*
 gen yearly_dyadic_decisions_pc_plus1 = (yearly_dyadic_decisions_mean / pop_destination) + 1
@@ -51,8 +51,8 @@ egen yearly_dest_decisions_mean = ///
 				lag2_sum_dest_decisions lag3_sum_dest_decisions)
 
 * calculate average per capita
-gen yearly_dest_decisions_pc = (yearly_dest_decisions_mean / pop_destination)*10000
-label variable yearly_dest_decisions_pc "Average total quarterly decisions per 10000 inhabitants in the previous year"
+gen yearly_dest_decisions_pc = (yearly_dest_decisions_mean / pop_destination)*100000
+label variable yearly_dest_decisions_pc "Average total quarterly decisions per 100,000 inhabitants in the previous year"
 
 * generate logs 
 gen yearly_dest_decisions_pc_plus1 = (yearly_dest_decisions_mean / pop_destination) + 1
@@ -78,8 +78,8 @@ egen yearly_dyadic_decisions_mean_NI = ///
 
 			
 * calculate average per capita
-gen yearly_dyadic_decisions_pc_NI = (yearly_dyadic_decisions_mean_NI / pop_destination)*10000
-label variable yearly_dyadic_decisions_pc_NI "Average dyadic quarterly decisions per 10000 inhabitants in the previous year"
+gen yearly_dyadic_decisions_pc_NI = (yearly_dyadic_decisions_mean_NI / pop_destination)*100000
+label variable yearly_dyadic_decisions_pc_NI "Average dyadic quarterly decisions per 100,000 inhabitants in the previous year"
 								
 **gen log per capita*
 gen yearly_dyadic_dec_pc_plus1NI = (yearly_dyadic_decisions_mean_NI / pop_destination) + 1
@@ -104,8 +104,8 @@ egen yearly_dest_decisions_mean_NI = ///
 				lag2_sum_dest_decisions_NI lag3_sum_dest_decisions_NI)
 				
 * calculate average per capita
-gen yearly_dest_decisions_pc_NI = (yearly_dest_decisions_mean_NI / pop_destination)*10000
-label variable yearly_dest_decisions_pc_NI "Average total quarterly decisions per 10000 inhabitants in the previous year"
+gen yearly_dest_decisions_pc_NI = (yearly_dest_decisions_mean_NI / pop_destination)*100000
+label variable yearly_dest_decisions_pc_NI "Average total quarterly decisions per 100,000 inhabitants in the previous year"
 
 * generate logs 
 gen yearly_dest_dec_pc_plus1NI = (yearly_dest_decisions_mean_NI / pop_destination) + 1
@@ -136,9 +136,9 @@ gen log_rGDPpc_dest = log(rGDPpc)
 
 * 4, generate rescaled variables and post 2007 dummy
 
-gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 10000
-gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 10000
-gen applications_pc = (applications / pop_destination) * 10000
+gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 100000
+gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 100000
+gen applications_pc = (applications / pop_destination) * 100000
 
 gen death_thousands_ucdp = battle_death_ucdp / 1000
 gen death_thousands_vdc = battle_death_vdc / 1000
@@ -167,7 +167,7 @@ label variable otherpositive_rate_NI "Temporary protection"
 label variable refugeestatus_rate_NI "Refugee status rate"
 
 label variable firsttimeapp "Quarterly fist-time asylum applications"
-label variable firsttimeapp_pc "Quarterly first-time asylum applications per 10000 inhabitants"
+label variable firsttimeapp_pc "Quarterly first-time asylum applications per 100,000 inhabitants"
 
 label variable pop_destination "Destination country population"
 
