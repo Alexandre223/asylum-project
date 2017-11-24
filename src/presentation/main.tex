@@ -57,8 +57,8 @@
 % Define Titlepage
 \title{The political economy of European asylum policies}
 \subtitle{\small\textcolor{black}{Marcus Drometer, Martina Burmann and Romuald M\'eango\\[1ex]
-\scriptsize{\hspace{10ex}Ifo Institute \hspace{29ex} MEA}}}\date{26 July 2017\\[3ex]
-{Silvaplana Workshop on Political Economy, Pontresina\\[3ex]
+\scriptsize{\hspace{10ex}Ifo Institute \hspace{29ex} MEA}}}\date{12 December 2017\\[3ex]
+{ifo Christmas Conference\\[3ex]
 %\newline Location
 }}
 % End Preamble
@@ -112,38 +112,27 @@ Nordhaus (1975), Hibbs (1977), Alesina, Roubini and Cohen (1997), etc.\\[3ex]
     \begin{frame}{Our findings}
 European asylum policies are affected by the electoral cycle and the identity of incumbent parties\\[2ex]
 \begin{itemize}
-\item[i)]{before an election, the inflow of refugees is very similar across all types of cabinets (left, center or right-wing)}\\[1ex]
-\item[ii)]{after an election, the inflow
-of refugees diverges substantially, with significantly less asylum applicants under a right-wing cabinet}\\[1ex]
-\item[iii)]{in contrast with the asylum-seeker admission policies, the asylum
-decision process does not seem to be affected by an election}
+\item[i)]{before an election, the inflow of refugees is very similar across left and right cabinets;}\\[1ex]
+\item[ii)]{in the quarters following an election, the inflow of refugees diverges substantially, with significantly less asylum applicants under a right-wing cabinet}\\[1ex]
 \end{itemize}
 	\end{frame}
 
 
 
-
-%	\begin{frame}{Institutional background}
-%\begin{itemize}
-%\item{Naturalization process is based on federal law and implemented by federal agencies (USCIS). \newline $\rightarrow$ Presidential elections}\\[2ex]
-%\item{Immigrants that have been a permanent resident for at least 5 years are entitled to apply and need to pass a number of tests. The application process takes roughly 5 to 8 months. \newline $\rightarrow$ Discretion to accelerate the decision process / to adjust the approval rate}\\[2ex]
-%\item{New citizens are already permanent residents. \newline $\rightarrow$ Limited labor market effects}
-%\end{itemize}
-%	\end{frame}
 %--------------------------------------------------------------------------------------------------%
 \section{Empirical specification}
     \begin{frame}{Estimation approach}
 Main equation
 \begin{equation}
-Y_{ijt} = \alpha_1 \mathbf{Q_{j.}} +\alpha_2  \mathbf{C_{jt}} +  \alpha_3  [\mathbf{Q_{j.}} *  \mathbf{C_{jt}}] + \alpha_4 \mathbf{O_{it}} + \alpha_5 \mathbf{D_{jt}} + \tau_t + \sigma_{ij} +  \varepsilon_{ijt},
+Y_{ijq} =\alpha_1 \mathbf{O_{iq}} + \alpha_2 \mathbf{D_{jq}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jq}}] + \tau_q + \sigma_{ij} +  \varepsilon_{ijq},
 \end{equation}
 \vspace{-2ex}
 \begin{itemize}
-\item $Y_{ijt}$ is a measure of migration policy (log of the number of first-time asylum applications per capita by citizens of origin country i in destination country j in year / quarter t)
+\item $Y_{ijq}$ is a measure of migration policy (log of the number of first-time asylum applications per capita by citizens of origin country i in destination country j in quarter q)
 \item $\mathbf{Q_j.} := Q_{j,bef}, Q_{j,aft}$ is set of dummies for before and after the election
-\item $\mathbf{C_{jt}}$ is a set of dummies for the ruling cabinet's position on a left-right scale (omitted category center)
-\item $\mathbf{O_{it}}$ are time variant origin specific variables (political terror scale, Freedom House Index, number of battle deaths and real GDP per capita) 
-\item $\mathbf{D_{jt}}$  are time variant destination variables (real GDP per capita, unemployment rate)
+\item $\mathbf{C_{jq}}$ is a set of dummies for the ruling cabinet's position on a left-right scale (omitted category center)
+\item $\mathbf{O_{iq}}$ are time variant origin specific variables (political terror scale, Freedom House Index, number of battle deaths and real GDP per capita) 
+\item $\mathbf{D_{jq}}$  are time variant destination variables (real GDP per capita, unemployment rate)
 \end{itemize}
     \end{frame}
 %--------------------------------------------------------------------------------------------------%

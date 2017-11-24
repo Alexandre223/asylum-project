@@ -197,10 +197,13 @@ To further capture the economic attractiveness of the destination countries we u
 
 \section{Econometric specification} \label{sec:econometric}
 In our main specification we estimate the following fixed-effect regression:
+
 \begin{equation}
-Y_{ijq} =\alpha_1 \mathbf{O_{iq}} + \alpha_2 \mathbf{D_{jq}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jq}}] + \tau_q + \sigma_{ij} +  \varepsilon_{ijt},
-\end{equation}where the dependent variable ($Y_{ijq}$) represents the log of the number of first-time asylum applications per capita from citizens of origin country i in destination country j in quarter q. To derive this equation, we closely follow the specification of \cite{hatton2016}, and add to the origin and destination specific explanatory variables $\mathbf{O_{iq}}$ and $\mathbf{D_{jq}}$, a set of interaction terms of the ruling cabinet's position indicator $\mathbf{C_{jq}}$
- and  a set of dummies for before and and after the election ($\mathbf{Q_j.} := Q_{j,bef},  Q_{j,aft}$) or for different quarters before and after an election in a quarter $t=0$, in destination country $j$ ($\mathbf{Q_j.} =\{Q_{jt}, t = -6, \ldots, +6\}$).
+Y_{ijq} =\alpha_1 \mathbf{O_{iq}} + \alpha_2 \mathbf{D_{jq}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jq}}] + \tau_q + \sigma_{ij} +  \varepsilon_{ijq},
+\end{equation}
+
+where the dependent variable ($Y_{ijq}$) represents the log of the number of first-time asylum applications per capita from citizens of origin country i in destination country j in quarter q. To derive this equation, we closely follow the specification of \cite{hatton2016}, and add to the origin and destination specific explanatory variables $\mathbf{O_{iq}}$ and $\mathbf{D_{jq}}$, a set of interaction terms of the ruling cabinet's position indicator $\mathbf{C_{jq}}$
+ and  a set of dummies for before and and after the election ($\mathbf{Q_j.} := Q_{j,bef},  Q_{j,aft}$) or for different quarters before and after an election in a quarter $t=0$, in destination country $j$ ($\mathbf{Q_j.} =\{Q_{jq}, q = -6, \ldots, +6\}$).
  
   Similar to \cite{hatton2016}, we include Political Terror Scale, Freedom House Index of Civic Liberties, Freedom House Index of  Political Rights, number of battle deaths and log real GDP per capita in the vector of time variant origin specific variables $\mathbf{O_{iq}}$. The vector of time variant destination variables $\mathbf{D_{jq}}$ comprises of the quarterly log real GDP per capita and the quarterly unemployment rate at destination. 
   
