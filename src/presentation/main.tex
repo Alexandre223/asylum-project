@@ -124,21 +124,21 @@ European asylum policies are affected by the electoral cycle and the identity of
     \begin{frame}{Estimation approach}
 Main equation
 \begin{equation}
-Y_{ijq} =\alpha_1 \mathbf{O_{iq}} + \alpha_2 \mathbf{D_{jq}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jq}}] + \tau_q + \sigma_{ij} +  \varepsilon_{ijq},
+\mathbf{Y_{ijt}} =\alpha_1 \mathbf{O_{it}} + \alpha_2 \mathbf{D_{jt}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jt}}] + \tau_t + \sigma_{ij} +  \varepsilon_{ijt},
 \end{equation}
 \vspace{-2ex}
 \begin{itemize}
-\item $Y_{ijq}$ is a measure of migration policy (log of the number of first-time asylum applications per capita by citizens of origin country i in destination country j in quarter q)
+\item $\mathbf{Y_{ijt}}$ is a measure of migration policy (log of the number of first-time asylum applications per capita by citizens of origin country i in destination country j at time t)
 \item $\mathbf{Q_j.} := Q_{j,bef}, Q_{j,aft}$ is set of dummies for before and after the election
-\item $\mathbf{C_{jq}}$ is a set of dummies for the ruling cabinet's position on a left-right scale (omitted category center)
-\item $\mathbf{O_{iq}}$ are time variant origin specific variables (political terror scale, Freedom House Index, number of battle deaths and real GDP per capita) 
-\item $\mathbf{D_{jq}}$  are time variant destination variables (real GDP per capita, unemployment rate)
+\item $\mathbf{C_{jt}}$ is a set of dummies for the ruling cabinet's position on a left-right scale (omitted category center)
+\item $\mathbf{O_{it}}$ are time variant origin specific variables (Political Terror Scale, Freedom House Index, number of battle deaths and real GDP per capita) 
+\item $\mathbf{D_{jt}}$  are time variant destination variables (real GDP per capita, unemployment rate)
 \end{itemize}
     \end{frame}
 %--------------------------------------------------------------------------------------------------%
     \begin{frame}{Identification}
 Identifying assumption:\\[1ex]
-Timing of elections is exogenous (all early elections excluded)\\\vspace{.2cm}
+Timing of elections is exogenous to the \\\vspace{.2cm}
 $\rightarrow$ We measure the causal effect of the electoral cycle on asylum policies 
 \\\vspace{.4cm}
 Our interpretation:\\[1ex]

@@ -199,15 +199,15 @@ To further capture the economic attractiveness of the destination countries we u
 In our main specification we estimate the following fixed-effect regression:
 
 \begin{equation}
-Y_{ijq} =\alpha_1 \mathbf{O_{iq}} + \alpha_2 \mathbf{D_{jq}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jq}}] + \tau_q + \sigma_{ij} +  \varepsilon_{ijq},
+Y_{ijt} =\alpha_1 \mathbf{O_{it}} + \alpha_2 \mathbf{D_{jt}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jt}}] + \tau_t + \sigma_{ij} +  \varepsilon_{ijt},
 \end{equation}
 
-where the dependent variable ($Y_{ijq}$) represents the log of the number of first-time asylum applications per capita from citizens of origin country i in destination country j in quarter q. To derive this equation, we closely follow the specification of \cite{hatton2016}, and add to the origin and destination specific explanatory variables $\mathbf{O_{iq}}$ and $\mathbf{D_{jq}}$, a set of interaction terms of the ruling cabinet's position indicator $\mathbf{C_{jq}}$
- and  a set of dummies for before and and after the election ($\mathbf{Q_j.} := Q_{j,bef},  Q_{j,aft}$) or for different quarters before and after an election in a quarter $t=0$, in destination country $j$ ($\mathbf{Q_j.} =\{Q_{jq}, q = -6, \ldots, +6\}$).
+where the dependent variable ($Y_{ijt}$) represents the log of the number of first-time asylum applications per capita from citizens of origin country i in destination country j at time t. To derive this equation, we closely follow the specification of \cite{hatton2016}, and add to the origin and destination specific explanatory variables $\mathbf{O_{it}}$ and $\mathbf{D_{jt}}$, a set of interaction terms of the ruling cabinet's position indicator $\mathbf{C_{jt}}$
+ and  a set of dummies for before and and after the election ($\mathbf{Q_j.} := Q_{j,bef},  Q_{j,aft}$) or for different quarters before and after an election in a quarter $q=0$, in destination country $j$ ($\mathbf{Q_j.} =\{Q_{jq}, q = -6, \ldots, +6\}$).
  
-  Similar to \cite{hatton2016}, we include Political Terror Scale, Freedom House Index of Civic Liberties, Freedom House Index of  Political Rights, number of battle deaths and log real GDP per capita in the vector of time variant origin specific variables $\mathbf{O_{iq}}$. The vector of time variant destination variables $\mathbf{D_{jq}}$ comprises of the quarterly log real GDP per capita and the quarterly unemployment rate at destination. 
+  Similar to \cite{hatton2016}, we include Political Terror Scale, Freedom House Index of Civic Liberties, Freedom House Index of  Political Rights, number of battle deaths and log real GDP per capita in the vector of time variant origin specific variables $\mathbf{O_{it}}$. The vector of time variant destination variables $\mathbf{D_{jt}}$ comprises of the quarterly log real GDP per capita and the quarterly unemployment rate at destination. 
   
- Our main specification as described in equation (1), moreover, includes quarter-year dummies $\tau_q$ and destination-origin fixed effects $\sigma_{ij}$. In all regressions standard errors are clustered by origin country.
+ Our main specification as described in equation (1), moreover, includes quarter-year dummies $\tau_t$ and destination-origin fixed effects $\sigma_{ij}$. In all regressions standard errors are clustered by origin country.
  
  In the upcoming version of the paper, we further plan to look at three different asylum decision outcomes: (1) the overall acceptance rate defined as the ratio of all positive decisions to all decisions taken in that quarter, (2) the refugee status rate defined as the ratio of people who were granted full Geneva Convention refugee status to all people seeking refugee status and (3) the temporary protection rate defined as the ratio of other positive decisions to all decisions.  In order to control for the possible impact of the inflow of asylum seekers on the outcomes of asylum decisions, we additionally include  the log of the yearly total asylum decisions in the destination country as well as the log of  the yearly dyadic asylum decisions in the destination country in our regression equation (1). 
 

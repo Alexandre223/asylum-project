@@ -215,6 +215,17 @@ local t=1
 	 }
 	 *
 
+
+**note election had to happen before 10th June 2011 (Q2 2011) (4 years after previous election)**
+**code 6 quarters before Q2 2011 up to Q2 2010 as before the election**
+list K if destination=="Belgium" & quarter==2 & year==2011
+
+local t=5
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==194-`t'
+	 local t=`t'+1
+	 }
+	 * 
 	 
 **BULGARIA***	 
 	 
@@ -268,6 +279,18 @@ local t=2
 	 }
 	 * 
 
+**note election initially planned for (Q2 2014) (4 years after previous election)**
+**code 6 quarters before Q2 2014 up to Q3 2013 as before the election**
+list K if destination=="Czech Republic" & quarter==2 & year==2014
+
+local t=4
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==542-`t'
+	 local t=`t'+1
+	 }
+	 * 	 
+	 
+	 
 **DENMARK**
 
 **early election in Denmark on 8th February 2005 (Q1 2005) and announced on 18th January 2005 (Q1 2005)**
@@ -313,8 +336,15 @@ local t=1
 *no early elections in France**	
 	
 **GERMANY**
-*no early elections in Germany**
-
+**early election in Germany on 18th September 2005 (Q3 2005) and announced on 22nd May 2005 (Q2 2005)**
+**code only one quarter before the election as before election**
+list K if destination=="Germany" & quarter==3 & year==2005
+local t=2
+	while `t'<=6 {
+	by destination: replace bef`t'=0 if K==1067-`t'
+	 local t=`t'+1
+	 }
+	 * 
 
 ***GREECE***	 
 	 
