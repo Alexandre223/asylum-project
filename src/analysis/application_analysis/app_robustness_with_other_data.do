@@ -4,7 +4,7 @@
 ****************************************
 
 * ============================================================================ *
-* Use different cutoffs for droping country pairs with few observations
+* Use different cutoffs for dropping country pairs with few observations
 * ============================================================================ *
 *********************************************************************************
 ** R10: drop country pairs with less than 1 application per quarter on average **
@@ -455,6 +455,76 @@ global path_tab2_paper "./out/analysis/applications/tables/app_table2_R21_paper.
 global path_graph2 "./out/analysis/applications/figures/app_graph2_R21.pdf"
 global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R21_coef.tex"
 global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R21_coef_paper.tex"
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2.do
+
+
+******************************************************************************
+** R22: exclude Denmark and Netherlands because of too many early elections ** 				
+******************************************************************************
+
+* Specify data set to be used *
+use ./out/data/final_application/few_early_elections.dta, clear
+
+* Drop country pairs with less than 2 applications per quarter on average *
+drop if mean_dyadic_FTapp_per_quarter < 2
+
+* use same globals as in the baseline analysis
+do ./src/analysis/modules/app_baseline_globals.do
+
+* Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R22.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R22_paper.tex"
+global path_graph1 "./out/analysis/applications/figures/app_graph1_R22.pdf"
+global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R22_coef.tex"
+global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R22_coef_paper.tex"
+
+global path_tab2 "./out/analysis/applications/tables/app_table2_R22.tex"
+global path_tab2_paper "./out/analysis/applications/tables/app_table2_R22_paper.tex"
+global path_graph2 "./out/analysis/applications/figures/app_graph2_R22.pdf"
+global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R22_coef.tex"
+global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R22_coef_paper.tex"
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2.do
+
+
+******************************************************
+** R23: use only countries with no early elections  ** 				
+******************************************************
+
+* Specify data set to be used *
+use ./out/data/final_application/no_early_elections.dta, clear
+
+* Drop country pairs with less than 2 applications per quarter on average *
+drop if mean_dyadic_FTapp_per_quarter < 2
+
+* use same globals as in the baseline analysis
+do ./src/analysis/modules/app_baseline_globals.do
+
+* Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R23.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R23_paper.tex"
+global path_graph1 "./out/analysis/applications/figures/app_graph1_R23.pdf"
+global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R23_coef.tex"
+global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R23_coef_paper.tex"
+
+global path_tab2 "./out/analysis/applications/tables/app_table2_R23.tex"
+global path_tab2_paper "./out/analysis/applications/tables/app_table2_R23_paper.tex"
+global path_graph2 "./out/analysis/applications/figures/app_graph2_R23.pdf"
+global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R23_coef.tex"
+global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R23_coef_paper.tex"
 
 
 * Run do files to create tables and figures

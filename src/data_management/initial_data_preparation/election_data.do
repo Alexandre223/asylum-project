@@ -325,7 +325,18 @@ local t=1
 	 local t=`t'+1
 	 }
 	 * 	
-	
+
+**note election had to happen before 8th February 2009 (Q1 2009) (4 years after previous election)**
+**code 6 quarters before Q1 2009 up to Q4 2007 as before the election**
+list K if destination=="Denmark" & quarter==1 & year==2009
+
+local t=6
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==633-`t'
+	 local t=`t'+1
+	 }
+	 * 	 
+	 
 ***ESTONIA**
 *no early elections in Estonia**
 	
@@ -346,6 +357,17 @@ local t=2
 	 }
 	 * 
 
+**note election initially planned in September 2006(Q3 2006) (4 years after previous election)**
+**code 6 quarters before Q3 2006 up to Q2 2005 as before the election**
+list K if destination=="Germany" & quarter==3 & year==2006
+
+local t=6
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==1071-`t'
+	 local t=`t'+1
+	 }
+	 *	 
+	 
 ***GREECE***	 
 	 
 **early election in Greece on 4th October 2009 (Q4 2009) and announced on 2nd September 2009 (Q3 2009)**
@@ -550,6 +572,18 @@ local t=2
 	 }
 	 *
 
+**Election was initially planed for November 2010 (Q4 2010) (4 years after the previous election)**
+**Code before regular election up to the announcement of the early elections**
+list K if destination=="Netherlands" & quarter==4 & year==2010
+
+local t=4
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==2096-`t'
+	 local t=`t'+1
+	 }
+	 *		 
+	 
+	 
 **early election in Netherlands 12th September 2012 (Q3 2012) announced on 23rd April 2012 (Q2 2012)**
 **code only 1 quarter before the election as before election**
 list K if destination=="Netherlands" & quarter==3 & year==2012
