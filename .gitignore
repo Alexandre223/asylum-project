@@ -17,6 +17,7 @@
 *.lot
 *.mod
 *.nav
+*.lof
 *.o
 *.out
 *.pdfsync
@@ -37,6 +38,7 @@ waf3-*
 *synctex.gz
 .*
 .*pdfsvn
+paper.pdf
 __pycache__
 analysis_out
 out
