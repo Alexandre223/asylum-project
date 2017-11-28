@@ -85,6 +85,12 @@ do ./src/data_management/final_data_preparation/application_samples/app_baseline
 * and the application analysis (overlapping baseline sample)
 do ./src/data_management/final_data_preparation/application_samples/app_only_decision_countries.do
 
+* Prepare data for baseline sample minus Denmark and Netherlands because of early elections
+do ./src/data_management/final_data_preparation/application_samples/app_few_early_elections.do
+
+* Prepare data for countries with no early elections (France, Ireland, Norway, Sweden, UK)
+do ./src/data_management/final_data_preparation/application_samples/app_no_early_elections.do
+
 * Prepare data for the baseline sample with non imputed first-time applications
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample_non_imputed_fta.do
 

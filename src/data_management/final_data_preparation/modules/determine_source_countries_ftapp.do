@@ -15,7 +15,7 @@ gsort -share
 
 gen sum_share=sum(share)
 
-drop if sum_share>=0.905
+drop if sum_share>=0.9032
 
 list origin share sum_share 
 
