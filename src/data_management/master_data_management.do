@@ -124,10 +124,6 @@ do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sa
 * Prepare data for a sample of all destination countries with max 2 years of missing data
 do ./src/data_management/final_data_preparation/decision_samples/dec_all_max_two_missing.do
 
-* Prepare data for a sample of very big destination countries with max 2 years of missing data
-* > 20000 total decisions
-do ./src/data_management/final_data_preparation/decision_samples/dec_max_two_missing_very_big.do
-
 * Prepare data for a sample of all destination countries with 
 * data on decisions in all years
 do ./src/data_management/final_data_preparation/decision_samples/dec_no_missings.do
@@ -136,4 +132,9 @@ do ./src/data_management/final_data_preparation/decision_samples/dec_no_missings
 * and the application analysis (overlapping baseline sample)
 do ./src/data_management/final_data_preparation/decision_samples/dec_only_application_countries.do
 
+* Prepare data for a sample with a maximum of one early elections
+do ./src/data_management/final_data_preparation/decision_samples/dec_few_early_elections.do
+
+* Prepare data for countries with no early elections
+do ./src/data_management/final_data_preparation/decision_samples/dec_no_early_elections.do
 

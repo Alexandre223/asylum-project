@@ -29,7 +29,7 @@ keep if max_non_missing >= 44
 * Determine big destination countries
 bysort destination: egen total_dec = total(totaldecisions)
 tab destination total_dec
-drop if total_dec < 10000
+drop if total_dec < 20000
 tab destination
 	
 * Match with top 90% origin countries

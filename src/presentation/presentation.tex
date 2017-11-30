@@ -1,0 +1,575 @@
+\documentclass[compress, xcolor = {table,xcdraw}]{beamer}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\setbeamercolor{item projected}{bg=darkred}
+\setbeamercolor{block title}{fg=darkred}
+\setbeamercolor{local structure}{fg=darkred}
+\setbeamertemplate{itemize items}[circle]
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[section]{placeins}
+\usepackage{multicol}
+%\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\definecolor{maroon}{rgb}{0.62, 0.15, 0.20}
+\definecolor{timberwolf}{rgb}{0.86, 0.84, 0.82}
+\definecolor{navy}{rgb}{0.05, 0.27, 0.44}
+\usepackage{appendixnumberbeamer}
+\usepackage{beamerthemesplit}
+\usepackage{beamerthemebars}
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+            \usebeamerfont{author in head/foot}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+            \usebeamerfont{title in head/foot}\inserttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+            \insertframenumber{} / \inserttotalframenumber\hspace*{1ex} 
+        \end{beamercolorbox}}%
+        \vskip0pt%
+    }
+    \makeatother
+
+\useoutertheme{miniframes}
+\AtBeginSection[]{\subsection{}}
+
+\setbeamertemplate{navigation symbols}{}
+
+
+\title {The Political Economy of European Asylum Policies}
+\subtitle{\small\textcolor{black}{Marcus Drometer, Martina Burmann and Romuald M\'eango\\[1ex]
+		\scriptsize{\hspace{10ex}Ifo Institute \hspace{29ex} MEA}}}
+\institute{ifo Christmas Conference}
+\date{December 12, 2017}
+
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+
+\begin{document}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\begin{frame}[plain]
+\setlength{\leftmargin}{1cm}
+\titlepage 
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{Motivation}
+\begin{itemize}
+	\item Asylum policies are partly determined by political economy
+	factors
+	
+	\item Dustmann et al. (2016): ``the  different  exposures  to  refugee  inflows and  the  lack  of  any  effective  European-level  mechanism  to  `spread  the  burden'  of  hosting  refugee  populations,  led  many  countries  to  implement  procedures  aimed  at  reducing  inflows  into  their  territories.''
+	
+	\bigskip
+	\item Little empirical evidence on the precise linkages between those political factors and asylum policies
+
+	\bigskip
+	\item \textbf{Our research question:} To which extent are asylum policies (first-time asylum applications) determined by political factors, i.e.,  elections and parties.
+  
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} [t]
+\frametitle{Pre- vs. post-election politics}
+\textbf{Two counter-acting forces:}
+
+\begin{itemize}
+	\item Ideological parties benefit from implementing favored policies
+	\item Electoral incentives force parties to implement moderate policies
+\end{itemize}
+
+\bigskip
+
+\textbf{Predicted pattern:} \\
+\smallskip
+Convergence of asylum policies (as measured by the number of applicants) before the election and divergence of asylum policies after the election
+\end{frame}
+
+
+\begin{frame} [t]
+\frametitle{Literature}
+\begin{itemize}
+	\item \textbf{Asylum policies:}\\
+	\smallskip
+	Hatton (2005, 2009, 2016), Gudbrandsen (2010), Neumeyer (2004, 2005), Toshkov (2014)
+	
+	\bigskip
+		
+	\item \textbf{Electoral cycles:}\\
+	\smallskip
+	Nordhaus (1975), Hibbs (1977), Alesina, Roubini and Cohen (1997), etc.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} [t]
+\frametitle{Preview of the Results}
+\begin{center}	
+	\includegraphics[width=0.7\textwidth] {../paper/inputs/app_graph1_baseline.pdf}	
+\end{center}
+\end{frame}
+
+\section{Empirical specification}
+\begin{frame}
+\frametitle{Estimation approach}
+\begin{equation}
+\mathbf{Y_{ijt}} =\alpha_1 \mathbf{O_{it}} + \alpha_2 \mathbf{D_{jt}} + \alpha_3 [\mathbf{Q_{j.}} *  \mathbf{C_{jt}}] + \tau_t + \sigma_{ij} +  \varepsilon_{ijt},
+\end{equation}
+\smallskip
+\begin{itemize}
+	\small
+	\item $\mathbf{Y_{ijt}}$ is a measure of migration policy (log of the number of first-time asylum applications per capita by citizens of origin country i in destination country j at time t)
+	\item $\mathbf{Q_j.} := Q_{j,bef}, Q_{j,aft}$ is set of dummies for before and after the election
+	\item $\mathbf{C_{jt}}$ is a set of dummies for the ruling cabinet's position on a left-right scale (omitted category center)
+	\item $\mathbf{O_{it}}$ are time variant origin specific variables (Political Terror Scale, Freedom House Index, number of battle deaths and real GDP per capita) 
+	\item $\mathbf{D_{jt}}$  are time variant destination variables (real GDP per capita, unemployment rate)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Data}
+Panel of 12 big European destination countries and their 51 most relevant origin countries during the time period 2002 to 2014.
+\smallskip
+\begin{itemize}
+	\item Quarterly origin-specific first-time asylum applications from Eurostat
+	\item Election outcomes and party positions from the Parlgov database
+	\item Origin and destination specific control variables from Eurostat, World Penn Tables, Freedom House, UCDP, etc.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Identification}
+\textbf{Identifying assumption:} \\
+Timing of elections is exogenous to the migration flow 
+
+\begin{itemize}
+	\item usually the election date is determined by the electoral cycle
+	\item in all cases of early elections there is no idication that the inflow of migrants is in any way related to the decision to call early elections 
+\end{itemize}
+
+$\rightarrow$ Our estimates are likely to identify the causal effect of the electoral
+period on the admission of refugees 
+\bigskip
+
+\textbf{Our interpretation:} \\
+Governments adjust asylum policies
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Identification}
+However, due to confounding factors the underlying mechanism is difficult to identify
+\smallskip
+\begin{itemize}
+	\item Omitted variable bias 
+	\item Reverse causality
+	\item Separation of supply and demand side effects
+\end{itemize}
+\end{frame}
+
+
+\section{Results}
+\begin{frame} [t]
+\frametitle{Results for the before-after model}
+\begin{center}	
+	\includegraphics[width=0.8\textwidth] {../paper/inputs/app_graph1_baseline.pdf}	
+\end{center}
+\end{frame}
+
+\begin{frame} [t]
+\frametitle{Results for the quarterly model}
+\begin{center}	
+	\includegraphics[width=0.8\textwidth] {../paper/inputs/app_graph2_baseline.pdf}	
+\end{center}
+\end{frame}
+
+
+
+
+
+\section{Robustness}
+
+\begin{frame}
+\frametitle{Robustness Checks}
+\begin{itemize}
+	\item using different fixed effects
+	\item controling for past asylum applications per capita
+	\item clustering the standard errors on the destination-origin level
+	\item including a dummy for the incumbent's cabinet position
+	\item including a post 2007 dummy to account for changes in the data collection method by Eurostat
+	\item looking only at five or four quarters around the election 
+	\item using different methods of computing the cabinet position dummies (left and right)
+	\item ...
+\end{itemize}
+\end{frame}
+
+
+\section{Conclusion}
+
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item Our findings suggest that European asylum policies are affected by the electoral cycle and the identity of incumbent parties
+\begin{itemize}
+	\item[i)]before an election, the inflow of refugees is very similar across left and right cabinets;
+	\item[ii)]in the quarters following an election, the inflow of refugees diverges substantially, with significantly less asylum applicants under a right-wing cabinet
+\end{itemize}
+\smallskip
+
+\item Outlook
+\begin{itemize}
+	\item Look at asylum decisions
+	\item Use an index of asylum policies as dependent variable to find out more about the channels
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\appendix
+\begin{frame}
+\frametitle{Elections and cabinets I}
+\begin{table}	
+	\small
+	\centering
+	\renewcommand{\arraystretch}{0.5}
+	\scalebox{.48}{%
+		\begin{tabular}{l*{27}{c}}
+			\parbox[0pt][2em]{0cm}{} & \multicolumn{4}{c}{\cellcolor{timberwolf} \normalsize 2002} & \multicolumn{4}{c}{\cellcolor{white} \normalsize 2003} & \multicolumn{4}{c}{\cellcolor{timberwolf} \normalsize 2004} & \multicolumn{4}{c}{ \cellcolor{white} \normalsize 2005} & \multicolumn{4}{c}{\cellcolor{timberwolf} \normalsize 2006} & \multicolumn{4}{c}{\cellcolor{white} \normalsize 2007} & \multicolumn{2}{c}{\cellcolor{timberwolf} \normalsize 2008}\\
+			
+			& \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2 & \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4 & \cellcolor{white} 1 & \cellcolor{white} 2 & \cellcolor{white} 3 & \cellcolor{white} 4 & \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2 & \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4 & 1 & 2 & 3 & 4 & \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2 & \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4 & 1 & 2 & 3 & 4 & \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2\\ \hline\hline
+			
+			{\normalsize Belgium} \parbox[0pt][2em]{0cm}{}  & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - &  \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon}  - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} +\\
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Czech Republic} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy}\\
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Denmark} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} + & \cellcolor{navy} +\\ 
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize France} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} +\\
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Germany} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon}  & \cellcolor{maroon}  & \cellcolor{maroon}  & \cellcolor{maroon} \textcolor{gray}{-}  & \cellcolor{maroon} - & \cellcolor{maroon} \textcolor{gray}{\textbf{X}} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} -\\ 
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Ireland} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy}  & \cellcolor{navy} & \cellcolor{navy}  & \cellcolor{navy}  & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} +\\
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Netherlands} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon}-  & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} - & \cellcolor{navy} \textcolor{gray}{\textbf{X}}  & \cellcolor{navy} +  & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy}  \textcolor{gray}{-} & \cellcolor{navy}  \textcolor{gray}{-} & \cellcolor{navy} -  & \cellcolor{navy} - & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} +  & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon}  + & \cellcolor{maroon} +  & \cellcolor{maroon} + \\ 
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Norway} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{maroon}  + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} -\\
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Poland} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon}  & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} +  & \cellcolor{navy} +\\ 
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Spain} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy}  & \cellcolor{navy}  & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} +\\
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Sweden} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy}\\ 
+			
+			& \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize United Kingdom} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon}  + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon}\\ 
+			
+			\hline \hline
+			\\ \parbox[0pt][1em]{0cm}{} &  \cellcolor{white} & \cellcolor{white}  & \cellcolor{white}  &  \cellcolor{maroon} &\multicolumn{4}{c}{\normalsize left cabinet}  & \cellcolor{navy} &\multicolumn{4}{c}{\normalsize right cabinet} & \textbf{X} & \multicolumn{4}{c}{\normalsize regular election} & \textcolor{gray}{\textbf{X}} &  \multicolumn{4}{c}{\normalsize early election} & \cellcolor{white}  & \cellcolor{white} & \cellcolor{white} \\
+			
+			\\ \parbox[0pt][1em]{0cm}{}  &  \textbf{-} &\multicolumn{7}{c}{\normalsize quarter before election}  & \textbf{+} &\multicolumn{7}{c}{\normalsize quarter after election} & \textcolor{gray}{\textbf{-}} & \multicolumn{8}{c}{\normalsize quarter before planned election} & \cellcolor{white}    \\
+			\\
+		\end{tabular}
+	}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Elections and cabinets II}
+\begin{table}	
+	\small
+	\centering	
+	\renewcommand{\arraystretch}{0.5}	
+	\scalebox{.48}{%
+		\begin{tabular}{l*{27}{c}}
+			\parbox[0pt][2em]{0cm}{} & \multicolumn{2}{c}{\cellcolor{timberwolf} \normalsize 2008} & \multicolumn{4}{c}{\cellcolor{white} \normalsize 2009} & \multicolumn{4}{c}{\cellcolor{timberwolf} \normalsize 2010} & \multicolumn{4}{c}{\cellcolor{white} \normalsize 2011} & \multicolumn{4}{c}{\cellcolor{timberwolf} \normalsize 2012} & \multicolumn{4}{c}{\cellcolor{white} \normalsize 2013} & \multicolumn{4}{c}{\cellcolor{timberwolf} \normalsize 2014}\\
+			
+			& \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4 & \cellcolor{white} 1  & \cellcolor{white} 2  & \cellcolor{white} 3  & \cellcolor{white} 4  & \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2 & \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4 & \cellcolor{white} 1 & \cellcolor{white} 2 & \cellcolor{white} 3 & \cellcolor{white} 4 & \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2 & \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4 & \cellcolor{white} 1 & \cellcolor{white} 2 &  \cellcolor{white} 3 & \cellcolor{white} 4 & \cellcolor{timberwolf} 1 & \cellcolor{timberwolf} 2 & \cellcolor{timberwolf} 3 & \cellcolor{timberwolf} 4\\ \hline\hline
+			
+			{\normalsize Belgium} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} \cellcolor{maroon}\textcolor{gray}{-}  & \cellcolor{maroon}\textcolor{gray}{-} & \cellcolor{maroon} \textcolor{gray}{\textbf{X}} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{navy} + \\
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Czech Republic} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy}  & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} \textcolor{gray}{-} & \cellcolor{navy} - & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} +\\
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Denmark} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} -\\ 
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize France} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon}\\
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Germany} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{navy} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} +\\ 
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Ireland} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - \\
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Netherlands} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} \textcolor{gray}{-} & \cellcolor{maroon} \textcolor{gray}{-} & \cellcolor{maroon} \textcolor{gray}{-} & \cellcolor{maroon} - & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy}  + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon}\\ 
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Norway} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} +\\
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Poland} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} -\\ 
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Spain} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} + & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon} & \cellcolor{maroon}  \textcolor{gray}{-} & \cellcolor{maroon}  \textcolor{gray}{-} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textcolor{gray}{\textbf{X}} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} -\\
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize Sweden} \parbox[0pt][2em]{0cm}{} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} \textbf{X} & \cellcolor{maroon} +\\ 
+			
+			& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{white} & \cellcolor{timberwolf} & \cellcolor{timberwolf}& \cellcolor{timberwolf} & \cellcolor{timberwolf}\\
+			
+			{\normalsize United Kingdom} \parbox[0pt][2em]{0cm}{} & \cellcolor{maroon} & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} - & \cellcolor{maroon} \textbf{X} & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} + & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} - & \cellcolor{navy} -\\ 
+			
+			\hline \hline
+			\\ \parbox[0pt][1em]{0cm}{} &  \cellcolor{white} & \cellcolor{white}  & \cellcolor{white}  &  \cellcolor{maroon} &\multicolumn{4}{c}{\normalsize left cabinet}  & \cellcolor{navy} &\multicolumn{4}{c}{\normalsize right cabinet} & \textbf{X} & \multicolumn{4}{c}{\normalsize regular election} & \textcolor{gray}{\textbf{X}} &  \multicolumn{4}{c}{\normalsize early election} & \cellcolor{white}  & \cellcolor{white} & \cellcolor{white} \\
+			
+			\\ \parbox[0pt][1em]{0cm}{}  &  \textbf{-} &\multicolumn{7}{c}{\normalsize quarter before election}  & \textbf{+} &\multicolumn{7}{c}{\normalsize quarter after election} & \textcolor{gray}{\textbf{-}} & \multicolumn{8}{c}{\normalsize quarter before planned election} & \cellcolor{white}    \\
+		\end{tabular}
+	}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary Statistics}
+\begin{table}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\scalebox{.6}{%
+		\begin{tabular}{l c c c c c }\hline\hline
+			\multicolumn{1}{c}{Variable} & Obs & Mean & Std. Dev.
+			& Min & Max  \\ \hline
+			Quarterly fist-time asylum applications & 23705 & 114.18 & 338.11 & 0 & 15330  \\
+			Quarterly first-time asylum applications per 100,000 inhabitants & 23705 & .57 & 2.18 & 0 & 112.55  \\
+			Number of elections per destination country & 23705 & 3.45 & .81 & 2 & 5  \\
+			Number of cabinet changes per destination country & 23705 & 1.83 & .87 & 1 & 4  \\
+			Left-right position of the cabinet & 23705 & 5.57 & 1.52 & 2.77 & 8.22  \\
+			Political Terror Scale & 23705 & 3.34 & .93 & 1 & 5  \\
+			Civic Liberty (FHI) & 23705 & 4.58 & 1.45 & 2 & 7  \\
+			Political Rights (FHI) & 23705 & 4.87 & 1.7 & 1 & 7  \\
+			Quarterly civil war battle death (000s) & 23705 & .22 & .87 & 0 & 15.09  \\
+			Yearly real GDP per capita at origin & 23705 & 6440.79 & 5270.3 & 336.8 & 24039.13  \\
+			Distance from origin to destination & 23705 & 4395.18 & 2167.79 & 454 & 9680  \\
+			Migrant stock in 2000/1 & 23705 & 16452.49 & 74737.36 & 0 & 1272000  \\
+			Quarterly real GDP per capita at destination & 23705 & 8718.8 & 3206.1 & 1557.45 & 18047.84  \\
+			Quarterly unemployment rate at destination & 23705 & 7.76 & 3.93 & 2.4 & 26.9  \\
+			\hline\end{tabular}
+	}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Destination countries}
+\begin{table}
+	\centering
+	\scalebox{.85}{%
+	\begin{tabular}{l r}
+		\hline \hline
+		\textbf{Destination country} & \textbf{\# of first-time  applications}  \\
+		\hline \hline
+		\smallskip
+		Germany &  704450 \\
+		\smallskip
+		France & 629288 \\
+		\smallskip
+		United Kingdom & 470960 \\
+		\smallskip
+		Sweden & 445525 \\
+		\smallskip
+		Belgium & 184200 \\
+		\smallskip
+		Netherlands & 167055 \\
+		\smallskip
+		Norway & 113545 \\
+		\smallskip 
+		Poland & 89680 \\
+		\smallskip
+		Denmark & 59440 \\
+		\smallskip
+		Spain & 56227 \\
+		\smallskip
+		Ireland & 47070 \\
+		\smallskip
+		Czech Republic & 35370 \\
+		\hline \hline
+		\end{tabular}
+}
+\end{table}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Top 10 origin countries}
+\begin{table}
+	\centering
+	\scalebox{.8}{%
+	\begin{tabular}{l c c}
+		\hline \hline
+		\textbf{Source country} & \textbf{ Share of first-time applications}  & \textbf{Cumulative share} \\
+		\hline \hline
+		\smallskip
+		Russia &  7.0\% & 7.0\% \\
+		\smallskip
+		Iraq & 6.9\%  & 13.9\% \\
+		\smallskip
+		Syria & 6.1\%  & 20.0 \%  \\
+		\smallskip
+		Afghanistan & 5.2\% & 25.2\% \\
+		\smallskip
+		Somalia & 4.6\% & 29.8\%  \\
+		\smallskip
+		Iran & 3.4\% & 33.1\%  \\
+		\smallskip
+		Turkey  & 3.4\% & 36.5\% \\
+		\smallskip 
+		Eritrea & 3.3\% & 39.8\% \\
+		\smallskip
+		Serbia & 3.0\% & 42.9\% \\
+		\smallskip
+		Democratic Republic of Congo  & 2.8\% & 45.6\% \\
+		\hline \hline
+	\end{tabular}
+	}
+\end{table}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Regression Table I}
+\begin{table}
+	\centering
+	\tiny
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		&\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+		\hline
+		Political Terror Scale&       0.399*** &       0.400***&                     \\
+		&    (0.0703)         &    (0.0697)         &                     \\
+		[0.2em]
+		Civic Liberty (FHI) &       0.174         &       0.175         &                     \\
+		&     (0.132)         &     (0.131)         &                     \\
+		[0.2em]
+		Political Rights (FHI)&      0.0472         &      0.0486         &                     \\
+		&    (0.0753)         &    (0.0752)         &                     \\
+		[0.2em]
+		Quarterly civil war battle death (000s)&       0.190***&       0.188***&                     \\
+		&    (0.0236)         &    (0.0234)         &                     \\
+		[0.2em]
+		Log origin country real GDP per capita&      -0.659***&      -0.661***&                     \\
+		&     (0.165)         &     (0.163)         &                     \\
+		[0.2em]
+		Log migrant stock in 2000/1&       0.263***&                     &       0.263***\\
+		&    (0.0210)         &                     &    (0.0210)         \\
+		[0.2em]
+		Log distance from origin to destination&      -0.608*  &                     &      -0.613*  \\
+		&     (0.298)         &                     &     (0.296)         \\
+		[0.2em]
+		Log destination country real GDP per capita&      -1.404** &      -1.479** &      -1.146*  \\
+		&     (0.490)         &     (0.441)         &     (0.465)         \\
+		[0.2em]
+		Quarterly unemployment rate at destination&     -0.0731***&     -0.0743***&     -0.0715***\\
+		&    (0.0114)         &    (0.0108)         &    (0.0116)         \\
+		\hline
+		Observations        &       23705         &       23705         &       23705         \\
+		Adjusted \(R^{2}\)  &       0.444         &       0.176         &       0.447         \\
+		Fixed Effects       &           O         &       D x O         &       O x T         \\
+		Destination dummies &         Yes         &          No         &         Yes         \\
+		Quarter-Year dummies&         Yes         &         Yes         &          No         \\
+		\hline\hline
+		\multicolumn{4}{l}{\tiny Standard errors in parentheses, * \(p<0.05\), ** \(p<0.01\), *** \(p<0.001\)}\\
+	\end{tabular}
+\end{table}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Regression Table II}
+\begin{table}
+\centering
+\tiny
+\begin{tabular}{l*{3}{c}}
+	\hline\hline
+	&\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+	\hline
+	& \\
+	Cabinet position left * Before the election&      0.0207         &      0.0191         &     0.00933         \\
+	&    (0.0262)         &    (0.0261)         &    (0.0269)         \\
+	[0.7em]
+	Cabinet position left * After the election&       0.116***&       0.108***&       0.111***\\
+	&    (0.0228)         &    (0.0212)         &    (0.0229)         \\
+	[0.7em]
+	Cabinet position right * Before the election&      0.0159         &      0.0181         &      0.0191         \\
+	&    (0.0249)         &    (0.0234)         &    (0.0247)         \\
+	[0.7em]
+	Cabinet position right * After the election&      -0.101***&     -0.0955***&      -0.101***\\
+	&    (0.0242)         &    (0.0230)         &    (0.0240)         \\
+	& \\
+	\hline
+	Observations        &       23705         &       23705         &       23705         \\
+	Adjusted \(R^{2}\)  &       0.444         &       0.176         &       0.447         \\
+	Fixed Effects       &           O         &       D x O         &       O x T         \\
+	Destination dummies &         Yes         &          No         &         Yes         \\
+	Quarter-Year dummies&         Yes         &         Yes         &          No         \\
+	\hline\hline
+	\multicolumn{4}{l}{\tiny Standard errors in parentheses, * \(p<0.05\), ** \(p<0.01\), *** \(p<0.001\)}\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+\end{document}

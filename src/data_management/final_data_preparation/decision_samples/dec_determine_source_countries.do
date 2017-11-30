@@ -25,7 +25,7 @@ use ./out/data/temp/decision-data-02-16-q.dta, clear
 
 	* Determine big destination countries
 	bysort destination: egen total_dec = total(totaldecisions)
-	drop if total_dec < 10000
+	drop if total_dec < 20000
 
 * Determine most important source countries
 	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
@@ -46,7 +46,7 @@ use ./out/data/temp/decision-data-02-16-q.dta, clear
 
 	* Determine big destination countries
 	bysort destination: egen total_dec = total(totaldecisions)
-	drop if total_dec < 10000
+	drop if total_dec < 30000
 
 * Determine most important source countries
 	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
@@ -95,30 +95,6 @@ use ./out/data/temp/decision-data-02-16-q.dta, clear
 	save  ./out/data/temp/source_countries_dec_no_missing.dta, replace
 
 
-****************************************************************************************
-* Sample of very big countries (>20000) that have observations in at least 44 quarters *
-****************************************************************************************
-use ./out/data/temp/decision-data-02-16-q.dta, clear
-
-* Select destination sample
-	* Use only 2002-2014
-	drop if year > 2014
-
-	* Use only big countries that have a maximum of two missing years
-	* Determine countries that have data in at least 44 out of 52 quarters**
-	bysort origin destination: egen non_missing = count(totaldecisions)
-	bysort destination: egen max_non_missing = max(non_missing) 
-	keep if max_non_missing >= 44
-
-	* Determine big destination countries
-	bysort destination: egen total_dec = total(totaldecisions)
-	drop if total_dec < 20000
-
-
-* Determine most important source countries
-	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
-	save  ./out/data/temp/source_countries_dec_very_big.dta, replace	
-
 
 **************************************************************
 * Sample of countries which are also in application analysis *
@@ -148,3 +124,59 @@ use ./out/data/temp/decision-data-02-16-q.dta, clear
 	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
 	save  ./out/data/temp/source_countries_dec_only_application.dta, replace
 	
+
+*****************************************************
+* Sample of countries with only few early elections *
+*****************************************************
+use ./out/data/temp/decision-data-02-16-q.dta, clear
+
+* Select destination sample
+	* Use only 2002-2014
+	drop if year > 2014
+
+	* Use only big countries that have a maximum of two missing years
+	* Determine countries that have data in at least 44 out of 52 quarters**
+	bysort origin destination: egen non_missing = count(totaldecisions)
+	bysort destination: egen max_non_missing = max(non_missing) 
+	keep if max_non_missing >= 44
+
+	* Determine big destination countries
+	bysort destination: egen total_dec = total(totaldecisions)
+	drop if total_dec < 20000
+
+	* Drop countries which have more than one early election
+	drop if destination == "Austria" | destination == "Denmark" | ///
+			destination == "Greece"
+	
+* Determine most important source countries
+	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
+	save  ./out/data/temp/source_countries_few_early_elections.dta, replace	
+
+	
+***********************************************
+* Sample of countries with no early elections *
+***********************************************
+use ./out/data/temp/decision-data-02-16-q.dta, clear
+
+* Select destination sample
+	* Use only 2002-2014
+	drop if year > 2014
+
+	* Use only big countries that have a maximum of two missing years
+	* Determine countries that have data in at least 44 out of 52 quarters**
+	bysort origin destination: egen non_missing = count(totaldecisions)
+	bysort destination: egen max_non_missing = max(non_missing) 
+	keep if max_non_missing >= 44
+
+	* Determine big destination countries
+	bysort destination: egen total_dec = total(totaldecisions)
+	drop if total_dec < 20000
+
+	* Drop countries which have more than one early election
+	drop if destination == "Austria" | destination == "Denmark" | ///
+			destination == "Greece" | destination == "Germany" | ///
+			destination == "Poland" | destination == "Spain"
+	
+* Determine most important source countries
+	do ./src/data_management/final_data_preparation/modules/determine_source_countries_dec.do
+	save  ./out/data/temp/source_countries_no_early_elections.dta, replace	

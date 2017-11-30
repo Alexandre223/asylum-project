@@ -462,12 +462,13 @@ do ./src/analysis/modules/graph_2_cabinet_right.do
 *
 
 
-*********************************************************************************
-** R18: Use only very big destination countries with less than 2 missing years ** 				
-*********************************************************************************
+
+****************************************************************
+** R18: Use only countries that report decisions in all years ** 				
+****************************************************************
 
 * Specify data set to be used *
-use ./out/data/final_decision/max_two_missing_very_big.dta, clear
+use ./out/data/final_decision/no_missing_data.dta, clear
 
 * Drop country pairs with less than 2 decisions per quarter on average *
 drop if mean_dyadic_decisions_pq < 2
@@ -510,12 +511,11 @@ do ./src/analysis/modules/graph_2_cabinet_right.do
 
 
 
-****************************************************************
-** R19: Use only countries that report decisions in all years ** 				
-****************************************************************
-
+********************************************************************************
+** R19: use only countries that are also in the baseline application analysis ** 				
+********************************************************************************
 * Specify data set to be used *
-use ./out/data/final_decision/no_missing_data.dta, clear
+use ./out/data/final_decision/only_application_countries.dta, clear
 
 * Drop country pairs with less than 2 decisions per quarter on average *
 drop if mean_dyadic_decisions_pq < 2
@@ -557,12 +557,12 @@ do ./src/analysis/modules/graph_2_cabinet_right.do
 *
 
 
+*******************************************************************
+** R20: Use only countries with a maximum of one early elections ** 				
+*******************************************************************
 
-********************************************************************************
-** R20: use only countries that are also in the baseline application analysis ** 				
-********************************************************************************
 * Specify data set to be used *
-use ./out/data/final_decision/only_application_countries.dta, clear
+use ./out/data/final_decision/few_early_elections.dta, clear
 
 * Drop country pairs with less than 2 decisions per quarter on average *
 drop if mean_dyadic_decisions_pq < 2
@@ -592,6 +592,53 @@ global path_tab2_paper ./out/analysis/decisions/tables/`dec'_table2_R20_paper.te
 global path_graph2 ./out/analysis/decisions/figures/`dec'_graph2_R20.pdf
 global path_coef_tab2 ./out/analysis/decisions/tables/`dec'_graph2_R20_coef.tex
 global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R20_coef_paper.tex
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1_cabinet_right.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2_cabinet_right.do
+}
+*
+
+
+*****************************************************
+** R21: Use only countries with no early elections ** 				
+*****************************************************
+
+* Specify data set to be used *
+use ./out/data/final_decision/no_early_elections.dta, clear
+
+* Drop country pairs with less than 2 decisions per quarter on average *
+drop if mean_dyadic_decisions_pq < 2
+
+foreach dec in acceptance_rate refugeestatus_rate otherpositive_rate{
+
+* Define global for dependent variable
+global dependent_variable `dec'
+
+* Define globals for graph and table titles
+global tab_title "Determinants of `dec'"
+global graph_title "Predicted pattern `dec'"
+global coef_tab_title "Predicted pattern `dec'" 
+
+* Define globals for baseline analysis *
+do ./src/analysis/modules/dec_baseline_globals.do
+
+* Define gobals for output paths for figures and tables
+global path_tab1 ./out/analysis/decisions/tables/`dec'_table1_R21.tex
+global path_tab1_paper ./out/analysis/decisions/tables/`dec'_table1_R21_paper.tex
+global path_graph1 ./out/analysis/decisions/figures/`dec'_graph1_R21.pdf
+global path_coef_tab1 ./out/analysis/decisions/tables/`dec'_graph1_R21_coef.tex
+global path_coef_tab1_paper ./out/analysis/decisions/tables/`dec'_graph1_R21_coef_paper.tex
+
+global path_tab2 ./out/analysis/decisions/tables/`dec'_table2_R21.tex
+global path_tab2_paper ./out/analysis/decisions/tables/`dec'_table2_R21_paper.tex
+global path_graph2 ./out/analysis/decisions/figures/`dec'_graph2_R21.pdf
+global path_coef_tab2 ./out/analysis/decisions/tables/`dec'_graph2_R21_coef.tex
+global path_coef_tab2_paper ./out/analysis/decisions/tables/`dec'_graph2_R21_coef_paper.tex
 
 
 * Run do files to create tables and figures

@@ -185,7 +185,17 @@ local t=2
 	 local t=`t'+1
 	 }
 	 * 	 
+	 
+**note election initially planned for Q4 2003 (4 years after previous election)**
+**code 6 quarters before Q4 2003 up to Q3 2002 as before the election**
+list K if destination=="Austria" & quarter==4 & year==2003
 
+local t=6
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==52-`t'
+	 local t=`t'+1
+	 }
+	 
 **early election in Austria on 1st October 2006 (Q4 2006), announced on 14th July 2006 (Q3 3016)**
 **However initial election planned for November 2006 (Q4 2006) - do not code as early election**
  
@@ -230,9 +240,28 @@ local t=5
 **BULGARIA***	 
 	 
 ***Bulgaria early elections on 12th May 2013 (Q2 2013) announced on 28th of February (Q1 2013)**
-**Note: elections were held 2 month ahead of schedule (initially planned in July, also Q2 2013)**
-**As elections happen in the same quarter as expected do not change any before quarters***
+**code only 1 quarters before the election as before election**
+list K if destination=="Bulgaria" & quarter==2 & year==2013
+
+local t=2
+	while `t'<=6 {
+	by destination: replace bef`t'=0 if K==314-`t'
+	 local t=`t'+1
+	 }
+	 *
+
+**note election initially planned in July, Q3 2013 (4 years after previous election)**
+**code 6 quarters before Q3 2013 up to Q1 2013 as before the election**
+list K if destination=="Bulgaria" & quarter==3 & year==2013
+
+local t=3
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==315-`t'
+	 local t=`t'+1
+	 }
+	 *
 	 
+
 **Note: next early election already on 5th October 2014 (Q4 2014), announced on July 23rd (Q3 2014)**
 **Code only Q3 2013 to Q2 2014 as post periods, only 4 quarters**
 list K if destination=="Bulgaria" & quarter==2 & year==2013
@@ -261,8 +290,6 @@ local t=2
 ***Bulgaria early elections on 26th March 2017 announced on 20th December 2016**
 **Delete election in 2017 in Bulgaria**
 	 
-**CROATIA**	 
-**Do not code early elections for Croatia**
 
 **CYPRUS**
 **no early elections in Cyprus**
@@ -383,12 +410,11 @@ local t=2
 
 	 
 **early election in Greece on 6th May 2012 (Q2 2012) and announced on 4th November 2011 (Q4 2011)**
-**Note: all attempts to form a new givernment failed and therefore the new **
+**Note: all attempts to form a new government failed and therefore the new **
 **      elected parliament was dissolved on May 19th and new elections were **
 **      called for 17th June 2012 (Q2 2012)**
 **TWO ELECTIONS IN Q2 2012
 **code only 2 quarters before the election as before election**
-**don't code any quarters after the election as after the election**
 list K if destination=="Greece" & quarter==2 & year==2012
 
 local t=3
@@ -714,6 +740,17 @@ local t=1
 	 }
 	 * 
 
+**Election was initially planed for September 2012 (Q3 2012) (4 years after the previous election)**
+**Code before regular election up to the announcement of the early elections**
+list K if destination=="Slovenia" & quarter==3 & year==2012
+
+local t=4
+	while `t'<=6 {
+	by destination: replace bef`t'=1 if K==2775-`t'
+	 local t=`t'+1
+	 }
+	 *		 
+	 
 **early election in Slovenia on 13th July 2014 (Q3 2014) and announced on 1st June 2014 (Q2 2014)**
 **code only 1 quarter before the election as before election**
 list K if destination=="Slovenia" & quarter==3 & year==2014

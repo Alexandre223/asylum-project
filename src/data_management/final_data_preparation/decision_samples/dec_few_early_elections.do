@@ -1,8 +1,8 @@
 
-*  VERY BIG COUNTRIES WITH LESS THAN TWO YEARS MISSING DECISION DATA  *
+*							BASELINE SAMPLE                           *
 * =================================================================== *
-* SAMPLE: very big countries that have a maximum of two missing years *
-*		  in total decision data (>= 20000 decisions)                 *
+* SAMPLE: all big countries that have a maximum of two missing years  *
+*		  in total decision data                                      *
 * YEARS: 2002 - 2014                                                  *
 * CABINET POSITION: left, right, split at median                      *
 * QUARTERS: 6 quarters around the election                            *
@@ -31,11 +31,15 @@ bysort destination: egen total_dec = total(totaldecisions)
 tab destination total_dec
 drop if total_dec < 20000
 tab destination
-	
+
+* Drop countries which have more than one early election
+drop if destination == "Austria" | destination == "Denmark" | ///
+		destination == "Greece"
+
 * Match with top 90% origin countries
-merge m:1 origin using ./out/data/temp/source_countries_dec_very_big.dta
+merge m:1 origin using ./out/data/temp/source_countries_few_early_elections.dta
 keep if _merge == 3
-drop _merge
+drop _merge 
 
 		
 * 2, Calculate mean dyadic first-time applications per quarter
@@ -55,6 +59,5 @@ do ./src/data_management/final_data_preparation/modules/indicator_variables.do
 * 6, Calculate number of elections and cabinet positions
 do ./src/data_management/final_data_preparation/modules/number_elections_and_cabinet_changes.do
 
-
-save ./out/data/final_decision/max_two_missing_very_big.dta, replace
+save ./out/data/final_decision/few_early_elections.dta, replace
 
