@@ -38,8 +38,8 @@ waf3-*
 *synctex.gz
 .*
 .*pdfsvn
-paper.pdf
-presentation.pdf
+*paper.pdf
+*presentation.pdf
 *_overview.pdf
 __pycache__
 analysis_out
