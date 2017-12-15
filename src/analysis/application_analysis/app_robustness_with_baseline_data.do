@@ -292,3 +292,129 @@ do ./src/analysis/modules/table_1_just_DO_specification.do
 do ./src/analysis/modules/graph_1.do
 
 do ./src/analysis/modules/graph_2.do
+
+
+********************************************
+*** R01: Add Hatton's policy index total ***
+********************************************
+* use same globals as in the baseline analysis
+do ./src/analysis/modules/app_baseline_globals.do
+
+* add Hatton's combined policy index
+global destination_variables log_rGDPpc_dest unemployment policy_index_total 
+
+* Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R01.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R01_paper.tex"
+global path_graph1 "./out/analysis/applications/figures/app_graph1_R01.pdf"
+global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R01_coef.tex"
+global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R01_coef_paper.tex"
+
+global path_tab2 "./out/analysis/applications/tables/app_table2_R01.tex"
+global path_tab2_paper "./out/analysis/applications/tables/app_table2_R01_paper.tex"
+global path_graph2 "./out/analysis/applications/figures/app_graph2_R01.pdf"
+global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R01_coef.tex"
+global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R01_coef_paper.tex"
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2.do
+
+
+******************************************************************
+*** R02: Add Hatton's policy index access, welfare, processing ***
+******************************************************************
+* use same globals as in the baseline analysis
+do ./src/analysis/modules/app_baseline_globals.do
+
+* add Hatton's policy index for access, welfare,processing
+global destination_variables log_rGDPpc_dest unemployment ///
+							  policy_index_access policy_index_processing ///
+							  policy_index_welfare  
+
+* Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R02.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R02_paper.tex"
+global path_graph1 "./out/analysis/applications/figures/app_graph1_R02.pdf"
+global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R02_coef.tex"
+global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R02_coef_paper.tex"
+
+global path_tab2 "./out/analysis/applications/tables/app_table2_R02.tex"
+global path_tab2_paper "./out/analysis/applications/tables/app_table2_R02_paper.tex"
+global path_graph2 "./out/analysis/applications/figures/app_graph2_R02.pdf"
+global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R02_coef.tex"
+global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R02_coef_paper.tex"
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2.do
+
+
+*********************************************************
+*** R03: Add dummy for right-wing party in parliament ***
+*********************************************************
+* use same globals as in the baseline analysis
+do ./src/analysis/modules/app_baseline_globals.do
+
+* add a dummy for nationalist party in parliament
+global destination_variables log_rGDPpc_dest unemployment parl_nationalist
+
+* Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R03.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R03_paper.tex"
+global path_graph1 "./out/analysis/applications/figures/app_graph1_R03.pdf"
+global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R03_coef.tex"
+global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R03_coef_paper.tex"
+
+global path_tab2 "./out/analysis/applications/tables/app_table2_R03.tex"
+global path_tab2_paper "./out/analysis/applications/tables/app_table2_R03_paper.tex"
+global path_graph2 "./out/analysis/applications/figures/app_graph2_R03.pdf"
+global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R03_coef.tex"
+global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R03_coef_paper.tex"
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2.do
+
+
+*******************************************************************
+*** R04: Add share of seats of right-wing parties in parliament ***
+*******************************************************************
+* use same globals as in the baseline analysis
+do ./src/analysis/modules/app_baseline_globals.do
+
+* add a dummy for nationalist party in parliament
+global destination_variables log_rGDPpc_dest unemployment share_right
+
+* Define gobals for output paths for figures and tables
+global path_tab1 "./out/analysis/applications/tables/app_table1_R04.tex"
+global path_tab1_paper "./out/analysis/applications/tables/app_table1_R04_paper.tex"
+global path_graph1 "./out/analysis/applications/figures/app_graph1_R04.pdf"
+global path_coef_tab1 "./out/analysis/applications/tables/app_graph1_R04_coef.tex"
+global path_coef_tab1_paper "./out/analysis/applications/tables/app_graph1_R04_coef_paper.tex"
+
+global path_tab2 "./out/analysis/applications/tables/app_table2_R04.tex"
+global path_tab2_paper "./out/analysis/applications/tables/app_table2_R04_paper.tex"
+global path_graph2 "./out/analysis/applications/figures/app_graph2_R04.pdf"
+global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R04_coef.tex"
+global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R04_coef_paper.tex"
+
+
+* Run do files to create tables and figures
+do ./src/analysis/modules/table_1.do
+do ./src/analysis/modules/graph_1.do
+
+do ./src/analysis/modules/table_2.do
+do ./src/analysis/modules/graph_2.do
