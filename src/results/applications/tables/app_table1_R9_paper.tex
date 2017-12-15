@@ -1,0 +1,50 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Determinants of log(First time asylum applications per capita)}
+\begin{tabular}{l*{1}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         \\
+\hline
+Political Terror Scale&       0.400\sym{***}\\
+                    &    (0.0450)         \\
+[1em]
+Civic Liberty (FHI) &       0.175\sym{**} \\
+                    &    (0.0611)         \\
+[1em]
+Political Rights (FHI)&      0.0486         \\
+                    &    (0.0479)         \\
+[1em]
+Quarterly civil war battle death (000s)&       0.188\sym{***}\\
+                    &    (0.0264)         \\
+[1em]
+Log origin country real GDP per capita&      -0.661\sym{***}\\
+                    &     (0.105)         \\
+[1em]
+Log destination country real GDP per capita&      -1.479\sym{*}  \\
+                    &     (0.609)         \\
+[1em]
+Quarterly unemployment rate at destination&     -0.0743\sym{***}\\
+                    &    (0.0112)         \\
+[1em]
+Cabinet position left * Before the election&      0.0191         \\
+                    &    (0.0308)         \\
+[1em]
+Cabinet position left * After the election&       0.108\sym{***}\\
+                    &    (0.0275)         \\
+[1em]
+Cabinet position right * Before the election&      0.0181         \\
+                    &    (0.0297)         \\
+[1em]
+Cabinet position right * After the election&     -0.0955\sym{**} \\
+                    &    (0.0302)         \\
+\hline
+Observations        &       23705         \\
+Adjusted \(R^{2}\)  &       0.176         \\
+Fixed Effects       &       D x O         \\
+Destination dummies &          No         \\
+Quarter-Year dummies&         Yes         \\
+\hline\hline
+\multicolumn{2}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

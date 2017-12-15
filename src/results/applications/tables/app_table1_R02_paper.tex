@@ -1,0 +1,65 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Determinants of log(First time asylum applications per capita)}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Political Terror Scale&       0.398\sym{***}&       0.398\sym{***}&                     \\
+                    &    (0.0707)         &    (0.0700)         &                     \\
+[1em]
+Civic Liberty (FHI) &       0.170         &       0.170         &                     \\
+                    &     (0.132)         &     (0.131)         &                     \\
+[1em]
+Political Rights (FHI)&      0.0437         &      0.0452         &                     \\
+                    &    (0.0747)         &    (0.0746)         &                     \\
+[1em]
+Quarterly civil war battle death (000s)&       0.190\sym{***}&       0.187\sym{***}&                     \\
+                    &    (0.0236)         &    (0.0234)         &                     \\
+[1em]
+Log origin country real GDP per capita&      -0.659\sym{***}&      -0.661\sym{***}&                     \\
+                    &     (0.164)         &     (0.162)         &                     \\
+[1em]
+Log migrant stock in 2000/1&       0.262\sym{***}&                     &       0.262\sym{***}\\
+                    &    (0.0210)         &                     &    (0.0210)         \\
+[1em]
+Log distance from origin to destination&      -0.609\sym{*}  &                     &      -0.614\sym{*}  \\
+                    &     (0.298)         &                     &     (0.296)         \\
+[1em]
+Log destination country real GDP per capita&      -2.624\sym{***}&      -2.685\sym{***}&      -2.404\sym{***}\\
+                    &     (0.455)         &     (0.407)         &     (0.427)         \\
+[1em]
+Quarterly unemployment rate at destination&     -0.0852\sym{***}&     -0.0868\sym{***}&     -0.0846\sym{***}\\
+                    &    (0.0117)         &    (0.0112)         &    (0.0119)         \\
+[1em]
+Policy on access    &     -0.0870\sym{**} &     -0.0737\sym{**} &     -0.0753\sym{**} \\
+                    &    (0.0289)         &    (0.0267)         &    (0.0276)         \\
+[1em]
+Policy on processing&     -0.0899\sym{***}&     -0.0874\sym{***}&     -0.0907\sym{***}\\
+                    &    (0.0208)         &    (0.0207)         &    (0.0211)         \\
+[1em]
+Policy on welfare   &      -0.107\sym{***}&      -0.109\sym{***}&      -0.111\sym{***}\\
+                    &    (0.0185)         &    (0.0183)         &    (0.0180)         \\
+[1em]
+Cabinet position left * Before the election&      0.0471         &      0.0446         &      0.0368         \\
+                    &    (0.0238)         &    (0.0239)         &    (0.0244)         \\
+[1em]
+Cabinet position left * After the election&       0.136\sym{***}&       0.130\sym{***}&       0.133\sym{***}\\
+                    &    (0.0235)         &    (0.0225)         &    (0.0238)         \\
+[1em]
+Cabinet position right * Before the election&    -0.00782         &    -0.00328         &    -0.00448         \\
+                    &    (0.0248)         &    (0.0230)         &    (0.0247)         \\
+[1em]
+Cabinet position right * After the election&      -0.158\sym{***}&      -0.152\sym{***}&      -0.159\sym{***}\\
+                    &    (0.0257)         &    (0.0252)         &    (0.0248)         \\
+\hline
+Observations        &       23705         &       23705         &       23705         \\
+Adjusted \(R^{2}\)  &       0.449         &       0.189         &       0.453         \\
+Fixed Effects       &           O         &       D x O         &       O x T         \\
+Destination dummies &         Yes         &          No         &         Yes         \\
+Quarter-Year dummies&         Yes         &         Yes         &          No         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

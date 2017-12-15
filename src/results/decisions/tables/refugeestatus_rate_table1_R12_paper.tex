@@ -1,0 +1,65 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Determinants of refugeestatus\_rate}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Political Terror Scale&      0.0208\sym{*}  &      0.0241\sym{**} &                     \\
+                    &   (0.00781)         &   (0.00810)         &                     \\
+[1em]
+Civic Liberty (FHI) &      0.0240\sym{*}  &      0.0210         &                     \\
+                    &    (0.0115)         &    (0.0122)         &                     \\
+[1em]
+Political Rights (FHI)&    -0.00862         &    -0.00670         &                     \\
+                    &   (0.00799)         &   (0.00881)         &                     \\
+[1em]
+Quarterly civil war battle death (000s)&      0.0143\sym{***}&      0.0150\sym{***}&                     \\
+                    &   (0.00359)         &   (0.00389)         &                     \\
+[1em]
+Log origin country real GDP per capita&     -0.0152         &     -0.0184         &                     \\
+                    &    (0.0258)         &    (0.0273)         &                     \\
+[1em]
+Log migrant stock in 2000/1&    -0.00319         &                     &    -0.00283         \\
+                    &   (0.00234)         &                     &   (0.00240)         \\
+[1em]
+Log distance from origin to destination&      0.0178         &                     &      0.0171         \\
+                    &    (0.0143)         &                     &    (0.0144)         \\
+[1em]
+Log destination country real GDP per capita&      -0.166\sym{**} &      -0.156\sym{**} &      -0.162\sym{**} \\
+                    &    (0.0562)         &    (0.0547)         &    (0.0553)         \\
+[1em]
+Quarterly unemployment rate at destination&    -0.00419\sym{**} &    -0.00398\sym{**} &    -0.00447\sym{**} \\
+                    &   (0.00131)         &   (0.00122)         &   (0.00135)         \\
+[1em]
+Log average past total asylum decisions per capita&      -124.2\sym{***}&      -129.5\sym{***}&      -124.3\sym{***}\\
+                    &     (29.01)         &     (26.58)         &     (29.15)         \\
+[1em]
+Log average past dyadic asylum decisions per capita&      -201.9         &      -192.5         &      -369.4         \\
+                    &     (216.4)         &     (154.2)         &     (229.7)         \\
+[1em]
+cabinet\_right       &      0.0222\sym{*}  &      0.0261\sym{**} &      0.0217\sym{*}  \\
+                    &   (0.00870)         &   (0.00886)         &   (0.00900)         \\
+[1em]
+Cabinet position left * Before the election&    -0.00193         &     0.00212         &    -0.00258         \\
+                    &   (0.00488)         &   (0.00477)         &   (0.00526)         \\
+[1em]
+Cabinet position left * After the election&    -0.00913\sym{*}  &    -0.00647         &    -0.01000\sym{*}  \\
+                    &   (0.00389)         &   (0.00368)         &   (0.00404)         \\
+[1em]
+Cabinet position right * Before the election&    -0.00506         &    -0.00510         &    -0.00496         \\
+                    &   (0.00508)         &   (0.00483)         &   (0.00534)         \\
+[1em]
+Cabinet position right * After the election&     0.00134         &   0.0000511         &    0.000844         \\
+                    &   (0.00332)         &   (0.00324)         &   (0.00338)         \\
+\hline
+Observations        &       17191         &       17191         &       17191         \\
+Adjusted \(R^{2}\)  &       0.139         &       0.060         &       0.124         \\
+Fixed Effects       &           O         &       D x O         &       O x T         \\
+Destination dummies &         Yes         &          No         &         Yes         \\
+Quarter-Year dummies&         Yes         &         Yes         &          No         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}
