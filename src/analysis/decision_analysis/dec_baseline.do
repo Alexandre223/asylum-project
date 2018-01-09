@@ -3,7 +3,9 @@
 ****************************************
 
 
-foreach dec in acceptance_rate refugeestatus_rate otherpositive_rate{
+*acceptance_rate refugeestatus_rate otherpositive_rate
+
+foreach dec in totalpositive refugeestatus otherpositive {
 
 * Specify data set to be used *
 use ./out/data/final_decision/baseline_data.dta, clear

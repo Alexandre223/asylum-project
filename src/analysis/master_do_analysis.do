@@ -8,6 +8,7 @@ cd F:/research/asylum-project
 *cd G:/PROJ/asylum-project
 
 
+
 **************************
 ** Application analysis **
 **************************
@@ -36,8 +37,10 @@ do ./src/analysis/application_analysis/app_by_region.do
 * Summary statistics
 do ./src/analysis/decision_analysis/dec_summary_statistics.do
 
+
 * Baseline specification *
 do ./src/analysis/decision_analysis/dec_baseline.do
+
 
 * Robustness checks with baseline data *
 do ./src/analysis/decision_analysis/dec_robustness_with_baseline_data.do
