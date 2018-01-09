@@ -1,0 +1,56 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Determinants of log(First time asylum applications per capita)}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Political Terror Scale&       0.374\sym{***}&       0.374\sym{***}&                     \\
+                    &    (0.0660)         &    (0.0657)         &                     \\
+[1em]
+Civic Liberty (FHI) &       0.169         &       0.166         &                     \\
+                    &     (0.126)         &     (0.124)         &                     \\
+[1em]
+Political Rights (FHI)&      0.0381         &      0.0395         &                     \\
+                    &    (0.0689)         &    (0.0688)         &                     \\
+[1em]
+Quarterly civil war battle death (000s)&       0.192\sym{***}&       0.191\sym{***}&                     \\
+                    &    (0.0227)         &    (0.0226)         &                     \\
+[1em]
+Log origin country real GDP per capita&      -0.635\sym{***}&      -0.633\sym{***}&                     \\
+                    &     (0.151)         &     (0.150)         &                     \\
+[1em]
+Log migrant stock in 2000/1&       0.259\sym{***}&                     &       0.258\sym{***}\\
+                    &    (0.0218)         &                     &    (0.0218)         \\
+[1em]
+Log distance from origin to destination&      -0.739\sym{*}  &                     &      -0.743\sym{*}  \\
+                    &     (0.282)         &                     &     (0.281)         \\
+[1em]
+Log destination country real GDP per capita&      -1.293\sym{**} &      -1.256\sym{**} &      -1.232\sym{**} \\
+                    &     (0.462)         &     (0.412)         &     (0.453)         \\
+[1em]
+Quarterly unemployment rate at destination&     -0.0641\sym{***}&     -0.0629\sym{***}&     -0.0657\sym{***}\\
+                    &    (0.0104)         &   (0.00953)         &    (0.0108)         \\
+[1em]
+Cabinet position left * Before the election&      0.0220         &      0.0228         &      0.0135         \\
+                    &    (0.0244)         &    (0.0242)         &    (0.0239)         \\
+[1em]
+Cabinet position left * After the election&       0.109\sym{***}&       0.105\sym{***}&       0.109\sym{***}\\
+                    &    (0.0207)         &    (0.0198)         &    (0.0207)         \\
+[1em]
+Cabinet position right * Before the election&      0.0106         &      0.0146         &      0.0112         \\
+                    &    (0.0236)         &    (0.0216)         &    (0.0242)         \\
+[1em]
+Cabinet position right * After the election&     -0.0829\sym{**} &     -0.0778\sym{**} &     -0.0834\sym{**} \\
+                    &    (0.0248)         &    (0.0233)         &    (0.0239)         \\
+\hline
+Observations        &       25466         &       25466         &       25466         \\
+Adjusted \(R^{2}\)  &       0.470         &       0.162         &       0.477         \\
+Fixed Effects       &           O         &       D x O         &       O x T         \\
+Destination dummies &         Yes         &          No         &         Yes         \\
+Quarter-Year dummies&         Yes         &         Yes         &          No         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

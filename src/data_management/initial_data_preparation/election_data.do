@@ -5,25 +5,12 @@
 clear 
 set more off, permanently
 
-* Create quarterly election data from parlgov data 
-* on elections, party positions, parliament and cabinet
+* =============================================================================*
+* 1,  Convert and combine Parlgov data from excel sheets 
 
-
-* 1, perpare file with future electins dates in 2017/2018
-
-import excel ./src/original_data/destination_country/election_dates_17_18.xlsx, sheet("Tabelle1") firstrow clear
-destring, replace
-
-gen quarter = .
-replace quarter = 1 if month < 4
-replace quarter = 2 if month > 3 & month < 7
-replace quarter = 3 if month > 6 & month < 10
-replace quarter = 4 if month > 9
-
-save ./out/data/temp/election_dates_17-18.dta, replace
-
-* 2, prepare file with all election dates up to 2016 from parlgov and append 2017/2018 dates
-import excel ./src/original_data/destination_country/parlgov_upto_2016.xlsx, sheet("election") firstrow clear
+* a, Sheet elections *
+import 	excel ./src/original_data/destination_country/parlgov_upto_2016.xlsx, ///
+		sheet("election") firstrow clear
 
 rename election_date temp_election_date
 gen election_date=date(temp_election_date, "YMD")
@@ -40,29 +27,30 @@ drop if country_name == "Turkey" | country_name == "Australia" | ///
 		country_name == "Israel"  | country_name == "Japan" | ///
 		country_name == "New Zealand" | country_name == "Croatia"
 
-keep country_name election_date year quarter month election_type 
-	
 keep if election_type=="parliament"
+drop if seats == 0
 
 *Create dummy for election month**
 gen election=1
 
-collapse year quarter month election,  by (country_name election_date)
-
-* add electin dates in 2017 and 2018
-rename country_name destination
-append using ./out/data/temp/election_dates_17-18.dta
-
-merge 1:1 destination month quarter year using ///
-		./out/data/temp/destination_month_year_91_18.dta
-drop _merge
-
-save ./out/data/temp/parlgov_election_dates.dta, replace
+save ./out/data/temp/parlgov_election_sheet.dta, replace
 
 
-* 3, calculate cabinet left-right position from parlgov data
+* b, Sheet party *
+import 	excel ./src/original_data/destination_country/parlgov_upto_2016.xlsx, ///
+		sheet("party") firstrow clear
 
-import excel ./src/original_data/destination_country/parlgov_upto_2016.xlsx, sheet("cabinet") firstrow clear
+drop if country_name == "Turkey" | country_name == "Australia" | ///
+		country_name == "Canada" | country_name == "Iceland" | ///
+		country_name == "Israel"  | country_name == "Japan" | ///
+		country_name == "New Zealand" | country_name == "Croatia"
+
+save ./out/data/temp/parlgov_party_sheet.dta, replace
+
+
+* c, Sheet cabinet *
+import 	excel ./src/original_data/destination_country/parlgov_upto_2016.xlsx, ///
+		sheet("cabinet") firstrow clear
 
 keep if cabinet_party==1 
 
@@ -88,6 +76,111 @@ drop if year < 1991
 * otherwise not uniquely identified**
 duplicates list country_name year quarter month party_id cabinet_id
 drop if country_name=="Lithuania" & cabinet_id==267
+
+save ./out/data/temp/parlgov_cabinet_sheet.dta, replace
+
+
+* d, combine election data with party information 
+use ./out/data/temp/parlgov_election_sheet.dta, clear
+
+merge n:1 country_name party_id using ./out/data/temp/parlgov_party_sheet.dta
+keep if _merge == 3
+drop _merge
+
+save ./out/data/temp/parlgov_election_party.dta, replace
+
+
+* d, combine cabinet data with party information
+use ./out/data/temp/parlgov_cabinet_sheet.dta, clear
+
+merge n:1 country_name party_id using ./out/data/temp/parlgov_party_sheet.dta
+keep if _merge == 3
+drop _merge
+
+save ./out/data/temp/parlgov_cabinet_party.dta, replace
+
+* ============================================================================ *
+* 2, Create file with all election month
+
+* a, perpare file with future electins dates in 2017/2018
+import 	excel ./src/original_data/destination_country/election_dates_17_18.xlsx, ///
+		sheet("Tabelle1") firstrow clear
+destring, replace
+
+gen quarter = .
+replace quarter = 1 if month < 4
+replace quarter = 2 if month > 3 & month < 7
+replace quarter = 3 if month > 6 & month < 10
+replace quarter = 4 if month > 9
+
+save ./out/data/temp/election_dates_17-18.dta, replace
+
+
+* b, combine with parlgov election data 
+use ./out/data/temp/parlgov_election_sheet.dta, clear
+
+keep country_name election_date year quarter month election_type election
+
+*collapse to election level 
+collapse year quarter month election,  by (country_name election_date)
+
+* add election dates in 2017 and 2018
+rename country_name destination
+append using ./out/data/temp/election_dates_17-18.dta
+
+merge 1:1 destination month quarter year using ///
+		./out/data/temp/destination_month_year_91_18.dta
+drop _merge
+
+save ./out/data/temp/parlgov_election_dates.dta, replace
+
+
+* ============================================================================ *
+* 3, create a dummy for nationalist party in parliament
+use ./out/data/temp/parlgov_election_party.dta, clear
+
+* Create election IDs *
+egen I = group(country_name election_date) 
+
+* Calculate seat share of right wing parties in parliament
+bysort I: egen seats_right = sum(seats) if family_id == 40
+
+gen share_right = seats_right / seats_total
+replace share_right = 0 if share_right == .
+
+* create a dummy for right_wing party in parliament
+gen nationalist_d=1 if family_id==40 & seats>0
+bysort I: egen nationalist_pre=count(nationalist_d)
+gen parl_nationalist=0
+bysort I: replace parl_nationalist=1 if nationalist_pre>0
+
+* collapse data to election level**
+collapse (max) year quarter month share_right parl_nationalist  ///
+		, by (country_name election_date)
+
+rename country_name destination
+
+* merge with help file with all years and quarters
+merge 1:1 destination month quarter year using ///
+		./out/data/temp/destination_month_year_91_18.dta
+drop _merge
+
+merge 1:1 destination month quarter year using ./out/data/temp/parlgov_election_dates.dta
+drop _merge
+
+* fill up data to all month & years
+replace election=0 if election==.
+sort destination year quarter month
+by destination: replace share_right = share_right[_n-1] ///
+				if share_right == . 
+by destination: replace parl_nationalist = parl_nationalist[_n-1] ///
+				if parl_nationalist == . 
+
+save ./out/data/temp/parlgov_parliament.dta, replace
+				
+* ============================================================================ *
+* 4, calculate cabinet left-right position from parlgov data
+use ./out/data/temp/parlgov_cabinet_party.dta, clear
 
 * Calculate the weighted average of party characteristics for cabinets
 
@@ -121,6 +214,7 @@ merge 1:1 destination month quarter year using ///
 drop _merge
 
 merge 1:1 destination month quarter year using ./out/data/temp/parlgov_election_dates.dta
+drop _merge
 
 * fill up data to all month & years
 replace election=0 if election==.
@@ -135,21 +229,28 @@ by destination: gen past_cabinet_left_right=cabinet_left_right[_n-60]
 	
 tab year if past_cabinet_left_right==.
 
+* combine with parliament data
+merge 1:1 destination year quarter month ///
+		  using ./out/data/temp/parlgov_parliament.dta
 
-* 3, collapse data to quarterly election data
+		  
+* ============================================================================ *
+* 4, collapse data to quarterly election data
 
 sort destination year quarter month
 by destination year quarter: egen election_quarter=max(election)
 
-collapse (first) election_quarter past_cabinet_left_right cabinet_left_right, ///
-		 by (destination year quarter)
+collapse (first) election_quarter past_cabinet_left_right cabinet_left_right ///
+			share_right parl_nationalist, by (destination year quarter)
 
 rename election_quarter election
 
 label variable cabinet_left_right "Left-right position of the cabinet"
+label variable share_right "Share of right-wing parties in parliament"
+label variable parl_nationalist "Right-wing party in parliament"
 
-
-* 4, create before and after dummies and correct for early elections
+* ============================================================================= *
+* 5, create before and after dummies and correct for early elections
 
 ***Generate quarterly bef after dummies - 6 quarters before and 6 quarters after***
 local i = 1

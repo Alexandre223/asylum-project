@@ -41,6 +41,11 @@ do ./src/analysis/decision_analysis/dec_summary_statistics.do
 * Baseline specification *
 do ./src/analysis/decision_analysis/dec_baseline.do
 
+<<<<<<< HEAD
+=======
+* Baseline specification with log per capita *
+do ./src/analysis/decision_analysis/dec_baseline_log_pc.do
+>>>>>>> e19847cb508ef7e135a317be8286b16dc8767d7d
 
 * Robustness checks with baseline data *
 do ./src/analysis/decision_analysis/dec_robustness_with_baseline_data.do

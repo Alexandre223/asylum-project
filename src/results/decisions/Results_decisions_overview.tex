@@ -25,6 +25,7 @@
 	\author{Martina Burmann, Marcus Drometer and Romuald Méango}
 	\maketitle
 
+\clearpage 
 
 \tableofcontents
 
@@ -35,9 +36,618 @@
  
 \input{dec_elections_overview.tex}
  
+
+% ===============================================================================================================
+
+
+\clearpage
+\FloatBarrier
+\section{New results with log decisions per capita}
+
+\subsection{Log total positive decisions per capita}
+
+ \subsubsection{Baseline specification}
+ \begin{table}[!ht]\centering
+ 	\renewcommand{\arraystretch}{1.25}
+ 	\small
+ 	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+ 	\caption{Determinants of log(total positive decisions per capita)}
+ 	\begin{tabular}{l*{3}{c}}
+ 		\hline\hline
+ 		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_table1_baseline.tex}
+ 		\hline\hline
+ 		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+ 	\end{tabular}
+ \end{table}
+ 
+ \clearpage
+ \textbf{Baseline Specification - Model 1}
+ \begin{figure}[!ht]
+ 	\centering
+ 	\includegraphics[width=1\textwidth]{figures_edited/log_totalpositive_pc_graph1_baseline.pdf}
+ 	\caption{log(total positive decisions per capita): Predicted Pattern}
+ \end{figure}
+ 
+ \begin{table}[!ht]\centering
+ 	\renewcommand{\arraystretch}{1.25}
+ 	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+ 	\caption{log(total positive decisions per capita): Predicted Pattern}
+ 	\begin{tabular}[]{l*{2}{c}}
+ 		\hline\hline
+ 		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_graph1_baseline_coef.tex}
+ 		\hline\hline
+ 		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+ 		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+ 	\end{tabular}
+ \end{table}
+ 
+ \clearpage
+ \textbf{Baseline Specification - Model 2}
+ \begin{table}[!ht]\centering
+ 	\scriptsize
+ 	\renewcommand{\arraystretch}{1.05}
+ 	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+ 	\caption{Determinants of acceptance rate}
+ 	\begin{tabular}{l*{3}{c}}
+ 		\hline\hline
+ 		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_table2_baseline.tex}
+ 		\hline\hline
+ 		\multicolumn{4}{c}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+ 	\end{tabular}
+ \end{table}
+ 
+ 
+ \clearpage
+ \textbf{Baseline Specification - Model 2}
+ \begin{figure}[!ht]
+ 	\centering
+ 	\includegraphics[width=0.7\textwidth]{figures_edited/log_totalpositive_pc_graph2_baseline.pdf}
+ 	\caption{log(total positive decisions per capita): Predicted Pattern}
+ \end{figure}
+ 
+ \begin{table}[!ht]\centering
+ 	\footnotesize
+ 	\renewcommand{\arraystretch}{1.2}
+ 	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+ 	\caption{log(total positive decisions per capita): Predicted Pattern}
+ 	\begin{tabular}{l*{2}{c}}
+ 		\hline\hline
+ 		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_graph2_baseline_coef.tex}
+ 		\hline\hline
+ 		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+ 		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+ 	\end{tabular}
+ \end{table}
  
 % ===============================================================================================================
  
+ 
+ \subsubsection{Control for log total decisions per capita and log dyadic decisions per capita}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(total positive decisions per capita)}
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_table1_R01.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{R01: Control for log total decisions per capita and log dyadic decisions per capita - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_totalpositive_pc_graph1_R01.pdf}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_graph1_R01_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{R01: Control for log total decisions per capita and log dyadic decisions per capita - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_totalpositive_pc_graph2_R01.pdf}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_graph2_R01_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% =============================================================================================================== 
+ 
+
+
+\subsubsection{Do not include cabinet right dummy}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(total positive decisions per capita)}
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_table1_R02.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{R02: Do not include cabinet right dummy - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_totalpositive_pc_graph1_R02.pdf}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_graph1_R02_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{R02: Do not include cabinet right dummy - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_totalpositive_pc_graph2_R02.pdf}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(total positive decisions per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_totalpositive_pc_graph2_R02_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% ===============================================================================================================  
+
+
+\subsection{Log decisions for refugee status per capita}
+
+\subsubsection{Baseline specification}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(decisions for refugee status per capita) }
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_table1_baseline.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{Baseline Specification - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_refugeestatus_pc_graph1_baseline.pdf}
+	\caption{log(decisions for refugee status per capita) : Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_graph1_baseline_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{Baseline Specification - Model 2}
+\begin{table}[!ht]\centering
+	\scriptsize
+	\renewcommand{\arraystretch}{1.05}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of acceptance rate}
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_table2_baseline.tex}
+		\hline\hline
+		\multicolumn{4}{c}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{Baseline Specification - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_refugeestatus_pc_graph2_baseline.pdf}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_graph2_baseline_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% ===============================================================================================================
+
+
+\subsubsection{Control for log total decisions per capita and log dyadic decisions per capita}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(decisions for refugee status per capita) }
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_table1_R01.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{R01: Control for log total decisions per capita and log dyadic decisions per capita - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_refugeestatus_pc_graph1_R01.pdf}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_graph1_R01_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{R01: Control for log total decisions per capita and log dyadic decisions per capita - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_refugeestatus_pc_graph2_R01.pdf}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_graph2_R01_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% =============================================================================================================== 
+
+
+
+\subsubsection{Do not include cabinet right dummy}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(decisions for refugee status per capita) }
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_table1_R02.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{R02: Do not include cabinet right dummy - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_refugeestatus_pc_graph1_R02.pdf}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_graph1_R02_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{R02: Do not include cabinet right dummy - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_refugeestatus_pc_graph2_R02.pdf}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for refugee status per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_refugeestatus_pc_graph2_R02_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% ===============================================================================================================  
+
+% ===============================================================================================================  
+
+
+\subsection{Log decisions for temporary protection per capita}
+
+\subsubsection{Baseline specification}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(decisions for temporary protection per capita) }
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_table1_baseline.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{Baseline Specification - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_temporary_protection_pc_graph1_baseline.pdf}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_graph1_baseline_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{Baseline Specification - Model 2}
+\begin{table}[!ht]\centering
+	\scriptsize
+	\renewcommand{\arraystretch}{1.05}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of acceptance rate}
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_table2_baseline.tex}
+		\hline\hline
+		\multicolumn{4}{c}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{Baseline Specification - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_temporary_protection_pc_graph2_baseline.pdf}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_graph2_baseline_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% ===============================================================================================================
+
+
+\subsubsection{Control for log total decisions per capita and log dyadic decisions per capita}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(decisions for temporary protection per capita) }
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_table1_R01.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{R01: Control for log total decisions per capita and log dyadic decisions per capita - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_temporary_protection_pc_graph1_R01.pdf}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_graph1_R01_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{R01: Control for log total decisions per capita and log dyadic decisions per capita - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_temporary_protection_pc_graph2_R01.pdf}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_graph2_R01_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% =============================================================================================================== 
+
+
+
+\subsubsection{Do not include cabinet right dummy}
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\small
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{Determinants of log(decisions for temporary protection per capita) }
+	\begin{tabular}{l*{3}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_table1_R02.tex}
+		\hline\hline
+		\multicolumn{4}{l}{\footnotesize Standard errors in parentheses (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+\clearpage
+\textbf{R02: Do not include cabinet right dummy - Model 1}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures_edited/log_temporary_protection_pc_graph1_R02.pdf}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\renewcommand{\arraystretch}{1.25}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+	\begin{tabular}[]{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_graph1_R02_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+\textbf{R02: Do not include cabinet right dummy - Model 2}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures_edited/log_temporary_protection_pc_graph2_R02.pdf}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+\end{figure}
+
+\begin{table}[!ht]\centering
+	\footnotesize
+	\renewcommand{\arraystretch}{1.2}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\caption{log(decisions for temporary protection per capita): Predicted Pattern}
+	\begin{tabular}{l*{2}{c}}
+		\hline\hline
+		\input{../../../out/analysis/decisions/tables/log_temporary_protection_pc_graph2_R02_coef.tex}
+		\hline\hline
+		\multicolumn{3}{c}{\footnotesize Standard errors in parentheses} \\
+		\multicolumn{3}{c}{\footnotesize (\sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\))}\\
+	\end{tabular}
+\end{table}
+
+% ===============================================================================================================  
+
 
 \clearpage
 \FloatBarrier

@@ -39,8 +39,7 @@ waf3-*
 .*
 .*pdfsvn
 paper.pdf
-presentation.pdf
-*_overview.pdf
+presentation*.pdf
 __pycache__
 analysis_out
 out

@@ -166,7 +166,45 @@ append using ./out/data/temp/unemployment_Switzerland.dta
 
 save ./out/data/temp/destination_unemployment.dta, replace
 
+*************************************
+** Hatton asylum policy index data **
+*************************************
 
+foreach i in total processing welfare access {
+import excel .\src\original_data\destination_country\Hatton_policy_index.xlsx, sheet(`i') firstrow clear
+
+reshape long policy_index_`i', i(destination) j(time) string
+	split time, parse(_) destring ignore( `"_"')
+	rename time1 year
+	rename time2 quarter
+	drop time
+
+	drop if year < 2002
+
+save ./out/data/temp/policy_index_`i'.dta, replace
+}
+*
+
+use ./out/data/temp/policy_index_total.dta
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/policy_index_access.dta, nogen
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/policy_index_welfare.dta, nogen
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/policy_index_processing.dta, nogen	
+	
+label variable policy_index_total "Asylum policy index overall"
+label variable policy_index_access "Policy on access"
+label variable policy_index_welfare "Policy on welfare"
+label variable policy_index_processing "Policy on processing"
+
+	
+save ./out/data/temp/hatton_index.dta, replace
+
+	
 **********************************
 ** Combine all destination data **
 **********************************
@@ -182,7 +220,9 @@ merge 1:1 destination year quarter using ///
 merge m:1 destination year using ///
 	./out/data/temp/past_applications.dta, nogen
 	
-
+merge 1:1 destination year quarter using ///
+	./out/data/temp/hatton_index.dta, nogen
+	
 * Note: no asylum Data from Eurostat for Switzerland before 2008
 drop if destination == "Switzerland" & year < 2008
 

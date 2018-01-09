@@ -113,16 +113,15 @@ gen log_dest_decisions_pc_NI = log(yearly_dest_dec_pc_plus1NI)
 
 
 * 3, generate log variables
+gen temporary_protection = totalpositive - refugeestatus
 
-gen firsttimeapp_plus1 = firsttimeapp + 1
-gen log_firsttimeapp_pc = log(firsttimeapp_plus1 / pop_destination)
+foreach v in firsttimeapp applications firsttimeapp_NI totalpositive ///
+			 totaldecisions refugeestatus temporary_protection {
+	gen `v'_plus1 = `v' + 1
+	gen log_`v'_pc = log(`v'_plus1 / pop_destination)
+}
+*	
 gen log_firsttimeapp_pc_origin = log(firsttimeapp_plus1 / pop_origin)
-
-gen applications_plus1 = applications + 1
-gen log_applications_pc = log(applications_plus1 / pop_destination)
-
-gen firsttimeapp_NI_plus1 = firsttimeapp_NI + 1
-gen log_firsttimeapp_NI_pc = log(firsttimeapp_NI_plus1 / pop_destination)
 
 gen imm_stock_2000_plus1 = imm_stock_2000 + 1
 gen log_imm_stock_2000 = log(imm_stock_2000_plus1)
