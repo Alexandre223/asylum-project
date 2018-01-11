@@ -8,7 +8,7 @@ eststo clear
 xtset $xt_main 
 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables cabinet_right ///
+						$origin_variables $destination_variables ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						$fe_var, ///
 						fe vce(cluster $se_clus)
