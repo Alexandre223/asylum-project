@@ -2,11 +2,7 @@
 * Robustness checks with baseline_data *
 ****************************************
 
-* Specify data set to be used *
-use ./out/data/final_application/baseline_data.dta, clear
 
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
 
 
 ****************************************************
@@ -29,7 +25,11 @@ global path_graph2 "./out/analysis/applications/figures/app_graph2_R1.pdf"
 global path_coef_tab2 "./out/analysis/applications/tables/app_graph2_R1_coef.tex"
 global path_coef_tab2_paper "./out/analysis/applications/tables/app_graph2_R1_coef_paper.tex"
 
+* Specify data set to be used *
+use ./out/data/final_application/baseline_data.dta, clear
 
+* Drop country pairs with less than 2 applications per quarter on average *
+drop if mean_dyadic_FTapp_per_quarter < 2
 * Run do files to create tables and figures
 
 do ./src/analysis/modules/graph_1.do

@@ -139,6 +139,11 @@ gen firsttimeapp_pc =(firsttimeapp / pop_destination) * 100000
 gen firsttimeapp_pc_origin = (firsttimeapp / pop_origin) * 100000
 gen applications_pc = (applications / pop_destination) * 100000
 
+gen totaldecisions_pc = (totaldecisions / pop_destination) * 100000
+gen totalpositive_pc = (totalpositive / pop_destination) * 100000
+gen refugeestatus_pc = (refugeestatus / pop_destination) * 100000
+gen temporary_protection_pc = (temporary_protection / pop_destination) * 100000
+
 gen death_thousands_ucdp = battle_death_ucdp / 1000
 gen death_thousands_vdc = battle_death_vdc / 1000
 
@@ -167,6 +172,18 @@ label variable refugeestatus_rate_NI "Refugee status rate"
 
 label variable firsttimeapp "Quarterly fist-time asylum applications"
 label variable firsttimeapp_pc "Quarterly first-time asylum applications per 100,000 inhabitants"
+
+label variable totaldecisions "Quarterly fist-instance asylum decisions"
+label variable totaldecisions_pc "Quarterly fist-instance asylum decisions per 100,000 inhabitants"
+
+label variable totalpositive "Quarterly positive fist-instance asylum decisions"
+label variable totalpositive_pc "Quarterly positive fist-instance asylum decisions per 100,000 inhabitants"
+
+label variable refugeestatus "Quarterly fist-instance asylum decisions for refugee status"
+label variable refugeestatus_pc "Quarterly fist-instance asylum decisions for refugee status per 100,000 inhabitants"
+
+label variable temporary_protection "Quarterly fist-instance asylum decisions for temporary protection"
+label variable temporary_protection_pc "Quarterly fist-instance asylum decisions for temporary protection per 100,000 inhabitants"
 
 label variable pop_destination "Destination country population"
 

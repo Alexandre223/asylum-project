@@ -3,13 +3,11 @@
 ** for the respective number of quarters around the election **
 ***************************************************************
 
-*local q = 6
-
 * 1, generate one dummy before and one dummy after the election
 
 gen bef_dummy = 0
 local t = 1
-local l = $q - 1
+local l = $q 
 while `t' <= `l' {
 replace bef_dummy = 1 if bef`t' == 1
  local t = `t' + 1

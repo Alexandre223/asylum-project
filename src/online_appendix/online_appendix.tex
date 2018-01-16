@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[section]{placeins}
+\usepackage{multicol}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\geometry{a4paper, top=20mm, left=20mm, right=20mm, bottom=20mm, includefoot}
+\definecolor{maroon}{rgb}{0.62, 0.15, 0.20}
+\definecolor{timberwolf}{rgb}{0.86, 0.84, 0.82}
+\definecolor{navy}{rgb}{0.05, 0.27, 0.44}
+
+\renewcommand{\thesection}{\Alph{section}}
+
+\begin{document}
+	\title{The political economy of EU asylum policies}
+	\subtitle{ONLINE APPENDIX}
+	\author{Martina Burmann, Marcus Drometer and Romuald Méango}
+	\maketitle
+
+\tableofcontents
+
+\clearpage
+\FloatBarrier
+\section{Data Appendix}
+
+\clearpage
+\FloatBarrier
+\section{Descriptives}
+
+\clearpage
+\FloatBarrier
+\section{Robustness Checks for Application Analysis}
+Our main result, that the number of asylum applicants under left- and right-wing parties converges before elections and differs thereafter,  is robust to various different specifications.\footnote{For each robustness check we provide regression results for the model with the aggregated before and after election periods. Moreover we show graphs as well as tables with the corresponding coefficients of the interaction terms for the model with 6 quarters before and 6 quarters after the election. More detailed results are available from the authors upon request. The regression tables for robustness check 1 to robustness check 6 is provided in the paper.} In this online appendix present results for the following 20 robustness checks\footnote{Note that all robustness checks are based on the baseline fixed effects regression, which is presented in the paper. In this list of robustness checks we only explain the deviations from that baseline regression. If something is not explicitly mentioned, it can be assumed to be the same as in the baseline regression.}:
+\begin{itemize}
+	\item \textbf{Robustness Check 1}: In this robustness check we use separate fixed effects for destination and origin instead of a fixed effect for each destination-origin pair. This specification allows to include time-invariant bilateral variables in the regression, such as the distance between destination and origin country and the stock of migrants from a certain origin country in the destination country in 2001. In the regression both variables are included in logs. All other control variables are the same as in the baseline regression.  
+	
+	\item \textbf{Robustness Check 2}: In this robustness check we use destination fixed effects as well as origin*time fixed effects. All time-variant origin country control variables are captured by the origin*time fixed effects and therefore not included in this specification. Similar to robustness check 1, this specification also allows to include time-invariant bilateral variables.  
+	
+	\item \textbf{Robustness Check 3}: In this robustness check the log of the average total past asylum applications at destination per capita is included as an additional destination control variable. 
+	
+	\item \textbf{Robustness Check 4}: In order to allow for different effects of left-wing and right-wing cabinets outside the election period, this robustness check includes a dummy which is equal to 1 if the incumbent cabinet is classified as right-wing.   
+	
+	\item \textbf{Robustness Check 5}: In this robustness check we use the overall asylum policy index provided by Hatton (2017), which measures the strictness of asylum policies in destination countries as an additional control variable.
+	
+	\item \textbf{Robustness Check 6}: In comparison to robustness check 5, in this robustness check we include the separate asylum policy indices for the areas access, welfare and processing. 
+	
+	\item \textbf{Robustness Check 7}: In this specification we use the origin country population to calculate the number of first-time asylum applications per capita. The dependent variable is thus the log of the number of quarterly first-time asylum applications per capita in origin country.  
+	
+	\item \textbf{Robustness Check 8}: As explained in detail in section A (data appendix) in the main specification we use lags to calculate the origin country control variables political terror scale, freedom house index, quarterly civil war battle death and log origin GDP per capita. In this robustness check we refrain from doing that and just include the value of the origin country control variables in the respective quarter.
+	
+	\item \textbf{Robustness Check 9}: As explained in detail in section A (data appendix) we have two different data sources for the number of battle death in Syria. In this robustness check we use the measure which is based on the yearly data from the Upsalla Conflict Data Programm. (SOURCE) 
+	
+	\item \textbf{Robustness Check 10}: As there have been some changes in the data collection method of the asylum data by Eurostat in 2008, in this robustness check we include a dummy which is equal to 1 if the year is 2008 or later and zero otherwise as an additional control variable. 
+	
+	\item \textbf{Robustness Check 11}: In this robustness check we use a slightly different procedure to classify the position of the cabinet as left-wing or right-wing. Before creating the dummies we normalize the left-right position of the cabinet on the destination country level.
+	
+	\item \textbf{Robustness Check 12}: We don't have first-time asylum application data for France in 2008 and for Spain in 2008 and 2009. In this robustness check we do not impute the number of first-time asylum applications from the data on total asylum applications, but just leave them missing.   
+	
+	\item \textbf{Robustness Check 13}:
+	
+	\item \textbf{Robustness Check 14}:
+	
+	\item \textbf{Robustness Check 15}:
+	
+	\item \textbf{Robustness Check 16}:
+	
+	\item \textbf{Robustness Check 17}:
+	
+	\item \textbf{Robustness Check 18}:
+	
+	\item \textbf{Robustness Check 19}:
+	
+	\item \textbf{Robustness Check 20}:
+\end{itemize}
+
+
+\begin{figure}[!ht]
+	\caption{First-time asylum applications per capita: predicted pattern 6 quarters before and after an election - R1 to R6}
+	\includegraphics[width=1\textwidth]{../results/final/appendix/app_R1-R6_graph2.pdf}
+	\footnotesize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression
+		with a set of dummies for different quarters before and after an election in a quarter t = 0. Significant
+		coefficients are indicated by filled plot markers. The dashed lines in subfigure R4 show the average inflow of asylum seekers under right and left cabinets in periods outside the election period, with those under left cabinets normalized to zero. Significance of the coefficients is reported for the distance to this average non-election period effects.}
+\end{figure}
+
+\input{../results/final/appendix/app_graph2_R1-R3_coef.tex}
+
+\clearpage
+\FloatBarrier
+\section{Robustness Checks for Decision Analysis}
+
+\end{document}
