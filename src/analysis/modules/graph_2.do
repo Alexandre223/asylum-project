@@ -46,20 +46,12 @@ nlcom 	(bef6: _b[bef6_right] ) ///
 		,post
 est sto right
 
-esttab left right using $path_coef_tab2, ///
-replace se label mtitle nodepvars nogaps fragment /// 
-keep($time_m2) title($coef_tab_title)
-
-esttab left right using $path_coef_tab2_paper, ///
-replace se label mtitle nodepvars  /// 
-keep($time_m2) title($coef_tab_title)
-
 coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lcolor(maroon)) ///
 			(right, keep($time_m2) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))                    ///
 			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
 			yline(0, lcolor(black)) ///
 			graphregion(color(white)) ///
-			legend (rows(1)) ///
+			legend (rows(1) size(small)) ///
 			xscale(range(1 (1) 13)) ///
 			xlabel(1 "-6" 2 "-5" 3 "-4" 4 "-3"  5 "-2" 6 "-1" 7 "0" ///
 				   8 "1" 9 "2" 10 "3" 11 "4" 12 "5" 13 "6") ///
@@ -67,6 +59,6 @@ coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			ylabel $y_scale ///
 			ytitle(estimated coefficient) ///
 			xtitle (quarters around the election) ///
-			title($graph_title)
+			title($graph_title2)
 			
-graph export $path_graph2, replace
+graph save $path_graph2_temp, replace
