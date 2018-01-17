@@ -38,9 +38,7 @@ waf3-*
 *synctex.gz
 .*
 .*pdfsvn
-paper.pdf
-presentation*.pdf
-*overview.pdf
+*.pdf
 __pycache__
 analysis_out
 out
@@ -61,4 +59,4 @@ old_code
 Thumbs.db
 ___*
 !.gitignore
-!.mywaflib
+!src/results
