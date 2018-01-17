@@ -59,4 +59,5 @@ old_code
 Thumbs.db
 ___*
 !.gitignore
-!src/results/*
+!app_*.pdf
+!dec_*.pdf
