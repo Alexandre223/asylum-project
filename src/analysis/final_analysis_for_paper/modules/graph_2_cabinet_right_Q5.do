@@ -53,7 +53,7 @@ coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			legend (rows(1) size(small)) ///
 			xscale(range(1 (1) 11)) ///
 			xlabel(1 "-5" 2 "-4" 3 "-3" 4 "-2"  5 "-1" 6 "0" ///
-				   7 "1" 8 "2" 9 "3" 10 "4" 11 "5")
+				   7 "1" 8 "2" 9 "3" 10 "4" 11 "5") ///
 			yscale(range$y_scale) ///
 			ylabel $y_scale ///
 			ytitle(estimated coefficient) ///
