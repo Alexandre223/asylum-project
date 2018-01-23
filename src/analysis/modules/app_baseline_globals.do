@@ -9,7 +9,7 @@ global origin_variables ///
 		PTS_average CL_average PR_average ///
 		death_thousands_vdc_average log_rGDPpc_orig_average 
 	
-global destination_variables log_rGDPpc_dest unemployment cabinet_right
+global destination_variables log_rGDPpc_dest unemployment
  
 global bilateral_variables log_imm_stock_2000 log_kmdist
 

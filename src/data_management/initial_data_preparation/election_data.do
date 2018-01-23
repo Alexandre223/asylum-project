@@ -246,8 +246,8 @@ collapse (first) election_quarter past_cabinet_left_right cabinet_left_right ///
 rename election_quarter election
 
 label variable cabinet_left_right "Left-right position of the cabinet"
-label variable share_right "Share of right-wing parties in parliament"
-label variable parl_nationalist "Right-wing party in parliament"
+label variable share_right "Share of nationalist parties in parliament"
+label variable parl_nationalist "Nationalist party in parliament"
 
 * ============================================================================= *
 * 5, create before and after dummies and correct for early elections

@@ -16,19 +16,39 @@ set more off, permanently
 * Application data up to 2007 *
 * =========================== *
 
+* First time asylum applications monthly 2000 - 2007
+	import delimited ./src/original_data/asylum_data/first-time-applications-00-07-m.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value firsttimeapp
+	save ./out/data/temp/first-time-applications-00-07-m.dta, replace
+
+* First time asylum applications total monthly 2000 - 2007
+	import delimited ./src/original_data/asylum_data/first-time-applications-total-00-07-m.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value firsttimeapp_total
+	drop origin
+	save ./out/data/temp/first-time-applications-total-00-07-m.dta, replace	
+	
 * First time asylum applications monthly 2002 - 2007
 	import delimited ./src/original_data/asylum_data/first-time-applications-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value firsttimeapp
 	save ./out/data/temp/first-time-applications-02-07-m.dta, replace
 
-* Total asylum applications yearly 1995 - 2007
+* Total asylum applications yearly 1995 - 2007 by origin country
 	import delimited ./src/original_data/asylum_data/applications-95-07-y.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_yearly.do
 	rename value applications
 	save ./out/data/temp/applications-95-07-y.dta, replace
-
-
+	
+* Total asylum applications yearly 1995 - 2007 - total per destination country
+	import delimited ./src/original_data/asylum_data/applications-total-95-07-y.csv, varnames(1) clear
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_yearly.do
+	rename value applications_total
+	drop origin
+	save ./out/data/temp/applications-total-95-07-y.dta, replace
+	
+	
 * ============================ *
 * Application data 2008 - 2016 *
 * ============================ *
@@ -39,24 +59,53 @@ set more off, permanently
 	rename value firsttimeapp
 	save ./out/data/temp/first-time-applications-08-16-m.dta, replace
 
+* First time asylum applications total monthly 2008 - 2016
+	import delimited ./src/original_data/asylum_data/first-time-applications-total-08-16-m.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value firsttimeapp_total
+	drop origin
+	save ./out/data/temp/first-time-applications-total-08-16-m.dta, replace	
+
 * First-time asylum applications yearly 2008 - 2016
 	import delimited ./src/original_data/asylum_data/first-time-applications-08-16-y.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_yearly.do
 	rename value firsttimeapp
 	save ./out/data/temp/first-time-applications-08-16-y.dta, replace
 
-* Total asylum applications monthly 2008 - 2016
+* First-time asylum applications yearly 2008 - 2016 total per destination country
+	import delimited ./src/original_data/asylum_data/first-time-applications-total-08-16-y.csv, varnames(1) clear
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_yearly.do
+	rename value firsttimeapp_total
+	drop origin
+	save ./out/data/temp/first-time-applications-total-08-16-y.dta, replace
+
+* Total asylum applications monthly 2008 - 2016 by origin country
 	import delimited ./src/original_data/asylum_data/applications-08-16-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value applications
 	save ./out/data/temp/applications-08-16-m.dta, replace
 
-* Total asylum applications yearly 2008 - 2016
+* Total asylum applications monthly 2008 - 2016 total per destination country
+	import delimited ./src/original_data/asylum_data/applications-total-08-16-m.csv, varnames(1)  clear
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value applications_total
+	drop origin
+	save ./out/data/temp/applications-total-08-16-m.dta, replace	
+	
+* Total asylum applications yearly 2008 - 2016 by origin country
 	import delimited ./src/original_data/asylum_data/applications-08-16-y.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_yearly.do
 	rename value applications
 	save ./out/data/temp/applications-08-16-y.dta, replace	
-		
+
+* Total asylum applications yearly 2008 - 2016 total per destination country
+	import delimited ./src/original_data/asylum_data/applications-total-08-16-y.csv, varnames(1) clear
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_yearly.do
+	rename value applications_total
+	drop origin
+	save ./out/data/temp/applications-total-08-16-y.dta, replace
+	
+	
 * ========================= *	
 * Decision data 2002 - 2007 *
 * ========================= *
@@ -164,6 +213,16 @@ merge 1:1 origin destination year month using ///
 
 append using ./out/data/temp/first-time-applications-02-07-m.dta
 
+* rename certain countries to match with list of source and destination countries later on   
+replace origin = "Former Serbia Montenegro" if origin == "Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
+replace origin = "Kosovo" if origin == "Kosovo (under United Nations Security Council Resolution 1244/99)"
+replace origin = "Macedonia" if origin == "Former Yugoslav Republic of Macedonia, the"
+replace origin = "China" if origin == "China (including Hong Kong)"
+replace origin = "Gambia" if origin == "Gambia, The"
+
+replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
+
+
 * 2. Collapse the data
 
   * a, Make sure that if one months is missing in first time applications 
@@ -217,16 +276,6 @@ replace firsttimeapp = 0 if firsttimeapp == . & applications == 0
 replace firsttimeapp = applications if firsttimeapp == . & applications != .
 
 replace firsttimeapp = round(firsttimeapp)		
-
-* rename certain countries to match with list of source and destination countries later on   
-replace origin = "Former Serbia Montenegro" if origin == "Former Serbia and Montenegro (before 2006) / Total components of the former Serbia and Montenegro"
-replace origin = "Kosovo" if origin == "Kosovo (under United Nations Security Council Resolution 1244/99)"
-replace origin = "Macedonia" if origin == "Former Yugoslav Republic of Macedonia, the"
-replace origin = "China" if origin == "China (including Hong Kong)"
-replace origin = "Gambia" if origin == "Gambia, The"
-
-replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
-
 
 save ./out/data/temp/application-data-02-16-q.dta, replace
 
@@ -383,5 +432,8 @@ foreach v in Bulgaria Romania Slovakia {
 drop if origin == "Kosovo" & year <= 2008
 drop if origin == "Former Serbia Montenegro" & year >= 2007
 drop if origin == "Serbia" & year <= 2006
+
+* add data from
+
 
 save ./out/data/temp/combined-asylum-data-02-16-q.dta, replace

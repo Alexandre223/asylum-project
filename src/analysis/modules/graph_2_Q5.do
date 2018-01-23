@@ -47,7 +47,7 @@ coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
 			yline(0, lcolor(black)) ///
 			graphregion(color(white)) ///
-			legend (rows(1) size(small)) ///
+			legend (rows(1) size(vsmall)) ///
 			xscale(range(1 (1) 11)) ///
 			xlabel(1 "-5" 2 "-4" 3 "-3" 4 "-2"  5 "-1" 6 "0" ///
 				   7 "1" 8 "2" 9 "3" 10 "4" 11 "5") ///
@@ -55,6 +55,6 @@ coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			ylabel $y_scale ///
 			ytitle(estimated coefficient) ///
 			xtitle (quarters around the election) ///
-			title($graph_title)
+			title($graph_title2)
 			
 graph save $path_graph2_temp, replace

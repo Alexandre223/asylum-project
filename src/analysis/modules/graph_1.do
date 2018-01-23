@@ -31,7 +31,7 @@ coefplot 	(left, keep($time_m1) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
 			yline(0, lcolor(black)) ///
 			graphregion(color(white)) ///
-			legend (rows(1) size(small)) ///
+			legend (rows(1) size(vsmall)) ///
 			xscale(range(1 (1) 2)) ///
 			xlabel(1 "before the election"  2 "after the election") ///
 			yscale(range$y_scale) ///

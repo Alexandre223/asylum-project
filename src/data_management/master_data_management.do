@@ -5,7 +5,6 @@
 clear 
 set more off, permanently
 cd F:/research/asylum-project
-*cd G:/PROJ/asylum-project
 
 *****************************************************
 ** Prepare and combine data from different sources **
@@ -32,11 +31,11 @@ do ./src/data_management/initial_data_preparation/origin_data.do
 * Prepare election data *
 do ./src/data_management/initial_data_preparation/election_data.do
 
-* Prepare data on past asylum applications per capita *
-do ./src/data_management/initial_data_preparation/past_asylum_applications.do
-
 * Combine all destination data *
 do ./src/data_management/initial_data_preparation/destination_data.do
+
+* Prepare data on past asylum applications per capita *
+do ./src/data_management/initial_data_preparation/past_asylum_applications_new.do
 
 * Combine origin, destination, bilateral and election data *
 do ./src/data_management/initial_data_preparation/combine_all_data.do

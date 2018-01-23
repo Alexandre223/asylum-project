@@ -48,9 +48,9 @@ coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lc
 			(right, keep($time_m2) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))                    ///
 			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
 			yline(0, lpattern(dash) lcolor(maroon) lwidth(vthin)) ///
-			yline(`r', lpattern(dash) lcolor(navy) lwidth(vthin)) ///
+			yline(`r', lcolor(black) lwidth(vthin)) ///
 			graphregion(color(white)) ///
-			legend (rows(1) size(small)) ///
+			legend (rows(1) size(vsmall)) ///
 			xscale(range(1 (1) 11)) ///
 			xlabel(1 "-5" 2 "-4" 3 "-3" 4 "-2"  5 "-1" 6 "0" ///
 				   7 "1" 8 "2" 9 "3" 10 "4" 11 "5") ///

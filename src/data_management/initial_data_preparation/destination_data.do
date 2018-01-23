@@ -22,6 +22,8 @@ destring pop_destination, ignore(",") replace
 
 replace destination="Germany" if destination=="Germany (until 1990 former territory of the FRG)"
 
+save ./out/data/temp/destination_population_all.dta, replace
+
 drop if year < 2002
 
 save ./out/data/temp/destination_population.dta, replace
@@ -217,9 +219,6 @@ merge 1:1 destination year quarter using ///
 merge 1:1 destination year quarter using ///
 	./out/data/temp/election_data_quarterly.dta, nogen
 
-merge m:1 destination year using ///
-	./out/data/temp/past_applications.dta, nogen
-	
 merge 1:1 destination year quarter using ///
 	./out/data/temp/hatton_index.dta, nogen
 	

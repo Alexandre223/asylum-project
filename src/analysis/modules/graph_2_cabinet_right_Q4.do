@@ -43,10 +43,10 @@ est sto right
 coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lcolor(maroon)) ///
 			(right, keep($time_m2) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))                    ///
 			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
-			yline(0, lpattern(dash) lcolor(maroon) lwidth(vthin)) ///
+			yline(0, lcolor(black) lwidth(vthin)) ///
 			yline(`r', lpattern(dash) lcolor(navy) lwidth(vthin)) ///
 			graphregion(color(white)) ///
-			legend (rows(1) size(small)) ///
+			legend (rows(1) size(vsmall)) ///
 			xscale(range(1 (1) 9)) ///
 			xlabel(1 "-4" 2 "-3" 3 "-2" 4 "-1"  5 "0" 6 "1" 7 "2" 8 "3" 9 "4") ///
 			yscale(range$y_scale) ///
