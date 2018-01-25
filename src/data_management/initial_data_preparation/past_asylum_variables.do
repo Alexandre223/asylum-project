@@ -1,9 +1,9 @@
 
-*********************************************
-*** ===================================== ***
-*** TOTAL LAG LOG APPLICATIONS PER CAPITA ***
-*** ===================================== ***
-*********************************************
+******************************
+*** ====================== ***
+*** TOTAL LAG APPLICATIONS ***
+*** ====================== ***
+******************************
 
 clear 
 set more off, permanently
@@ -28,12 +28,8 @@ replace destination="Germany" if destination=="Germany (until 1990 former territ
 save ./out/data/temp/applications-total-95-16-y.dta, replace
 
 
-* 3, add population size
+* 3, calculate average past applications 1 to 5 years 
 
-merge 1:1 destination year using ./out/data/temp/destination_population_all.dta, nogen
-
-* 4, calculate average past applications per capita 
-*   (previous year & average of past 2 years)
 
 * PROBLEM Norway 2007 missing -> Proxy 2007 as average of 2006 and 2008
 sort destination year
@@ -48,37 +44,19 @@ generate av_app3 = (L1.applications_total + L2.applications_total + L3.applicati
 generate av_app4 = (L1.applications_total + L2.applications_total + L3.applications_total + L4.applications_total)/4
 generate av_app5 = (L1.applications_total + L2.applications_total + L3.applications_total + L4.applications_total + L5.applications_total)/5
 
-
 drop if year<2002
-
-local t=1
-while `t'<=5 {
-gen log_av_app_pc`t'=log((av_app`t' + 1)/pop_destination)
- local t=`t'+1
- }
-*
-
-keep destination year log_av_app_pc1 log_av_app_pc2 log_av_app_pc3 ///
-		log_av_app_pc4 log_av_app_pc5
-
-label variable log_av_app_pc1 "Log total asylum applications per capita in previous year"
-
-local t=2
-while `t'<=5 {
-label variable log_av_app_pc`t' "Log total average asylum applications per capita in previous `t' years"
- local t=`t'+1
- }
-*
+drop firsttimeapp_total id
+drop if destination == "Switzerland" & year <=2007
 
 save ./out/data/temp/lag_total_applications.dta, replace
 
 
 
-********************************************************
-*** ================================================ ***
-*** TOTAL LAG LOG FIRST-TIME APPLICATIONS PER CAPITA ***
-*** ================================================ ***
-********************************************************
+*****************************************
+*** ================================= ***
+*** TOTAL LAG FIRST-TIME APPLICATIONS ***
+*** ================================= ***
+*****************************************
 
 * 1. Combine all data
 use ./out/data/temp/applications-total-08-16-m.dta, clear
@@ -143,15 +121,12 @@ replace firsttimeapp_total = applications_total if firsttimeapp_total == . & app
 replace firsttimeapp_total = round(firsttimeapp_total)		
 
 replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
+drop if destination == "Croatia"
 
 keep destination year quarter firsttimeapp_total
 
-* 4, add population size
 
-merge m:1 destination year using ./out/data/temp/destination_population_all.dta
-keep if _merge == 3
-
-* 5, calculate 6 quarter lags average first-time applications
+* 4, calculate lags, past 6 quarter averages and sum of past 2 quarters
 sort destination year quarter
 
 * generate lags of total first-time applications
@@ -169,29 +144,21 @@ egen firsttimeapp_total_mean6 = rowmean (lag1_firsttimeapp_total ///
 										 lag4_firsttimeapp_total ///
 										 lag5_firsttimeapp_total ///
 										 lag6_firsttimeapp_total)
-							
-**gen log per capita*
-gen log_lag1_firsttimeapp_total_pc = log((lag1_firsttimeapp_total + 1) / pop_destination[_n-1])
-gen log_firsttimeapp_total_pc_mean6 = log((firsttimeapp_total_mean6 + 1) / pop_destination)
-
-label variable log_lag1_firsttimeapp_total_pc ///
-			"quarterly total first-time applications per capita in previous quarter"
-label variable log_firsttimeapp_total_pc_mean6 ///
-			"log average total first-time applications in the previous 6 quarters"
-
+										 
+* calculate sum of past 2 quarters of first-time applications
+gen firsttimeapp_total_sum2 = lag1_firsttimeapp_total +  lag2_firsttimeapp_total
+						
 drop if year < 2002
-
-keep destination year quarter  log_firsttimeapp_total_pc_mean6
 
 save ./out/data/temp/lag_total_first-time-applications.dta, replace
 
 
 
-*********************************************************
-*** ================================================= ***
-*** DYADIC LAG LOG FIRST-TIME APPLICATIONS PER CAPITA ***
-*** ================================================= ***
-*********************************************************
+******************************************
+*** ================================== ***
+*** DYADIC LAG FIRST-TIME APPLICATIONS ***
+*** ================================== ***
+******************************************
 
 
 * 1. Combine all data
@@ -289,12 +256,8 @@ replace firsttimeapp = round(firsttimeapp)
 
 keep destination origin year quarter firsttimeapp
 
-* 4, add population size
 
-merge m:1 destination year using ./out/data/temp/destination_population_all.dta
-keep if _merge == 3
-
-* 5, calculate 6 quarter lags average first-time applications
+* 4, calculate lags, past 6 quarter averages and sum of past 2 quarters
 sort destination origin year quarter
 
 * generate lags of total first-time applications
@@ -312,19 +275,86 @@ egen firsttimeapp_dyadic_mean6 = rowmean (lag1_firsttimeapp ///
 											 lag4_firsttimeapp ///
 											 lag5_firsttimeapp ///
 											 lag6_firsttimeapp)
-							
-**gen log per capita*
-gen log_lag1_firsttimeapp_pc = log((lag1_firsttimeapp + 1)/pop_destination)
-gen log_firsttimeapp_dyadic_pc_mean6 = log((firsttimeapp_dyadic_mean6 + 1)/pop_destination)
-
-label variable log_lag1_firsttimeapp_pc ///
-			"quarterly dyadic first-time applications per capita in previous quarter"
-label variable log_firsttimeapp_dyadic_pc_mean6 ///
-			   "log average dyadic first-time applications in the previous 6 quarters"
-
+											 
+* calculate rowmean of past 6 quarters of first-time applications
+gen firsttimeapp_dyadic_sum2 = lag1_firsttimeapp + lag2_firsttimeapp
+																					 				   
 drop if year < 2002
-
-keep destination origin year quarter lag1_firsttimeapp log_firsttimeapp_dyadic_pc_mean6
 
 save ./out/data/temp/lag_dyadic_first-time-applications.dta, replace
 
+
+
+**********************************
+*** ========================== ***
+*** TOTAL LAG ASYLUM DECISIONS ***
+*** ========================== ***
+**********************************
+
+* 1, Combine data
+
+* Combine data on all positive and all rejected 2002 - 2007
+
+use ./out/data/temp/all-positive-02-07-m.dta, clear
+
+merge 1:1 destination year month using ///
+	./out/data/temp/all-rejected-02-07-m.dta, nogen
+
+	
+* collapse data to quarterly data
+
+  *  Make sure that if one months is missing in any variable
+  *  the entire quarter is coded as missing 
+
+  	foreach var of varlist allpositive allrejected {
+		* identify non-missing quarters
+		sort destination year quarter month
+		by destination year quarter: egen non_missing_`var' = count(`var')
+		
+		* create a variable that contains only non-missing quarters
+		gen `var'_nmq = .
+		replace `var'_nmq = `var' if non_missing_`var' == 3
+		
+		* calculate total within one quarter, use mean *3 
+		* in order to avoid having zeros in those quarters with missing data
+		by destination year quarter: egen `var'_q = mean(`var'_nmq)
+		replace `var' = `var'_q*3
+}
+*
+
+  * collapse to quarterly data
+	collapse (mean) allpositive allrejected, by (destination year quarter)
+
+save ./out/data/temp/all-decisions-02-07-q.dta, replace
+
+
+* Combine data on all positive and all rejected 2008 - 2016
+
+use ./out/data/temp/all-positive-08-16-q.dta, clear
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/all-rejected-08-16-q.dta, nogen
+
+append using ./out/data/temp/all-decisions-02-07-q.dta
+
+replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
+
+* Calculate all decisions, lags and past year averages
+
+gen all_decisions_dest = allpositive + allrejected
+label variable all_decisions_dest "all decisions at destination level"
+
+sort destination year quarter
+
+by destination: gen lag1_all_decisions_dest = all_decisions_dest[_n-1]
+by destination: gen lag2_all_decisions_dest = all_decisions_dest[_n-2]
+by destination: gen lag3_all_decisions_dest = all_decisions_dest[_n-3]
+
+* generate sum of decisions in the past year (includuing current quarter)
+egen yearly_all_decisions_dest = ///
+		rowmean(all_decisions_dest lag1_all_decisions_dest  ///
+				lag2_all_decisions_dest lag3_all_decisions_dest)
+				
+save ./out/data/temp/lag_total_decisions.dta, replace
+				
+				

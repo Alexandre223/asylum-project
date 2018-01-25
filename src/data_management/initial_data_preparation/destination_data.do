@@ -26,6 +26,8 @@ save ./out/data/temp/destination_population_all.dta, replace
 
 drop if year < 2002
 
+label variable pop_destination "Destination country population"
+
 save ./out/data/temp/destination_population.dta, replace
 
 
@@ -62,9 +64,12 @@ merge m:1 destination year using ./out/data/temp/destination_population.dta, nog
 **Generate real GDP per capita**
 gen rGDPpc=(rGDP*1000000)/pop_destination
 
-label variable rGDPpc "real GDP per capita in destination country"
-
 drop if year < 2002
+
+gen log_rGDPpc_dest = log(rGDPpc)
+
+label variable log_rGDPpc_dest "Log destination country quarterly real GDP per capita"
+label variable rGDPpc "Quarterly real GDP per capita at destination"
 
 save ./out/data/temp/destination_gdp.dta, replace
 
@@ -165,6 +170,7 @@ append using ./out/data/temp/unemployment_germany_france.dta
 
 append using ./out/data/temp/unemployment_Switzerland.dta
 
+label variable unemployment "Quarterly unemployment rate at destination"
 
 save ./out/data/temp/destination_unemployment.dta, replace
 

@@ -35,7 +35,7 @@ do ./src/data_management/initial_data_preparation/election_data.do
 do ./src/data_management/initial_data_preparation/destination_data.do
 
 * Prepare data on past asylum applications per capita *
-do ./src/data_management/initial_data_preparation/past_asylum_applications_new.do
+do ./src/data_management/initial_data_preparation/past_asylum_variables.do
 
 * Combine origin, destination, bilateral and election data *
 do ./src/data_management/initial_data_preparation/combine_all_data.do

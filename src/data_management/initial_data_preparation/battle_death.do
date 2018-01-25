@@ -159,4 +159,5 @@ drop _merge
 replace battle_death_ucdp=0 if battle_death_ucdp==.
 replace battle_death_vdc=0 if battle_death_vdc==.
 
+
 save ./out/data/temp/battle_death_quarterly_01_16.dta, replace

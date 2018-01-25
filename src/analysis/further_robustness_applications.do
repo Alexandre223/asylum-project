@@ -39,7 +39,7 @@ estadd local TI "Yes"
 * (1) Control for past asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_av_app_pc1 ///
+						$origin_variables $destination_variables log_av_app1_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -50,7 +50,7 @@ estadd local TI "Yes"
 * (2) Control for past asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_av_app_pc2 ///
+						$origin_variables $destination_variables log_av_app2_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -61,7 +61,7 @@ estadd local TI "Yes"
 * (3) Control for past asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_av_app_pc3 ///
+						$origin_variables $destination_variables log_av_app3_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -72,7 +72,7 @@ estadd local TI "Yes"
 * (4) Control for past asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_av_app_pc4 ///
+						$origin_variables $destination_variables log_av_app4_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -83,7 +83,7 @@ estadd local TI "Yes"
 * (5) Control for past asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_av_app_pc5 ///
+						$origin_variables $destination_variables log_av_app5_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -95,11 +95,11 @@ estadd local TI "Yes"
 esttab using "./out/analysis/applications/additional_robustness/app_table1_past_applications.tex", ///
 replace scalars("FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
 se ar2 label number nomtitle nodepvars  ///
-keep($origin_variables $destination_variables log_av_app_pc1 ///
-	  log_av_app_pc2 log_av_app_pc3 log_av_app_pc4 log_av_app_pc5 $interactions_left_m1 ///
+keep($origin_variables $destination_variables log_av_app1_pc ///
+	  log_av_app2_pc log_av_app3_pc log_av_app4_pc log_av_app5_pc $interactions_left_m1 ///
 	  $interactions_right_m1) ///
-order($origin_variables $destination_variables log_av_app_pc1 ///
-	  log_av_app_pc2 log_av_app_pc3 log_av_app_pc4 log_av_app_pc5 $interactions_left_m1 ///
+order($origin_variables $destination_variables log_av_app1_pc ///
+	  log_av_app2_pc log_av_app3_pc log_av_app4_pc log_av_app5_pc $interactions_left_m1 ///
 	  $interactions_right_m1) ///
 title(Determinants of first-time asylum applications per capita)
 
@@ -136,7 +136,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment  log_av_app_pc1
+global destination_variables log_rGDPpc_dest unemployment  log_av_app1_pc
 global graph_title1 "(lag 1)"
 global graph_title2 ""
 
@@ -155,7 +155,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment  log_av_app_pc2
+global destination_variables log_rGDPpc_dest unemployment  log_av_app2_pc
 global graph_title1 "(lag 2)"
 global graph_title2 ""
 
@@ -174,7 +174,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment  log_av_app_pc3
+global destination_variables log_rGDPpc_dest unemployment  log_av_app3_pc
 global graph_title1 "(lag 3)"
 global graph_title2 ""
 
@@ -193,7 +193,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment  log_av_app_pc4
+global destination_variables log_rGDPpc_dest unemployment  log_av_app4_pc
 global graph_title1 "(lag 4)"
 global graph_title2 ""
 
@@ -212,7 +212,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment  log_av_app_pc5
+global destination_variables log_rGDPpc_dest unemployment  log_av_app5_pc
 global graph_title1 "(lag 5)"
 global graph_title2 ""
 
@@ -263,7 +263,7 @@ drop if mean_dyadic_FTapp_per_quarter < 2
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_av_app_pc1
+global destination_variables log_rGDPpc_dest unemployment log_av_app1_pc
 global left left_lag1
 global right right_lag1
 
@@ -276,7 +276,7 @@ do ./src/analysis/modules/graph_2_coef.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_av_app_pc2
+global destination_variables log_rGDPpc_dest unemployment log_av_app2_pc
 global left left_lag2
 global right right_lag2
 
@@ -289,7 +289,7 @@ do ./src/analysis/modules/graph_2_coef.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_av_app_pc3
+global destination_variables log_rGDPpc_dest unemployment log_av_app3_pc
 global left left_lag3
 global right right_lag3
 
@@ -302,14 +302,14 @@ do ./src/analysis/modules/graph_2_coef.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_av_app_pc4
+global destination_variables log_rGDPpc_dest unemployment log_av_app4_pc
 global left left_lag4
 global right right_lag4
 
 do ./src/analysis/modules/graph_2_coef.do
 
 esttab left_lag1 right_lag1 left_lag2 right_lag2 left_lag3 right_lag3 left_lag4 right_lag4 ///
-using ./out/analysis/applications/app_graph2_past_applications_coef.tex, ///
+using ./out/analysis/applications/additional_robustness/app_graph2_past_applications_coef.tex, ///
 replace se label mtitle nodepvars  /// 
 keep($time_m2) title("Coefficients quarterly model - total applications lag1 - lag4")
 
@@ -350,7 +350,7 @@ estadd local TI "Yes"
 * (1) Control for past 6 quarters total first-time asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_firsttimeapp_total_pc_mean6 ///
+						$origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -361,7 +361,7 @@ estadd local TI "Yes"
 * (2) Control for past 6 quarters dyadic first-time asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_firsttimeapp_dyadic_pc_mean6 ///
+						$origin_variables $destination_variables log_firsttimeapp_dyadic_mean6_pc ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
@@ -372,8 +372,8 @@ estadd local TI "Yes"
 * (3) Control for past 6 quarters total and dyadic first-time asylum applications
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_firsttimeapp_total_pc_mean6 ///
-						log_firsttimeapp_dyadic_pc_mean6 $interactions_left_m1 $interactions_right_m1 ///
+						$origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
+						log_firsttimeapp_dyadic_mean6_pc $interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
 estadd local FE "D x O"
@@ -384,11 +384,11 @@ estadd local TI "Yes"
 esttab using "./out/analysis/applications/additional_robustness/app_table1_past_ft-applications.tex", ///
 replace scalars("FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
 se ar2 label number nomtitle nodepvars  ///
-keep($origin_variables $destination_variables log_firsttimeapp_total_pc_mean6 ///
-		log_firsttimeapp_dyadic_pc_mean6 $interactions_left_m1 ///
+keep($origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
+		log_firsttimeapp_dyadic_mean6_pc $interactions_left_m1 ///
 	  $interactions_right_m1) ///
-order($origin_variables $destination_variables  log_firsttimeapp_total_pc_mean6 ///
-		log_firsttimeapp_dyadic_pc_mean6 $interactions_left_m1 ///
+order($origin_variables $destination_variables  log_firsttimeapp_total_mean6_pc ///
+		log_firsttimeapp_dyadic_mean6_pc $interactions_left_m1 ///
 	  $interactions_right_m1) ///
 title(Determinants of first-time asylum applications per capita)
 
@@ -425,7 +425,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_total_pc_mean6
+global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_total_mean6_pc
 global graph_title1 "(lag total)"
 global graph_title2 ""
 
@@ -444,7 +444,7 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_dyadic_pc_mean6
+global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_dyadic_mean6_pc
 global graph_title1 "(lag dyadic)"
 global graph_title2 ""
 
@@ -464,7 +464,7 @@ do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
 global destination_variables log_rGDPpc_dest unemployment ///
-		log_firsttimeapp_total_pc_mean6 log_firsttimeapp_dyadic_pc_mean6
+		log_firsttimeapp_total_mean6_pc log_firsttimeapp_dyadic_mean6_pc
 global graph_title1 "(lag both)"
 global graph_title2 ""
 
@@ -513,7 +513,7 @@ drop if mean_dyadic_FTapp_per_quarter < 2
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_total_pc_mean6
+global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_total_mean6_pc
 global left left_lag_total
 global right right_lag_total
 
@@ -526,7 +526,7 @@ do ./src/analysis/modules/graph_2_coef.do
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_dyadic_pc_mean6
+global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_dyadic_mean6_pc
 global left left_lag_dyadic
 global right right_lag_dyadic
 
@@ -540,15 +540,15 @@ do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
 global destination_variables log_rGDPpc_dest unemployment ///
-		log_firsttimeapp_total_pc_mean6 log_firsttimeapp_dyadic_pc_mean6
+		log_firsttimeapp_total_mean6_pc log_firsttimeapp_dyadic_mean6_pc
 global left left_lag_both
 global right right_lag_both
 
 do ./src/analysis/modules/graph_2_coef.do
 
 
-esttab left_lag_total right_lag_total left_lag_dyadic right_lag_dyadic left_lag_both right_lag_both///
-using ./out/analysis/applications/app_graph2_past_ft-applications_coef.tex, ///
+esttab left_lag_total right_lag_total left_lag_dyadic right_lag_dyadic left_lag_both right_lag_both ///
+using ./out/analysis/applications/additional_robustness/app_graph2_past_ft-applications_coef.tex, ///
 replace se label mtitle nodepvars  /// 
 keep($time_m2) title("Coefficients quarterly model - past first-time applications")
 
@@ -918,8 +918,8 @@ global right right_no_missings
 
 do ./src/analysis/modules/graph_2_coef.do
 
-esttab left_2016 right_2016 left_max_two_missings right_max_two_missings left_no_missings right_lag_no_missings///
-using ./out/analysis/applications/app_graph2_past_other_samples_1_coef.tex, ///
+esttab left_2016 right_2016 left_max_two_missings right_max_two_missings left_no_missings right_no_missings ///
+using ./out/analysis/applications/additional_robustness/app_graph2_past_other_samples_1_coef.tex, ///
 replace se label mtitle nodepvars  /// 
 keep($time_m2) title("Coefficients quarterly model - other samples 1 - 3")
 
@@ -983,7 +983,7 @@ global right right_no_early
 
 do ./src/analysis/modules/graph_2_coef.do
 
-esttab left_Caprus right_Cyprus left_few_early right_few_early left_no_early right_lag_no_early///
-using ./out/analysis/applications/app_graph2_past_other_samples_2_coef.tex, ///
+esttab left_Cyprus right_Cyprus left_few_early right_few_early left_no_early right_no_early ///
+using ./out/analysis/applications/additional_robustness/app_graph2_past_other_samples_2_coef.tex, ///
 replace se label mtitle nodepvars  /// 
 keep($time_m2) title("Coefficients quarterly model - other samples 4 - 6")

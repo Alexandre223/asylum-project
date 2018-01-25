@@ -18,6 +18,11 @@ merge 1:1 destination origin year quarter using ///
  merge m:1 destination year using ///
 		./out/data/temp/lag_total_applications.dta, nogen
 
+ merge m:1 destination year quarter using ///
+		./out/data/temp/lag_total_decisions.dta, nogen	
+*Note data for Switzerland not included in total decision data because Switzerland 
+* has no decision data before 2008 and is thus not included in the analysis
+
 * match destination country data
 merge m:1 destination year quarter using ///
 		./out/data/temp/destination_data.dta, nogen

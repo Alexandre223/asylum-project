@@ -269,6 +269,20 @@ local i = `i' + 1
 }
 *
 
+
+local t=1
+while `t'<=6 {
+label variable bef`t' " `t' quarters before the election"
+ local t=`t'+1
+ }
+*
+local t=1
+while `t'<=6 {
+label variable post`t' " `t' quarters after the election"
+ local t=`t'+1
+ }
+*
+
 * Correct for early elections
 
 sort destination year quarter

@@ -110,43 +110,57 @@ set more off, permanently
 * Decision data 2002 - 2007 *
 * ========================= *
 
-* Total decisions monthly 2002 - 2007
+* Total decisions monthly 2002 - 2007 dyadic
 	import delimited ./src/original_data/asylum_data/total-decisions-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value totaldecisions
 	save ./out/data/temp/total-decisions-02-07-m.dta, replace
 
-* Total positive decisions monthly 2002 - 2007
+* Total positive decisions monthly 2002 - 2007 dyadic
 	import delimited ./src/original_data/asylum_data/total-positive-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value totalpositive
 	save ./out/data/temp/total-positive-02-07-m.dta, replace
+	
+* Total positive decisions monthly 2002 - 2007 on destination level
+	import delimited ./src/original_data/asylum_data/all-positive-02-07-m.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value allpositive
+	drop origin
+	save ./out/data/temp/all-positive-02-07-m.dta, replace
 
-* Refugee status decisions monthly 2002 - 2007
+* Refugee status decisions monthly 2002 - 2007 dyadic
 	import delimited ./src/original_data/asylum_data/refugee-status-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value refugeestatus
 	save ./out/data/temp/refugee-status-02-07-m.dta, replace
 
-* Rejected decisions monthly 2002 - 2007
+* Rejected decisions monthly 2002 - 2007 daydic
 	import delimited ./src/original_data/asylum_data/rejected-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value rejected
 	save ./out/data/temp/rejected-02-07-m.dta, replace
 
-* Other positive decisions monthly 2002 - 2007
+* Rejected decisions monthly 2002 - 2007 on destination level
+	import delimited ./src/original_data/asylum_data/all-rejected-02-07-m.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value allrejected
+	drop origin
+	save ./out/data/temp/all-rejected-02-07-m.dta, replace
+
+* Other positive decisions monthly 2002 - 2007 dyadic
 	import delimited ./src/original_data/asylum_data/other-positive-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value otherpositive
 	save ./out/data/temp/other-positive-02-07-m.dta, replace
 
-* Other non-status decisions monthly 2002 - 2007
+* Other non-status decisions monthly 2002 - 2007 dyadic
 	import delimited ./src/original_data/asylum_data/other-non-status-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value othernonstatus
 	save ./out/data/temp/other-non-status-02-07-m.dta, replace
 	
-* Humanitarian status decisions monthly 2002 - 2007
+* Humanitarian status decisions monthly 2002 - 2007 dyadic
 	import delimited ./src/original_data/asylum_data/humanitarian-status-02-07-m.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value humanitarian
@@ -157,43 +171,57 @@ set more off, permanently
 * Decision data 2008 - 2016 *	
 * ========================= *	
 	
-* Total decisions quarterly 2008 - 2016
+* Total decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/total-decisions-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value totaldecisions
 	save ./out/data/temp/total-decisions-08-16-q.dta, replace	
 		
-* Total positive decisions quarterly 2008 - 2016
+* Total positive decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/total-positive-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value totalpositive
 	save ./out/data/temp/total-positive-08-16-q.dta, replace		
+
+* Total positive decisions quarterly 2008 - 2016 on destination level
+	import delimited ./src/original_data/asylum_data/all-positive-08-16-q.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
+	rename value allpositive
+	drop origin
+	save ./out/data/temp/all-positive-08-16-q.dta, replace	
 	
-* Refugee status decisions quarterly 2008 - 2016
+* Refugee status decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/refugee-status-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value refugeestatus
 	save ./out/data/temp/refugee-status-08-16-q.dta, replace		
 
-* Rejected decisions quarterly 2008 - 2016
+* Rejected decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/rejected-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value rejected
 	save ./out/data/temp/rejected-08-16-q.dta, replace	
 
-* Humanitarian status decisions quarterly 2008 - 2016
+* Rejected decisions quarterly 2008 - 2016 on destination level
+	import delimited ./src/original_data/asylum_data/all-rejected-08-16-q.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
+	rename value allrejected
+	drop origin
+	save ./out/data/temp/all-rejected-08-16-q.dta, replace	
+
+* Humanitarian status decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/humanitarian-status-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value humanitarian
 	save ./out/data/temp/humanitarian-status-08-16-q.dta, replace	
 	
-* Temporary protection decisions quarterly 2008 - 2016
+* Temporary protection decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/temporary-protection-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value temporary
 	save ./out/data/temp/temporary-protection-08-16-q.dta, replace		
 	
-* Subsidiary protection decisions quarterly 2008 - 2016
+* Subsidiary protection decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/subsidiary-protection-08-16-q.csv, varnames(1) clear 
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value subsidiary
@@ -385,22 +413,30 @@ replace rejection_rate = 1 if rejection_rate > 1 & rejection_rate != .
 gen refugeestatus_rate = refugeestatus / totaldecisions
 replace refugeestatus_rate = 1 if refugeestatus_rate > 1 & refugeestatus_rate != .
 
-gen otherpositive_rate = (totalpositive - refugeestatus) / totaldecisions
-replace otherpositive_rate = 1 if otherpositive_rate > 1 & otherpositive_rate != .
+gen temporary_protection = totalpositive - refugeestatus
+
+gen temporary_protection_rate = temporary_protection / totaldecisions
+replace temporary_protection_rate = 1 if temporary_protection_rate > 1 & temporary_protection_rate != .
+
+label variable acceptance_rate "Acceptance rate"
+label variable temporary_protection_rate "Temporary protection rate"
+label variable refugeestatus_rate "Refugee status rate"
 
 
-* Also calculate non imputed versions of the recognition rates
+* Calculate average dyadic decisions in the previous year
+sort destination origin year quarter
 
-gen acceptance_rate_NI = totalpositive / totaldecisions_NI
+* generate lags of dyadic decisions
+by destination origin: gen lag1_totaldecisions = totaldecisions[_n-1]
+by destination origin: gen lag2_totaldecisions = totaldecisions[_n-2]
+by destination origin: gen lag3_totaldecisions = totaldecisions[_n-3]
 
-gen rejection_rate_NI = rejected / totaldecisions_NI
+* generate mean of decisions in the past year (includuing current quarter)
+egen yearly_dyadic_decisions = ///
+		rowmean(totaldecisions lag1_totaldecisions ///
+				lag2_totaldecisions lag3_totaldecisions)
 
-gen refugeestatus_rate_NI = refugeestatus / totaldecisions_NI
-
-gen otherpositive_rate_NI = (totalpositive - refugeestatus) / totaldecisions_NI
-
-
-
+				
 save ./out/data/temp/decision-data-02-16-q.dta, replace
 
 

@@ -88,6 +88,12 @@ save ./out/data/temp/freedom_house_index.dta, replace
 ** Data for region **
 *********************
 import excel ./src/original_data/origin_country/origin_areas.xlsx, sheet("Tabelle1") firstrow clear
+
+label variable Africa "Other African countries"
+label variable MENA "Middle East and North Africa"
+label variable ECA "Europe and Central Asia"
+label variable SEA "South and East Asia"
+
 save ./out/data/temp/origin_areas.dta, replace
 
 
@@ -212,6 +218,8 @@ replace pop_origin=pop_origin*1000
 append using ./out/data/temp/population_un_2016.dta
 append using ./out/data/temp/population_wb.dta
 
+label variable pop_origin "Origin country population"
+
 save ./out/data/temp/origin_population.dta, replace
 
 
@@ -282,5 +290,34 @@ foreach var of varlist ///
 *
 
 drop if year==2001
+
+* Rescale variables 
+gen death_thousands_ucdp = battle_death_ucdp / 1000
+gen death_thousands_vdc = battle_death_vdc / 1000
+
+gen death_thousands_ucdp_average = battle_death_ucdp_average / 1000
+gen death_thousands_vdc_average = battle_death_vdc_average / 1000
+
+* Label variables
+foreach var of varlist 	death_thousands_ucdp ///
+						death_thousands_vdc ///
+						death_thousands_ucdp_average ///
+						death_thousands_vdc_average {
+
+	label variable `var' "Quarterly civil war battle death (000s)"
+}
+*
+label variable log_rGDPpc_orig "Log origin country real GDP per capita"
+label variable log_rGDPpc_orig_average "Log origin country real GDP per capita"
+label variable realGDPpc "Yearly real GDP per capita at origin"
+
+label variable PTS "Political Terror Scale"
+label variable PTS_average "Political Terror Scale"
+
+label variable PR "Political Rights (FHI)"
+label variable PR_average "Political Rights (FHI)"
+
+label variable CL "Civic Liberty (FHI)"
+label variable CL_average "Civic Liberty (FHI)"
 
 save ./out/data/temp/origin_data.dta, replace

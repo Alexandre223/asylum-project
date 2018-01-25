@@ -58,6 +58,11 @@ foreach v in Bulgaria Romania Slovakia {
 }
 *
 
+gen log_imm_stock_2000 = log(imm_stock_2000 +1)
+
+label variable log_imm_stock_2000 "Log migrant stock in 2000/1"
+label variable imm_stock_2000 "Migrant stock in 2000/1"
+
 save ./out/data/temp/bilateral_immigrant_stock.dta, replace
 
 
@@ -114,6 +119,11 @@ drop _merge
 keep origin destination kmdist
 
 append using ./out/data/temp/kmdist_Kosovo.dta
+
+gen log_kmdist=log(kmdist)
+
+label variable log_kmdist "Log distance from origin to destination"
+label variable kmdist "Distance from origin to destination"
 
 save ./out/data/temp/bilateral_distance_data.dta, replace
 
