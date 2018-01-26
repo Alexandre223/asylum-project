@@ -61,3 +61,7 @@ ___*
 !.gitignore
 !app_*.pdf
 !dec_*.pdf
+!log_*.pdf
+!acceptance_*.pdf
+!temporary_*.pdf
+!refugeestatus_*.pdf
