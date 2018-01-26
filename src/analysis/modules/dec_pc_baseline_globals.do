@@ -8,7 +8,7 @@ global origin_variables ///
 		PTS_average CL_average PR_average ///
 		death_thousands_vdc_average log_rGDPpc_orig_average 
 	
-global 	destination_variables log_rGDPpc_dest unemployment log_totaldecisions_pc
+global 	destination_variables log_rGDPpc_dest unemployment
 		
  
 global bilateral_variables log_imm_stock_2000 log_kmdist
@@ -26,6 +26,6 @@ global xt_main DO
 global fe_var i.T
 
 * Define global for the scale of the y-axis in the graph
-global y_scale (-0.3 -0.2 -0.1 0 0.1 0.2 0.3)
+global y_scale ( -0.1 -0.05 0 0.05 0.1)
 
 

@@ -38,12 +38,15 @@
 \section{Descriptives}
 
 \input{../results/applications/app_summary_statistics.tex}
-\input{../results/decisions/dec_summary_statistics.tex} %load and adjust new file
+\input{../results/decisions/dec_summary_statistics.tex} 
+
+\input{../results/descriptives/ftapp_and_dec_by_destination.tex} 
+
 
 \clearpage
 \FloatBarrier
 \section{Robustness Checks for Application Analysis}
-Our main result, that the number of asylum applicants under left- and right-wing parties converges before elections and differs thereafter,  is robust to various different specifications. In this online appendix present results for the following 22 robustness checks\footnote{Note that all robustness checks are based on the baseline fixed effects regression, which is presented in the paper. In this list of robustness checks we only explain the deviations from that baseline regression. If something is not explicitly mentioned, it can be assumed to be the same as in the baseline regression.}:
+Our main result, that the number of asylum applicants under left- and right-wing parties converges before elections and differs thereafter,  is robust to various different specifications. In this online appendix present results for the following 18 robustness checks\footnote{Note that all robustness checks are based on the baseline fixed effects regression, which is presented in the paper. In this list of robustness checks we only explain the deviations from that baseline regression. If something is not explicitly mentioned, it can be assumed to be the same as in the baseline regression.}:
 \begin{itemize}
 	\item \textbf{Robustness Check 1}: In this robustness check we use separate fixed effects for destination and origin instead of a fixed effect for each destination-origin pair. This specification allows to include time-invariant bilateral variables in the regression, such as the distance between destination and origin country and the stock of migrants from a certain origin country in the destination country in 2001. In the regression both variables are included in logs. All other control variables are the same as in the baseline regression.  
 	
@@ -77,17 +80,9 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	
 	\item \textbf{Robustness Check 16}: For this robustness check we drop all country pairs that have on average less than 3 first-time applications per quarter. 
 	
-	\item \textbf{Robustness Check 17}: In this robustness check we only use 5 instead of 6 quarters around the election quarter. 
-	
-	\item \textbf{Robustness Check 18}: In this robustness check we only use 4 instead of 6 quarters around the election quarter. 
-	
-	\item \textbf{Robustness Check 19}: In this robustness check we add a dummy, which is equal to 1 if there is a nationalist party in parliament as an additional control. 
-	
-	\item \textbf{Robustness Check 20}: In this robustness check we include the share of seats that nationalist parties hold in parliament as an additional control. 
-	
-	\item \textbf{Robustness Check 21}: In this robustness check we include the log of the average total first-time applications in the previous 6 quarters as an additional control.  
-
-	\item \textbf{Robustness Check 22}: This robustness check uses only countries for which there is also data on asylum decisions. The destination countries Belgium, Netherlands and Norway are thus not included.
+	\item \textbf{Robustness Check 17}: In this robustness check we include the log of the average total first-time applications in the previous 6 quarters as an additional control.  
+	 	
+	\item \textbf{Robustness Check 18}: This robustness check uses only countries for which there is also data on asylum decisions. The destination countries Belgium, Netherlands and Norway are thus not included.
 	
 \end{itemize}
 
@@ -104,7 +99,7 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\centering
 	\begin{minipage}{0.8\textwidth} 
 		\includegraphics[width=\linewidth]{../results/applications/app_graphs_baseline.pdf}
-		{\scriptsize Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.\par}
+		{\scriptsize Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.\par}
 	\end{minipage}
 \end{figure}
 
@@ -120,7 +115,7 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\caption{First-time asylum applications per capita: predicted pattern - R1 to R6}
 	\includegraphics[width=1\textwidth]{../results/applications/app_graphs_R1-R6.pdf}
 	\scriptsize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression
-		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. The dashed line in subfigure R4 shows the average inflow of asylum seekers under right-wing cabinets in periods outside the election period. Significance of the coefficients is reported for the distance to this average non-election period effect.}
+		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis. The dashed line in subfigure R4 shows the average inflow of asylum seekers under right-wing cabinets in periods outside the election period. Significance of the coefficients are reported for the distance to this average non-election period effect.}
 \end{figure}
 
 \clearpage
@@ -147,7 +142,7 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\caption{First-time asylum applications per capita: predicted pattern - R7 to R12}
 	\includegraphics[width=1\textwidth]{../results/applications/app_graphs_R7-R12.pdf}
 	\scriptsize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression
-		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
@@ -174,7 +169,7 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\caption{First-time asylum applications per capita: predicted pattern - R13 to R18}
 	\includegraphics[width=1\textwidth]{../results/applications/app_graphs_R13-R18.pdf}
 	\scriptsize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression
-		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
@@ -192,28 +187,6 @@ Our main result, that the number of asylum applicants under left- and right-wing
 \input{../results/applications/app_graph2_R17-R18_coef.tex}
 
 
-\clearpage
-\FloatBarrier
-\input{../results/applications/app_table1_R19-R22.tex}
-
-\clearpage
-\FloatBarrier
-\begin{figure}[!ht]
-	\caption{First-time asylum applications per capita: predicted pattern - R19 to R22}
-	\includegraphics[width=1\textwidth]{../results/applications/app_graphs_R19-R22.pdf}
-	\scriptsize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression
-		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
-
-\clearpage
-\FloatBarrier
-
-\input{../results/applications/app_graph1_R19-R20_coef.tex}
-\input{../results/applications/app_graph2_R19-R20_coef.tex}
-\clearpage
-\FloatBarrier
-\input{../results/applications/app_graph1_R21-R22_coef.tex}
-\input{../results/applications/app_graph2_R21-R22_coef.tex}
 
 
 \clearpage
@@ -234,17 +207,17 @@ Robustness check 1 to 6 and 10 are analogous to the robustness checks in the app
 	
 	\item \textbf{Robustness Check 6}: In comparison to robustness check 5, in this robustness check we include the separate asylum policy indices for the areas access, welfare and processing. 
 	
-	\item \textbf{Robustness Check 7}: In this robustness check we control for the log total decisions at the destination per capita instead of the log dyadic decisions per capita in the current quarter.
+	\item \textbf{Robustness Check 7}: In this robustness check we control for the log of the average total and the log of the average dyadic decision per capita in the current and the previous 3 quarters.
 	
-	\item \textbf{Robustness Check 8}: In this robustness check we control for both, the log dyadic decisions per capita and the log total decisions at destination per capita. 
+	\item \textbf{Robustness Check 8}: in this robustness check we control for the log of the average total and the log of the average dyadic first-time applications per capita in the previous 2 quarters.
 	
-	\item \textbf{Robustness Check 9}: In this robustness check the destination country sample includes all large countries in terms of asylum decisions for which decision data is available in at least 44 out of the 52 quarters under analysis. The countries that are added are Austria, Finland, Greece and Hungary.  
+	\item \textbf{Robustness Check 9}: In this robustness check we cluster standard errors on destination-origin level Hungary.  
 	
 	\item \textbf{Robustness Check 10}: As there have been some changes in the data collection method of the asylum data by Eurostat in 2008, in this robustness check we include a dummy which is equal to 1 if the year is 2008 or later and zero otherwise as an additional control variable. 
-	
-	\item \textbf{Robustness Check 11 to 16}:  In robustness checks 11 to 16 we no longer include the log dyadic decisions per capita in the current quarter in the regression but instead some alternative measure of total decisions or total first-time applications. For robustness check 11 to 13 we calculate the log of the average total and the average dyadic decisions in the current and the previous 3 quarters per capita. In robustness check 11 we only use the variable with the total decisions at destination, in robustness check 12 we only use the variable with the dyadic decisions and in robustness check 13 we use both the variable with the total and the variable with the dyadic decisions. For robustness checks 14 to 16 we calculate the log of the total and the dyadic number of first time applications per capita in the previous 2 quarters. For robustness check 14 we use only the variable with the total first-time applications, in robustness check 15 we use only the variable with the dyadic first-time applications and finally in robustness check 16 we use both the variable with the total and the variable with the dyadic first-time applications.  
- 
-	\item \textbf{Robustness Check 17 to 20}: For robustness check 17 to 20 we change the dependent variables. We no longer use log decisions per capita, but instead we calculate the share of total decisions which result in any kind of protection (acceptance rate), in refugee status according to the Geneva Convention (refugee status rate) and in some other form temporary protection (temporary protection rate). As the number of total decisions in the quarter is already used when calculating the dependent variables we do not control for the log total dyadic decisions per capita in the current quarter in any of these robustness checks. In robustness check 17 we add no additional controls. In robustness check 18 we include a dummy which is equal to 1 if the incumbent cabinet's position is right-wing. In robustness check 19 we control for the log of the average total and the log of the average dyadic decision per capita in the current and the previous 3 quarters. And finally in robustness check 20 we control for the log of the average total and the log of the average dyadic first-time applications per capita in the previous 2 quarters.
+
+	\item \textbf{Robustness Check 11}: In this robustness check we use a slightly different procedure to classify the position of the cabinet as left-wing or right-wing. Before creating the dummies we normalize the left-right position of the cabinet on the destination country level.
+
+	\item \textbf{Robustness Check 12}: In this robustness check the destination country sample includes all large countries in terms of asylum decisions for which decision data is available in at least 44 out of the 52 quarters under analysis. The countries that are added are Austria, Finland, Greece and Hungary. 
 	 
 \end{itemize}	
 	
@@ -259,241 +232,201 @@ Robustness check 1 to 6 and 10 are analogous to the robustness checks in the app
 	
 	\caption{Asylum decisions per capita: predicted pattern - baseline}
 	\centering
-	\begin{minipage}{0.9\textwidth} 
+	\begin{minipage}{1\textwidth} 
 		\includegraphics[width=\linewidth]{../results/decisions/dec_graphs_baseline.pdf}
-		{\scriptsize Note: These figures show the time evolution of positive decisions, refugee status decisions and temporary protection decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. In addition to the controls that are specified in equation (XXX) in all decision regressions we control for the log of the total dyadic decisions per capita unless mentioned otherwise in the robustness checks.\par}
+		{\scriptsize Note: These figures show the time evolution of the acceptance rate, the refugee status rate and the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis. \par}
 	\end{minipage}
 \end{figure}
 
+\input{../results/decisions/dec_graph1_baseline_coef.tex}
 \input{../results/decisions/dec_graph2_baseline_coef.tex}
 
 
-\clearpage
-\FloatBarrier
-\begin{figure}[!ht]
-	
-	\caption{Asylum decisions per capita: predicted pattern - include cabinet right dummy}
-	\centering
-	\begin{minipage}{0.9\textwidth} 
-		\includegraphics[width=\linewidth]{../results/decisions/dec_graphs_cabinet_right.pdf}
-		{\scriptsize Note: These figures show the time evolution of positive decisions, refugee status decisions and temporary protection decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. In addition to the controls that are specified in equation (XXX) in all decision regressions we control for the log of the total dyadic decisions per capita unless mentioned otherwise in the robustness checks.\par}
-	\end{minipage}
-\end{figure}
-
-\input{../results/decisions/dec_graph2_cabinet_right_coef.tex}
-
-
-% ================================================================================================================================================================
+% =================================================================================================
 
 \clearpage
 \FloatBarrier
-\subsection{Robustness checks for positive decisions}
+\subsection{Robustness checks for acceptance rate}
 
-\input{../results/decisions/log_totalpositive_pc_table1_R1-R6.tex}
+\input{../results/decisions/acceptance_rate_table1_R1-R6.tex}
 
 \clearpage
 \FloatBarrier
 \begin{figure}[!ht]
-	\caption{Total positive decisions per capita: predicted pattern - R1 to R6}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_totalpositive_pc_graphs_R1-R6.pdf}
-	\scriptsize{Note: These figures show the time evolution of positive decisions decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+	\caption{Acceptance rate: predicted pattern - R1 to R6}
+	\includegraphics[width=1\textwidth]{../results/decisions/acceptance_rate_graphs_R1-R6.pdf}
+	\scriptsize{Note: These figures show the time evolution of of the acceptance rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
 \FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R1-R2_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R1-R2_coef.tex}
 
-\input{../results/decisions/log_totalpositive_pc_graph2_R1-R3_coef.tex}
-\input{../results/decisions/log_totalpositive_pc_graph2_R4-R6_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R3-R4_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R3-R4_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R5-R6_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R5-R6_coef.tex}
+
 
 
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_totalpositive_pc_table1_R7-R10.tex}
+\input{../results/decisions/acceptance_rate_table1_R7-R12.tex}
 
 \clearpage
 \FloatBarrier
 \begin{figure}[!ht]
-	\caption{Total positive decisions per capita: predicted pattern - R7 to R10}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_totalpositive_pc_graphs_R7-R10.pdf}
-	\scriptsize{Note: These figures show the time evolution of positive decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
-
-\input{../results/decisions/log_totalpositive_pc_graph2_R7-R10_coef.tex}
-
-
-\clearpage
-\FloatBarrier
-\input{../results/decisions/log_totalpositive_pc_table1_R11-R16.tex}
-
-\clearpage
-\FloatBarrier
-\begin{figure}[!ht]
-	\caption{Total positive decisions per capita: predicted pattern - R11 to R16}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_totalpositive_pc_graphs_R11-R16.pdf}
-	\scriptsize{Note: These figures show the time evolution of positive decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+	\caption{Accaptace rate: predicted pattern - R7 to R12}
+	\includegraphics[width=1\textwidth]{../results/decisions/acceptance_rate_graphs_R7-R12.pdf}
+	\scriptsize{Note: These figures show the time evolution of the acceptance rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_totalpositive_pc_graph2_R11-R13_coef.tex}
-\input{../results/decisions/log_totalpositive_pc_graph2_R14-R16_coef.tex}
-
-
-\clearpage
-\FloatBarrier
-\input{../results/decisions/acceptance_rate_table1_R17-R20.tex}
+\input{../results/decisions/acceptance_rate_graph1_R7-R8_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R7-R8_coef.tex}
 
 \clearpage
 \FloatBarrier
-\begin{figure}[!ht]
-	\caption{Acceptance rate: predicted pattern - R17 to R20}
-	\includegraphics[width=1\textwidth]{../results/decisions/acceptance_rate_graphs_R17-R20.pdf}
-	\scriptsize{Note: These figures show the time evolution of the share of positive decisions in all decisions made in that quarter in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
+\input{../results/decisions/acceptance_rate_graph1_R9-R10_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R9-R10_coef.tex}
 
-\input{../results/decisions/acceptance_rate_graph2_R17-R20_coef.tex}
-
-% ================================================================================================================================================================
 \clearpage
 \FloatBarrier
-\subsection{Robustness checks for refugee status decisions}
+\input{../results/decisions/acceptance_rate_graph1_R11-R12_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R11-R12_coef.tex}
 
-\input{../results/decisions/log_refugeestatus_pc_table1_R1-R6.tex}
+
+% =========================================================================================
+
+\clearpage
+\FloatBarrier
+\subsection{Robustness checks for refugee status rate}
+
+\input{../results/decisions/refugeestatus_rate_table1_R1-R6.tex}
 
 \clearpage
 \FloatBarrier
 \begin{figure}[!ht]
 	\caption{Refugee status decisions per capita: predicted pattern - R1 to R6}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_refugeestatus_pc_graphs_R1-R6.pdf}
-	\scriptsize{Note: These figures show the time evolution of refugee status decisions decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+	\includegraphics[width=1\textwidth]{../results/decisions/refugeestatus_rate_graphs_R1-R6.pdf}
+	\scriptsize{Note: These figures show the time evolution of the refugee status rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_refugeestatus_pc_graph2_R1-R3_coef.tex}
-\input{../results/decisions/log_refugeestatus_pc_graph2_R4-R6_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph1_R1-R2_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R1-R2_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R3-R4_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R3-R4_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R5-R6_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R5-R6_coef.tex}
+
+
 
 
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_refugeestatus_pc_table1_R7-R10.tex}
+\input{../results/decisions/refugeestatus_rate_table1_R7-R12.tex}
 
 \clearpage
 \FloatBarrier
 \begin{figure}[!ht]
-	\caption{Refugee status decisions per capita: predicted pattern - R7 to R10}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_refugeestatus_pc_graphs_R7-R10.pdf}
-	\scriptsize{Note: These figures show the time evolution of refugee status decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
-
-\input{../results/decisions/log_refugeestatus_pc_graph2_R7-R10_coef.tex}
-
-
-\clearpage
-\FloatBarrier
-\input{../results/decisions/log_refugeestatus_pc_table1_R11-R16.tex}
-
-\clearpage
-\FloatBarrier
-\begin{figure}[!ht]
-	\caption{Refugee status decisions per capita: predicted pattern - R11 to R16}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_refugeestatus_pc_graphs_R11-R16.pdf}
-	\scriptsize{Note: These figures show the time evolution of refugee status decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+	\caption{Refugee status decisions per capita: predicted pattern - R7 to R12}
+	\includegraphics[width=1\textwidth]{../results/decisions/refugeestatus_rate_graphs_R7-R12.pdf}
+	\scriptsize{Note: These figures show the time evolution of the refugee status rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_refugeestatus_pc_graph2_R11-R13_coef.tex}
-\input{../results/decisions/log_refugeestatus_pc_graph2_R14-R16_coef.tex}
-
-
-\clearpage
-\FloatBarrier
-\input{../results/decisions/refugeestatus_rate_table1_R17-R20.tex}
+\input{../results/decisions/refugeestatus_rate_graph1_R7-R8_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R7-R8_coef.tex}
 
 \clearpage
 \FloatBarrier
-\begin{figure}[!ht]
-	\caption{Refugee status rate: predicted pattern - R17 to R20}
-	\includegraphics[width=1\textwidth]{../results/decisions/refugeestatus_rate_graphs_R17-R20.pdf}
-	\scriptsize{Note: These figures show the time evolution of the share of refugee status decisions in all decisions made in that quarter in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
+\input{../results/decisions/refugeestatus_rate_graph1_R9-R10_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R9-R10_coef.tex}
 
-\input{../results/decisions/refugeestatus_rate_graph2_R17-R20_coef.tex}
-
-
-
-% ================================================================================================================================================================
 \clearpage
 \FloatBarrier
-\subsection{Robustness checks for temporary protection decisions}
+\input{../results/decisions/refugeestatus_rate_graph1_R11-R12_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R11-R12_coef.tex}
 
-\input{../results/decisions/log_temporary_protection_pc_table1_R1-R6.tex}
+
+
+ ================================================================================================================================================================
+\clearpage
+\FloatBarrier
+\subsection{Robustness checks for temporary protection rate}
+
+\input{../results/decisions/temporary_protection_rate_table1_R1-R6.tex}
 
 \clearpage
 \FloatBarrier
 \begin{figure}[!ht]
 	\caption{Temporary protection decisions per capita: predicted pattern - R1 to R6}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_temporary_protection_pc_graphs_R1-R6.pdf}
-	\scriptsize{Note: These figures show the time evolution of temporary protection decisions decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+	\includegraphics[width=1\textwidth]{../results/decisions/temporary_protection_rate_graphs_R1-R6.pdf}
+	\scriptsize{Note: These figures show the time evolution of the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
 \FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R1-R2_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R1-R2_coef.tex}
 
-\input{../results/decisions/log_temporary_protection_pc_graph2_R1-R3_coef.tex}
-\input{../results/decisions/log_temporary_protection_pc_graph2_R4-R6_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R3-R4_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R3-R4_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R5-R6_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R5-R6_coef.tex}
 
 
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_temporary_protection_pc_table1_R7-R10.tex}
+\input{../results/decisions/temporary_protection_rate_table1_R7-R12.tex}
 
 \clearpage
 \FloatBarrier
 \begin{figure}[!ht]
-	\caption{Temporary protection decisions per capita: predicted pattern - R7 to R10}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_temporary_protection_pc_graphs_R7-R10.pdf}
-	\scriptsize{Note: These figures show the time evolution of temporary protection decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
-
-\input{../results/decisions/log_temporary_protection_pc_graph2_R7-R10_coef.tex}
-
-
-\clearpage
-\FloatBarrier
-\input{../results/decisions/log_temporary_protection_pc_table1_R11-R16.tex}
-
-\clearpage
-\FloatBarrier
-\begin{figure}[!ht]
-	\caption{Temporary protection decisions per capita: predicted pattern - R11 to R16}
-	\includegraphics[width=1\textwidth]{../results/decisions/log_temporary_protection_pc_graphs_R11-R16.pdf}
-	\scriptsize{Note: These figures show the time evolution of temporary protection decisions as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
+	\caption{Temporary protection decisions per capita: predicted pattern - R7 to R12}
+	\includegraphics[width=1\textwidth]{../results/decisions/temporary_protection_rate_graphs_R7-R12.pdf}
+	\scriptsize{Note: These figures show the time evolution of the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with bold font on the x-axis.}
 \end{figure}
 
 \clearpage
 \FloatBarrier
-\input{../results/decisions/log_temporary_protection_pc_graph2_R11-R13_coef.tex}
-\input{../results/decisions/log_temporary_protection_pc_graph2_R14-R16_coef.tex}
-
-
-\clearpage
-\FloatBarrier
-\input{../results/decisions/temporary_protection_rate_table1_R17-R20.tex}
+\input{../results/decisions/temporary_protection_rate_graph1_R7-R8_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R7-R8_coef.tex}
 
 \clearpage
 \FloatBarrier
-\begin{figure}[!ht]
-	\caption{Temporary protection rate: predicted pattern - R17 to R20}
-	\includegraphics[width=1\textwidth]{../results/decisions/temporary_protection_rate_graphs_R17-R20.pdf}
-	\scriptsize{Note: These figures show the time evolution of the share of temporary protection decisions in all decisions made in that quarter in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers.}
-\end{figure}
+\input{../results/decisions/temporary_protection_rate_graph1_R9-R10_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R9-R10_coef.tex}
 
-\input{../results/decisions/temporary_protection_rate_graph2_R17-R20_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R11-R12_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R11-R12_coef.tex}
+
 
 
 \end{document}

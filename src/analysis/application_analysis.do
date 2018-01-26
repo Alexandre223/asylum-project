@@ -4,23 +4,6 @@
 ** ==================== **
 **************************
 
-** =============================== **
-** Applications summary statistics **
-** =============================== **
-
-* Specify data set to be used *
-use ./out/data/final_application/baseline_data.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
-
-
-drop if log_firsttimeapp_pc==.
-
-sutex2 	firsttimeapp_total firsttimeapp_total_pc n_elections_max n_cabinet_changes_max ///
-		cabinet_left_right  PTS CL PR death_thousands_vdc realGDPpc ///
-		kmdist imm_stock_2000 rGDPpc unemployment, minmax varlabels digits(2) ///
-		saving(./out/analysis/applications/app_summary_statistics.tex) replace
 
 
 
@@ -891,18 +874,28 @@ estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
 
-* (R17) use only 5 quarters around the election
+
+* (R17) Control for lag total first-time applications in the previous 6 quarters
+
+xtset DO 
+eststo: quietly xtreg 	$dependent_variable ///
+						$origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
+						$interactions_left_m1 $interactions_right_m1 ///
+						i.T, ///
+						fe vce(cluster $se_clus)
+estadd local FE "D x O"
+estadd local DE "No"
+estadd local TI "Yes"
+
+* (R18) use only countries that are also in decision analysis
 * Specify data set to be used *
-use ./out/data/final_application/baseline_Q5.dta, clear
+use ./out/data/final_application/only_decision_countries.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
 drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
-
-* Adjust globals for interaction terms to include only 5 quarters
-do ./src/analysis/modules/globals_interactions_Q5.do
 
 xtset DO 
 eststo: quietly xtreg 	$dependent_variable ///
@@ -913,38 +906,14 @@ eststo: quietly xtreg 	$dependent_variable ///
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
-
-* (R18) use only 4 quarters around the election
-* Specify data set to be used *
-use ./out/data/final_application/baseline_Q4.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-* Adjust globals for interaction terms to include only 4 quarters
-do ./src/analysis/modules/globals_interactions_Q4.do
-
-xtset DO 
-eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables ///
-						$interactions_left_m1 $interactions_right_m1 ///
-						i.T, ///
-						fe vce(cluster $se_clus)
-estadd local FE "D x O"
-estadd local DE "No"
-estadd local TI "Yes"
-
  
 esttab using "./out/analysis/applications/app_table1_R13-R18.tex", ///
 replace scalars("FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
 se ar2 label number nomtitle nodepvars  ///
-keep($origin_variables $destination_variables $interactions_left_m1 ///
-	 $interactions_right_m1) ///
-order($origin_variables $destination_variables $interactions_left_m1 ///
-	  $interactions_right_m1) ///
+keep($origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
+	 $interactions_left_m1 $interactions_right_m1) ///
+order($origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
+	  $interactions_left_m1 $interactions_right_m1) ///
 title(Determinants of first-time asylum applications per capita)
 
 
@@ -1083,19 +1052,13 @@ do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/graph_1_coef.do
 do ./src/analysis/modules/graph_2_coef.do
 
-
-* (R17) use only 5 quarters around the election
-* Specify data set to be used *
-use ./out/data/final_application/baseline_Q5.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
+* (R17) Control for lag of dependent variable
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
 
 * Define globals
-do ./src/analysis/modules/globals_interactions_Q5.do 
+global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_total_mean6_pc
 
 global graph_title1 "(R17)"
 global graph_title2 ""
@@ -1114,22 +1077,19 @@ global path_graph2_temp "./out/analysis/temp/app_graph2_R17.gph"
 
 * Produce graphs and coefficients
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_2_Q5.do
+do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/graph_1_coef.do
-do ./src/analysis/modules/graph_2_coef_Q5.do
+do ./src/analysis/modules/graph_2_coef.do
 
-* (R18) use only 4 quarters around the election
+* (R18) use only countries that are also in the baseline decision analysis
 * Specify data set to be used *
-use ./out/data/final_application/baseline_Q4.dta, clear
+use ./out/data/final_application/only_decision_countries.dta, clear
 
 * Drop country pairs with less than 2 applications per quarter on average *
 drop if mean_dyadic_FTapp_per_quarter < 2
 
 * use same globals as in the baseline analysis
 do ./src/analysis/modules/app_baseline_globals.do
-
-* Define globals
-do ./src/analysis/modules/globals_interactions_Q4.do 
 
 global graph_title1 "(R18)"
 global graph_title2 ""
@@ -1148,9 +1108,9 @@ global path_graph2_temp "./out/analysis/temp/app_graph2_R18.gph"
 
 * Produce graphs and coefficients
 do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_2_Q4.do
+do ./src/analysis/modules/graph_2.do
 do ./src/analysis/modules/graph_1_coef.do
-do ./src/analysis/modules/graph_2_coef_Q4.do
+do ./src/analysis/modules/graph_2_coef.do
 
 * COMBINE GRAPHS *
 grc1leg ./out/analysis/temp/app_graph1_R13.gph ///
@@ -1209,272 +1169,9 @@ using ./out/analysis/applications/app_graph2_R15-R16_coef.tex, ///
 replace se label mtitle nodepvars  /// 
 keep($time_m2) title("Coefficients quarterly model - R15 - R16")
 
-* Define globals
-do ./src/analysis/modules/globals_interactions_Q5.do 
-
 ** Coefficient Table R17 - R18 **
 esttab left2_R17 right2_R17 diff2_R17 left2_R18 right2_R18 diff2_R18 ///
 using ./out/analysis/applications/app_graph2_R17-R18_coef.tex, ///
 replace se label mtitle nodepvars  /// 
 keep($time_m2) title("Coefficients quarterly model R17 - R18")
-
-
-
-** ========================== **
-** ROBUSTNESS TABLE 1 R19-R22 **
-** ========================== **
-
-eststo clear
-
-* (R19) Add dummy for right-wing party in parliament 
-* Specify data set to be used *
-use ./out/data/final_application/baseline_data.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-xtset DO 
-eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables parl_nationalist ///
-						$interactions_left_m1 $interactions_right_m1 ///
-						i.T, ///
-						fe vce(cluster $se_clus)
-estadd local FE "D x O"
-estadd local DE "No"
-estadd local TI "Yes"
-
-* (R20) Add share of seats of right-wing parties in parliament
-
-xtset DO 
-eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables share_right ///
-						$interactions_left_m1 $interactions_right_m1 ///
-						i.T, ///
-						fe vce(cluster $se_clus)
-estadd local FE "D x O"
-estadd local DE "No"
-estadd local TI "Yes"
-
-* (R21) Control for lag total first-time applications in the previous 6 quarters
-
-xtset DO 
-eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables log_firsttimeapp_total_mean6_pc ///
-						$interactions_left_m1 $interactions_right_m1 ///
-						i.T, ///
-						fe vce(cluster $se_clus)
-estadd local FE "D x O"
-estadd local DE "No"
-estadd local TI "Yes"
-
-* (R22) use only countries that are also in decision analysis
-* Specify data set to be used *
-use ./out/data/final_application/only_decision_countries.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-xtset DO 
-eststo: quietly xtreg 	$dependent_variable ///
-						$origin_variables $destination_variables ///
-						$interactions_left_m1 $interactions_right_m1 ///
-						i.T, ///
-						fe vce(cluster $se_clus)
-estadd local FE "D x O"
-estadd local DE "No"
-estadd local TI "Yes"
-
- 
-esttab using "./out/analysis/applications/app_table1_R19-R22.tex", ///
-replace scalars("FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
-se ar2 label number nomtitle nodepvars  ///
-keep($origin_variables $destination_variables log_firsttimeapp_total_mean6_pc parl_nationalist share_right ///
-	 $interactions_left_m1 $interactions_right_m1) ///
-order($origin_variables $destination_variables log_firsttimeapp_total_mean6_pc parl_nationalist share_right ///
-	  $interactions_left_m1 $interactions_right_m1) ///
-title(Determinants of first-time asylum applications per capita)
-
-
-**************************
-** Graphs for R19 - R22 **
-**************************
-
-* (R19) Add dummy for right-wing party in parliament 
-* Specify data set to be used *
-use ./out/data/final_application/baseline_data.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-* Define globals
-global destination_variables log_rGDPpc_dest unemployment  parl_nationalist
-
-global graph_title1 "(R19)"
-global graph_title2 ""
-
-global left1 left1_R19
-global right1 right1_R19
-global diff1 diff1_R19
-
-global left2 left2_R19
-global right2 right2_R19
-global diff2 diff2_R19
-
-* Define gobals for output paths
-global path_graph1_temp "./out/analysis/temp/app_graph1_R19.gph"
-global path_graph2_temp "./out/analysis/temp/app_graph2_R19.gph"
-
-* Produce graphs and coefficients
-do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_1_coef.do
-do ./src/analysis/modules/graph_2_coef.do
-
-
-* (R20) Add dummy for right-wing party in parliament 
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-* Define globals
-global destination_variables log_rGDPpc_dest unemployment  share_right
-
-global graph_title1 "(R20)"
-global graph_title2 ""
-
-global left1 left1_R20
-global right1 right1_R20
-global diff1 diff1_R20
-
-global left2 left2_R20
-global right2 right2_R20
-global diff2 diff2_R20
-
-* Define gobals for output paths
-global path_graph1_temp "./out/analysis/temp/app_graph1_R20.gph"
-global path_graph2_temp "./out/analysis/temp/app_graph2_R20.gph"
-
-* Produce graphs and coefficients
-do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_1_coef.do
-do ./src/analysis/modules/graph_2_coef.do
-
-* (R21) Control for lag of dependent variable
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-* Define globals
-global destination_variables log_rGDPpc_dest unemployment log_firsttimeapp_total_mean6_pc
-
-global graph_title1 "(R21)"
-global graph_title2 ""
-
-global left1 left1_R21
-global right1 right1_R21
-global diff1 diff1_R21
-
-global left2 left2_R21
-global right2 right2_R21
-global diff2 diff2_R21
-
-* Define gobals for output paths
-global path_graph1_temp "./out/analysis/temp/app_graph1_R21.gph"
-global path_graph2_temp "./out/analysis/temp/app_graph2_R21.gph"
-
-* Produce graphs and coefficients
-do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_1_coef.do
-do ./src/analysis/modules/graph_2_coef.do
-
-* (R22) use only countries that are also in the baseline decision analysis
-* Specify data set to be used *
-use ./out/data/final_application/only_decision_countries.dta, clear
-
-* Drop country pairs with less than 2 applications per quarter on average *
-drop if mean_dyadic_FTapp_per_quarter < 2
-
-* use same globals as in the baseline analysis
-do ./src/analysis/modules/app_baseline_globals.do
-
-* Define globals
-global graph_title1 "(R22)"
-global graph_title2 ""
-
-global left1 left1_R22
-global right1 right1_R22
-global diff1 diff1_R22
-
-global left2 left2_R22
-global right2 right2_R22
-global diff2 diff2_R22
-
-* Define gobals for output paths
-global path_graph1_temp "./out/analysis/temp/app_graph1_R22.gph"
-global path_graph2_temp "./out/analysis/temp/app_graph2_R22.gph"
-
-* Produce graphs and coefficients
-do ./src/analysis/modules/graph_1.do
-do ./src/analysis/modules/graph_2.do
-do ./src/analysis/modules/graph_1_coef.do
-do ./src/analysis/modules/graph_2_coef.do
-
-
-* COMBINE GRAPHS *
-grc1leg ./out/analysis/temp/app_graph1_R19.gph ///
-		./out/analysis/temp/app_graph1_R20.gph ///
-		./out/analysis/temp/app_graph2_R19.gph ///
-		./out/analysis/temp/app_graph2_R20.gph ///
-		./out/analysis/temp/app_graph1_R21.gph ///
-		./out/analysis/temp/app_graph1_R22.gph ///
-		./out/analysis/temp/app_graph2_R21.gph ///
-		./out/analysis/temp/app_graph2_R22.gph, ///
-		row(4) legendfrom(./out/analysis/temp/app_graph1_R19.gph) ///
-		 graphregion(color(white)) 
-
-graph display, ysize(8) xsize(6) 		 
-graph export "./out/analysis/applications/app_graphs_R19-R22.pdf", replace
-
-
-* COEFFICIENTS GRAPH 1 *
-
-** Coefficient Table R19 - R20 **
-esttab left1_R19 right1_R19 diff1_R19 left1_R20 right1_R20 diff1_R20 ///
-using ./out/analysis/applications/app_graph1_R19-R20_coef.tex, ///
-replace se label mtitle nodepvars  /// 
-keep($time_m1) title("Coefficients before after model - R19 - R20")
-
-** Coefficient Table R21 - R22 **
-esttab left1_R21 right1_R21 diff1_R21 left1_R22 right1_R22 diff1_R22 ///
-using ./out/analysis/applications/app_graph1_R21-R22_coef.tex, ///
-replace se label mtitle nodepvars  /// 
-keep($time_m1) title("Coefficients before after model - R21 - R22")
-
-
-
-* COEFFICIENTS GRAPH 2 *
-
-** Coefficient Table R19 - R20 **
-esttab left2_R19 right2_R19 diff2_R19 left2_R20 right2_R20 diff2_R20 ///
-using ./out/analysis/applications/app_graph2_R19-R20_coef.tex, ///
-replace se label mtitle nodepvars  /// 
-keep($time_m2) title("Coefficients quarterly model - R19 - R20")
-
-** Coefficient Table R21 - R22 **
-esttab left2_R21 right2_R21 diff2_R21 left2_R22 right2_R22 diff2_R22 ///
-using ./out/analysis/applications/app_graph2_R21-R22_coef.tex, ///
-replace se label mtitle nodepvars  /// 
-keep($time_m2) title("Coefficients quarterly model - R21 - R22")
-
 

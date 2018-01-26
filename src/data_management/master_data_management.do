@@ -131,6 +131,10 @@ do ./src/data_management/final_data_preparation/decision_samples/dec_no_missings
 * and the application analysis (overlapping baseline sample)
 do ./src/data_management/final_data_preparation/decision_samples/dec_only_application_countries.do
 
+* Prepare data for a sample of all destination countries that are both in the decision
+* and the application analysis (overlapping baseline sample) with normalized cabinet position
+do ./src/data_management/final_data_preparation/decision_samples/dec_only_application_normalized_cabinet.do
+
 * Prepare data for a sample with a maximum of one early elections
 do ./src/data_management/final_data_preparation/decision_samples/dec_few_early_elections.do
 
