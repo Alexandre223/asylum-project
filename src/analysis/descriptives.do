@@ -40,9 +40,8 @@ drop if mean_dyadic_decisions_pq < 2
 drop if acceptance_rate == .
 
 
-sutex2 	all_decisions_dest 	all_decisions_dest_pc totaldecisions totaldecisions_pc ///
-		totalpositive totalpositive_pc ///
-		refugeestatus refugeestatus_pc temporary_protection temporary_protection_pc ///
+sutex2 	all_decisions_dest 	all_decisions_dest_pc ///
+		acceptance_rate refugeestatus_rate temporary_protection_rate ///
 		n_elections_max n_cabinet_changes_max cabinet_left_right ///
 		PTS CL PR death_thousands_vdc realGDPpc ///
 		kmdist imm_stock_2000 rGDPpc unemployment, minmax varlabels digits(2) ///

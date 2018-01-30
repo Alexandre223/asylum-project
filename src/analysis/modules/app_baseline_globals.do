@@ -31,5 +31,5 @@ global xt_main DO
 global fe_var i.T
 
 * Define global for the scale of the y-axis in the graph
-global y_scale (-0.2 -0.1 0 0.1 0.2)
+global y_scale -0.2 -0.1 0 0.1 0.2
 

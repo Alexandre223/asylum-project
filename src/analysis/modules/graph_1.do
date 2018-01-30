@@ -26,17 +26,19 @@ nlcom 	(before:  _b[right_bef] ) ///
 		,post
 est sto right
 
-coefplot 	(left, keep($time_m1) label(cabinet left) msymbol(S) mcolor(maroon) lcolor(maroon)) ///
-			(right, keep($time_m1) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))   ///
-			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
+coefplot 	(left, keep($time_m1) label(left-wing cabinet) ///
+			msymbol(S) mcolor(maroon) msize(medium) lcolor(maroon)) ///
+			(right, keep($time_m1) label(right-wing cabinet) ///
+			msymbol(T) mcolor(navy) msize(medium) lcolor(navy))   ///
+			, connect(l) noci nooffset vertical ///
 			yline(0, lcolor(black)) ///
 			graphregion(color(white)) ///
 			legend (rows(1) size(vsmall)) ///
 			xscale(range(1 (1) 2)) ///
-			xlabel(1 "before the election"  2 "after the election") ///
-			yscale(range$y_scale) ///
-			ylabel $y_scale ///
-			ytitle(estimated coefficient) ///
+			xlabel(1 "before the election"  2 "after the election", labsize(small)) ///
+			yscale(range($y_scale)) ///
+			ylabel ($y_scale , labsize(small)) ///
+			ytitle(estimated coefficient, size(small)) ///
 			title($graph_title1)
 			
 graph save $path_graph1_temp, replace

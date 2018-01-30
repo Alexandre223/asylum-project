@@ -5,8 +5,6 @@
 ***********************
 
 
-		
-
 ********************************
 ** DECISION ANALYSIS BASELINE **
 ********************************
@@ -43,13 +41,13 @@ estadd local TI "Yes"
 *
  
 esttab using "./out/analysis/decisions/dec_table1_baseline.tex", ///
-replace scalars("ymean Mean depenent variable" "FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
+replace scalars("ymean Mean dependent variable" "FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
 se ar2 label number depvars   ///
 keep($origin_variables $destination_variables ///
 	 $interactions_left_m1 $interactions_right_m1) ///
 order($origin_variables $destination_variables ///
 	  $interactions_left_m1 $interactions_right_m1) ///
-title("Determinats of asylum decisions per capita")
+title("Determinants of asylum decisions")
 
 
 ****************************
@@ -288,7 +286,7 @@ order($origin_variables $destination_variables $bilateral_variables ///
 	 log_av_app5_pc policy_index_total  ///
 	 policy_index_access policy_index_processing policy_index_welfare ///
 	 $interactions_left_m1 $interactions_right_m1) ///
-title("Determinats of `dec' - R1 - R6")
+title("Determinants of `dec' - R1 - R6")
 
 
 ************************************
@@ -512,7 +510,7 @@ grc1leg ./out/analysis/temp/`dec'_graph1_R1.gph ///
 		row(4) legendfrom(./out/analysis/temp/`dec'_graph1_R1.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(5) xsize(6) 		 
+graph display, ysize(8) xsize(6) 		 
 graph export "./out/analysis/decisions/`dec'_graphs_R1-R6.pdf", replace
 
 * COEFFICIENTS GRAPH 1 *
@@ -594,6 +592,7 @@ eststo: quietly xtreg 	`dec' ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
+estadd ysumm
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
@@ -607,6 +606,7 @@ eststo: quietly xtreg 	`dec' ///
 					  	$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
+estadd ysumm
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
@@ -619,6 +619,7 @@ eststo: quietly xtreg 	`dec' ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster DO)
+estadd ysumm
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
@@ -632,6 +633,7 @@ eststo: quietly xtreg 	`dec' ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
+estadd ysumm
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
@@ -654,6 +656,7 @@ eststo: quietly xtreg 	`dec' ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
+estadd ysumm
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
@@ -676,6 +679,7 @@ eststo: quietly xtreg 	`dec' ///
 						$interactions_left_m1 $interactions_right_m1 ///
 						i.T, ///
 						fe vce(cluster $se_clus)
+estadd ysumm
 estadd local FE "D x O"
 estadd local DE "No"
 estadd local TI "Yes"
@@ -683,7 +687,8 @@ estadd local TI "Yes"
 
 
 esttab using "./out/analysis/decisions/`dec'_table1_R7-R12.tex", ///
-replace scalars("FE Fixed Effects" "DE Destination dummies" "TI Quarter-Year dummies") ///
+replace scalars("ymean Mean `dec'" "FE Fixed Effects" ///
+				"DE Destination dummies" "TI Quarter-Year dummies") ///
 se ar2 label number depvars   ///
 keep($origin_variables $destination_variables ///
 	 log_yearly_all_decisions_dest_pc log_yearly_dyadic_decisions_pc ///
@@ -695,7 +700,7 @@ order($origin_variables $destination_variables ///
 	 log_firsttimeapp_total_sum2_pc log_firsttimeapp_dyadic_sum2_pc ///
 	 post_2007 ///
 	 $interactions_left_m1 $interactions_right_m1)  ///
-title("Determinats of `dec' - R7 - R12")
+title("Determinants of `dec' - R7 - R12")
 
 
 *************************************
@@ -919,7 +924,7 @@ grc1leg ./out/analysis/temp/`dec'_graph1_R7.gph ///
 		row(4) legendfrom(./out/analysis/temp/`dec'_graph1_R7.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(5) xsize(6) 		 
+graph display, ysize(8) xsize(6) 		 
 graph export "./out/analysis/decisions/`dec'_graphs_R7-R12.pdf", replace
 
 

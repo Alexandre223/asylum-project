@@ -46,19 +46,21 @@ nlcom 	(bef6: _b[bef6_right] ) ///
 		,post
 est sto right
 
-coefplot 	(left, keep($time_m2) label(cabinet left) msymbol(S) mcolor(maroon) lcolor(maroon)) ///
-			(right, keep($time_m2) label(cabinet right) msymbol(T) mcolor(navy) lcolor(navy))                    ///
-			,connect (l) ciopts(recast(rline) lp(dash)) noci nooffset vertical ///
+coefplot 	(left, keep($time_m2) label(left-wing cabinet) ///
+			msymbol(S) mcolor(maroon) msize(medium) lcolor(maroon)) ///
+			(right, keep($time_m2) label(right-wing cabinet) ///
+			msymbol(T) mcolor(navy) msize(medium) lcolor(navy))   ///
+			, connect(l) noci nooffset vertical ///
 			yline(0, lcolor(black)) ///
 			graphregion(color(white)) ///
 			legend (rows(1) size(vsmall)) ///
 			xscale(range(1 (1) 13)) ///
 			xlabel(1 "-6" 2 "-5" 3 "-4" 4 "-3"  5 "-2" 6 "-1" 7 "0" ///
-				   8 "1" 9 "2" 10 "3" 11 "4" 12 "5" 13 "6") ///
-			yscale(range$y_scale) ///
-			ylabel $y_scale ///
-			ytitle(estimated coefficient) ///
-			xtitle (quarters around the election) ///
+				   8 "1" 9 "2" 10 "3" 11 "4" 12 "5" 13 "6", labsize(small)) ///
+			yscale(range($y_scale)) ///
+			ylabel ($y_scale , labsize(small)) ///
+			ytitle(estimated coefficient, size(small)) ///
+			xtitle (quarters around the election, size(small)) ///
 			title($graph_title2)
 			
 graph save $path_graph2_temp, replace

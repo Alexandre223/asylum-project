@@ -4,9 +4,6 @@
 ** ==================== **
 **************************
 
-
-
-
 *************************************************************
 *** Table 1: Baseline plus main robustness checks R1 - R6 ***
 *************************************************************
@@ -377,7 +374,7 @@ grc1leg ./out/analysis/temp/app_graph1_R1.gph ///
 		row(4) legendfrom(./out/analysis/temp/app_graph1_R1.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(5) xsize(6) 		 
+graph display, ysize(7) xsize(6) 		 
 graph export "./out/analysis/applications/app_graphs_R1-R6.pdf", replace
 
 
@@ -740,7 +737,7 @@ grc1leg ./out/analysis/temp/app_graph1_R7.gph ///
 		row(4) legendfrom(./out/analysis/temp/app_graph1_R7.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(5) xsize(6) 		 
+graph display, ysize(7) xsize(6) 		 
 graph export "./out/analysis/applications/app_graphs_R7-R12.pdf", replace
 
 * COEFFICIENTS GRAPH 1 *
@@ -1128,7 +1125,7 @@ grc1leg ./out/analysis/temp/app_graph1_R13.gph ///
 		row(4) legendfrom(./out/analysis/temp/app_graph1_R13.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(5) xsize(6) 		 
+graph display, ysize(7) xsize(6) 		 
 graph export "./out/analysis/applications/app_graphs_R13-R18.pdf", replace
 
 * use same globals as in the baseline analysis
