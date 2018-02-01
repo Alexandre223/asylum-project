@@ -510,7 +510,7 @@ grc1leg ./out/analysis/temp/`dec'_graph1_R1.gph ///
 		row(4) legendfrom(./out/analysis/temp/`dec'_graph1_R1.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(8) xsize(6) 		 
+graph display, ysize(7) xsize(6) 		 
 graph export "./out/analysis/decisions/`dec'_graphs_R1-R6.pdf", replace
 
 * COEFFICIENTS GRAPH 1 *
@@ -924,7 +924,7 @@ grc1leg ./out/analysis/temp/`dec'_graph1_R7.gph ///
 		row(4) legendfrom(./out/analysis/temp/`dec'_graph1_R7.gph) ///
 		 graphregion(color(white)) 
 
-graph display, ysize(8) xsize(6) 		 
+graph display, ysize(7) xsize(6) 		 
 graph export "./out/analysis/decisions/`dec'_graphs_R7-R12.pdf", replace
 
 
