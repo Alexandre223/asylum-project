@@ -56,7 +56,7 @@ label variable log_all_decisions_dest_pc ///
 label variable log_lag1_all_decisions_dest_pc ///
 		"Log total decisions at destination per capita in previous quarter"
 label variable log_yearly_all_decisions_dest_pc ///
-		"Log total decisions at destination per capita in previous year"
+		"Log total decisions per capita in previous year"
 
 label variable log_lag1_totaldecisions_pc ///
 		"Log dyadic decisions at destination per capita in previous quarter"
