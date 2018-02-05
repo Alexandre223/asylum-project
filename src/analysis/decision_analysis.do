@@ -58,7 +58,7 @@ title("Determinants of asylum decisions")
 * Define globals
 global dependent_variable acceptance_rate
 
-global graph_title1 "Acceptance rate"
+global graph_title1 "Overall recognition rate"
 global graph_title2 ""
 
 global left1 left1_pos
@@ -110,7 +110,7 @@ do ./src/analysis/modules/graph_2_coef.do
 * Define globals
 global dependent_variable temporary_protection_rate
 
-global graph_title1 "temporary protection rate"
+global graph_title1 "Temporary protection rate"
 global graph_title2 ""
 
 global left1 left1_temp

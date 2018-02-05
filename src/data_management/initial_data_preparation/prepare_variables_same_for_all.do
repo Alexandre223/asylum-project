@@ -89,13 +89,25 @@ gen totalpositive_pc = (totalpositive / pop_destination) * 100000
 label variable totalpositive "Dyadic quarterly positive fist-instance asylum decisions"
 label variable totalpositive_pc "Dyadic quarterly positive fist-instance asylum decisions per 100,000 inhabitants"
 
+gen allpositive_pc = (allpositive / pop_destination) * 100000
+label variable allpositive "Total quarterly positive fist-instance asylum decisions"
+label variable allpositive_pc "Total quarterly positive fist-instance asylum decisions per 100,000 inhabitants"
+
 gen refugeestatus_pc = (refugeestatus / pop_destination) * 100000
 label variable refugeestatus "Dyadic quarterly fist-instance asylum decisions for refugee status"
 label variable refugeestatus_pc "Dyadic quarterly fist-instance asylum decisions for refugee status per 100,000 inhabitants"
 
+gen allrefugee_pc = (allrefugee / pop_destination) * 100000
+label variable allrefugee "Total quarterly fist-instance asylum decisions for refugee status"
+label variable allrefugee_pc "Total quarterly fist-instance asylum decisions for refugee status per 100,000 inhabitants"
+
 gen temporary_protection_pc = (temporary_protection / pop_destination) * 100000
 label variable temporary_protection "Dyadic quarterly fist-instance asylum decisions for temporary protection"
 label variable temporary_protection_pc "Dyadic quarterly fist-instance asylum decisions for temporary protection per 100,000 inhabitants"
+
+gen alltemporary_pc = (alltemporary / pop_destination) * 100000
+label variable alltemporary "Total quarterly fist-instance asylum decisions for temporary protection"
+label variable alltemporary_pc "Total quarterly fist-instance asylum decisions for temporary protection per 100,000 inhabitants"
 
 
 gen post_2007 = 0

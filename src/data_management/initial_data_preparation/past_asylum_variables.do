@@ -291,7 +291,8 @@ save ./out/data/temp/lag_dyadic_first-time-applications.dta, replace
 *** ========================== ***
 **********************************
 
-* 1, Combine data
+* 1, Combine data on all positive, rejected, and refugee status decisions
+*	 totals on destination level
 
 * Combine data on all positive and all rejected 2002 - 2007
 
@@ -300,13 +301,17 @@ use ./out/data/temp/all-positive-02-07-m.dta, clear
 merge 1:1 destination year month using ///
 	./out/data/temp/all-rejected-02-07-m.dta, nogen
 
+merge 1:1 destination year month using ///
+	./out/data/temp/all-refugee-02-07-m.dta, nogen
+
+
 	
 * collapse data to quarterly data
 
   *  Make sure that if one months is missing in any variable
   *  the entire quarter is coded as missing 
 
-  	foreach var of varlist allpositive allrejected {
+  	foreach var of varlist allpositive allrejected allrefugee {
 		* identify non-missing quarters
 		sort destination year quarter month
 		by destination year quarter: egen non_missing_`var' = count(`var')
@@ -323,7 +328,7 @@ merge 1:1 destination year month using ///
 *
 
   * collapse to quarterly data
-	collapse (mean) allpositive allrejected, by (destination year quarter)
+	collapse (mean) allpositive allrejected allrefugee , by (destination year quarter)
 
 save ./out/data/temp/all-decisions-02-07-q.dta, replace
 
@@ -334,6 +339,9 @@ use ./out/data/temp/all-positive-08-16-q.dta, clear
 
 merge 1:1 destination year quarter using ///
 	./out/data/temp/all-rejected-08-16-q.dta, nogen
+
+merge 1:1 destination year quarter using ///
+	./out/data/temp/all-refugee-08-16-q.dta, nogen
 
 append using ./out/data/temp/all-decisions-02-07-q.dta
 
@@ -354,7 +362,9 @@ by destination: gen lag3_all_decisions_dest = all_decisions_dest[_n-3]
 egen yearly_all_decisions_dest = ///
 		rowmean(all_decisions_dest lag1_all_decisions_dest  ///
 				lag2_all_decisions_dest lag3_all_decisions_dest)
-				
+
+gen alltemporary = allpositive - allrefugee				
+
 save ./out/data/temp/lag_total_decisions.dta, replace
 				
 				

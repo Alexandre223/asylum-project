@@ -134,6 +134,12 @@ set more off, permanently
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
 	rename value refugeestatus
 	save ./out/data/temp/refugee-status-02-07-m.dta, replace
+	
+* Refugee status decisions monthly 2002 - 2007 on destination level
+	import delimited ./src/original_data/asylum_data/all-refugee-02-07-m.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_monthly.do
+	rename value allrefugee
+	save ./out/data/temp/all-refugee-02-07-m.dta, replace	
 
 * Rejected decisions monthly 2002 - 2007 daydic
 	import delimited ./src/original_data/asylum_data/rejected-02-07-m.csv, varnames(1) clear 
@@ -195,6 +201,12 @@ set more off, permanently
 	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
 	rename value refugeestatus
 	save ./out/data/temp/refugee-status-08-16-q.dta, replace		
+	
+* Refugee status decisions quarterly 2008 - 2016 on destination level
+	import delimited ./src/original_data/asylum_data/all-refugee-08-16-q.csv, varnames(1) clear 
+	do ./src/data_management/initial_data_preparation/function_convert_asylum_data_quarterly.do
+	rename value allrefugee
+	save ./out/data/temp/all-refugee-08-16-q.dta, replace	
 
 * Rejected decisions quarterly 2008 - 2016 dyadic
 	import delimited ./src/original_data/asylum_data/rejected-08-16-q.csv, varnames(1) clear 

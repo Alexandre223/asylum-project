@@ -22,7 +22,8 @@ drop if mean_dyadic_FTapp_per_quarter < 2
 
 drop if log_firsttimeapp_pc==.
 
-sutex2 	firsttimeapp_total firsttimeapp_total_pc n_elections_max n_cabinet_changes_max ///
+sutex2 	firsttimeapp_total firsttimeapp_total_pc ///
+		n_elections_max n_cabinet_changes_max ///
 		cabinet_left_right  PTS CL PR death_thousands_vdc realGDPpc ///
 		kmdist imm_stock_2000 rGDPpc unemployment, minmax varlabels digits(2) ///
 		saving(./out/analysis/applications/app_summary_statistics.tex) replace
@@ -41,6 +42,9 @@ drop if acceptance_rate == .
 
 
 sutex2 	all_decisions_dest 	all_decisions_dest_pc ///
+		allpositive allpositive_pc ///
+		allrefugee allrefugee_pc ///
+		alltemporary alltemporary_pc ///
 		acceptance_rate refugeestatus_rate temporary_protection_rate ///
 		n_elections_max n_cabinet_changes_max cabinet_left_right ///
 		PTS CL PR death_thousands_vdc realGDPpc ///
@@ -52,7 +56,7 @@ sutex2 	all_decisions_dest 	all_decisions_dest_pc ///
 		
 ********************************************************
 ** TABLE WITH TOTAL NUMBER OF FIRST-TIME APPLICATIONS **
-**    AND TOTAL NUMBER OF DECISIONS 2202 - 2014       **
+**    AND TOTAL NUMBER OF DECISIONS 2002 - 2014       **
 ********************************************************
 
 ** ======================================= **
