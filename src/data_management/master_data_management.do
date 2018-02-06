@@ -55,7 +55,7 @@ do ./src/data_management/final_data_preparation/application_samples/app_determin
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample.do
 
 * Prepare data sets on destination, origin and bilateral level for descriptives 
-do ./src/data_management/final_data_preparation/application_samples/app_base_for_decriptives.do
+do ./src/data_management/final_data_preparation/application_samples/app_base_for_descriptives.do
 
 * Prepare data for the baseline sample of destination countries
 * including years 2015 and 2016 *
