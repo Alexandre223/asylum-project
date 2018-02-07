@@ -13,10 +13,8 @@ set more off, permanently
 use ./out/data/temp/combined_data_for_final_adjustments.dta, clear
 
 
-* 1, select years, destination and origin countries
-  
-* Use only 2002-2014
-drop if year > 2014
+* 1,  destination and origin countries
+ 
 
 * Use only countries that have a first-time applications in all years
 * Determine countries that have data in all 52 quarters**

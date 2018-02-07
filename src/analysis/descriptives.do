@@ -22,11 +22,12 @@ drop if mean_dyadic_FTapp_per_quarter < 2
 
 drop if log_firsttimeapp_pc==.
 
-sutex2 	firsttimeapp_total firsttimeapp_total_pc ///
+sutex2 	firsttimeapp firsttimeapp_pc ///
 		n_elections_max n_cabinet_changes_max ///
-		cabinet_left_right  PTS CL PR death_thousands_vdc realGDPpc ///
+		cabinet_left_right  PTS_average CL_average ///
+		PR_average death_thousands_vdc_average realGDPpc_average ///
 		kmdist imm_stock_2000 rGDPpc unemployment, minmax varlabels digits(2) ///
-		saving(./out/analysis/applications/app_summary_statistics.tex) replace
+		saving(./out/analysis/descriptives/app_summary_statistics.tex) replace
 
 		
 ** ============================ **
@@ -41,62 +42,15 @@ drop if mean_dyadic_decisions_pq < 2
 drop if acceptance_rate == .
 
 
-sutex2 	all_decisions_dest 	all_decisions_dest_pc ///
-		allpositive allpositive_pc ///
-		allrefugee allrefugee_pc ///
-		alltemporary alltemporary_pc ///
-		acceptance_rate refugeestatus_rate temporary_protection_rate ///
+sutex2 	totaldecisions totalpositive acceptance_rate ///
+		refugeestatus refugeestatus_rate ///
+		temporary_protection temporary_protection_rate ///
 		n_elections_max n_cabinet_changes_max cabinet_left_right ///
-		PTS CL PR death_thousands_vdc realGDPpc ///
+		PTS_average CL_average PR_average death_thousands_vdc_average realGDPpc_average ///
 		kmdist imm_stock_2000 rGDPpc unemployment, minmax varlabels digits(2) ///
-		saving(./out/analysis/decisions/dec_summary_statistics.tex) replace
+		saving(./out/analysis/descriptives/dec_summary_statistics.tex) replace
 		
-
-** ================================================= **		
-** Summary statistics at level of the data variation **
-** ================================================= **		
-
-************************
-** Application Sample **
-************************
-
-* DESTINATION SUMMARY *
-*destination quarter level *
-use ./out/data/final_application/base_descriptives_DQ.dta, clear
-
-drop if firsttimeapp_total == .
-
-sutex2 	firsttimeapp_total firsttimeapp_total_pc ///
-		cabinet_left_right rGDPpc unemployment, minmax varlabels digits(2) ///
-		saving(./out/analysis/descriptives/app_summary_DQ.tex) replace
-
-*destination level*
-use ./out/data/final_application/base_descriptives_D.dta, clear
-
-sutex2 	n_elections_max n_cabinet_changes_max, minmax varlabels digits(2) ///
-		saving(./out/analysis/descriptives/app_summary_D.tex) replace
-		
-* ORIGIN SUMMARY *
-*origin quarter level*
-use ./out/data/final_application/base_descriptives_OQ.dta, clear
-
-sutex2 	death_thousands_vdc, minmax varlabels digits(2) ///
-		saving(./out/analysis/descriptives/app_summary_OQ.tex) replace
-		
-*origin year level *		
-use ./out/data/final_application/base_descriptives_OY.dta, clear
-
-sutex2 	PTS CL PR realGDPpc, minmax varlabels digits(2) ///
-		saving(./out/analysis/descriptives/app_summary_OY.tex) replace
-
-* BILATERAL SUMMARY *
-
-use ./out/data/final_application/base_descriptives_DO.dta, clear
-
-sutex2 	kmdist imm_stock_2000, minmax varlabels digits(2) ///
-		saving(./out/analysis/descriptives/app_summary_DO.tex) replace		
-		
-		
+	
 		
 		
 ********************************************************

@@ -75,78 +75,14 @@ save ./out/data/temp/destination_gdp.dta, replace
 
 
 
-**************************************************
-** Unemployment rate according to ILO defintion **
-**************************************************
+***************************************************************************
+** Unemployment rate as share of active population - seasonally adjusted **
+***************************************************************************
 
-**Note: unemployment rate for Germany, France and Switzerland
-** 		 not available on EUROSTAT 
+**Note: unemployment rate for Switzerland not available on EUROSTAT 
+**		not a problem because at the moment we don't use Switzerland as a destination country
 
-	
-*Prepare data for Switzerland**
-
-import excel ./src/original_data/destination_country/unemployment_rate_Switzerland.xls, ///
- sheet("Quartalswerte") cellrange(A4:DA7) firstrow clear
-
-drop if A == ""
-drop A - AS
-gen destination = "Switzerland"
-
-
-* rename variables
-foreach v of varlist AT - DA {
-   local x : variable label `v'
-   rename `v' unemployment_`x'
-}
-*
-
-reshape long unemployment, i(destination) j(quarteryear) string
-split quarteryear, parse(_)
-
-rename quarteryear2 year
-gen quarter = .
-replace quarter = 1 if quarteryear3 == "I"
-replace quarter = 2 if quarteryear3 == "II"
-replace quarter = 3 if quarteryear3 == "III"
-replace quarter = 4 if quarteryear3 == "IV"
-
-drop quarteryear1 quarteryear3 quarteryear
-
-destring year, replace
-
-save ./out/data/temp/unemployment_Switzerland.dta, replace
-
-
-**Prepare OECD data for Germany and France**
-
-import excel ./src/original_data/destination_country/unemployment_OECD.xlsx, sheet("data") firstrow clear
-rename LOCATION destination
-rename Value unemployment
-keep destination unemployment TIME
-split TIME, parse(-) destring ignore( `"-"')
-rename TIME1 year
-rename TIME2 month
-drop TIME
-
-gen quarter = .
-replace quarter = 1 if month < 4
-replace quarter = 2 if month > 3 & month < 7
-replace quarter = 3 if month > 6 & month < 10
-replace quarter = 4 if month > 9 
-
-replace destination="Germany" if destination=="DEU"
-replace destination="France" if destination=="FRA"
-
-keep if destination=="Germany" | destination=="France" 
-drop if year < 2002 | year > 2016
-
-collapse (mean) unemployment, by (destination year quarter)
-
-save ./out/data/temp/unemployment_germany_france.dta, replace
-
-* prepare data for other countries**
-
-import delimited ./src/original_data/destination_country/quarterly_unemployment_EUROSTAT.csv, ///
+import delimited ./src/original_data/destination_country/une_rt_q_1_Data.csv, ///
  varnames(1) encoding(UTF-8) clear
 
 rename geo destination
@@ -157,22 +93,19 @@ split time, parse("Q") destring
 rename time1 year
 rename time2 quarter
  
-drop if destination == "Germany (until 1990 former territory of the FRG)"
-drop if destination == "France"
+replace destination = "Germany" if destination == "Germany (until 1990 former territory of the FRG)"
 
 destring unemployment, replace
 
 keep destination year quarter unemployment
 
 drop if year < 2002
-
-append using ./out/data/temp/unemployment_germany_france.dta
-
-append using ./out/data/temp/unemployment_Switzerland.dta
+drop if destination == "Croatia"
 
 label variable unemployment "Quarterly unemployment rate at destination"
 
 save ./out/data/temp/destination_unemployment.dta, replace
+
 
 *************************************
 ** Hatton asylum policy index data **
@@ -227,9 +160,9 @@ merge 1:1 destination year quarter using ///
 
 merge 1:1 destination year quarter using ///
 	./out/data/temp/hatton_index.dta, nogen
-	
-* Note: no asylum Data from Eurostat for Switzerland before 2008
-drop if destination == "Switzerland" & year < 2008
+
+* No asylum data for Switzerland before 2008 *	
+drop if destination == "Switzerland" & year <2008
 
 save ./out/data/temp/destination_data.dta, replace
 

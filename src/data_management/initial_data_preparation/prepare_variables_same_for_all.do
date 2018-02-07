@@ -14,15 +14,21 @@ use ./out/data/temp/combined_data.dta, clear
 foreach v in ///
 	firsttimeapp applications firsttimeapp_NI ///
 	totalpositive totaldecisions refugeestatus temporary_protection ///
-	applications_total av_app1 av_app2 av_app3 av_app4 av_app5  ///
-	lag1_firsttimeapp_total firsttimeapp_total_mean6 firsttimeapp_total_sum2 ///
 	lag1_firsttimeapp firsttimeapp_dyadic_mean6 firsttimeapp_dyadic_sum2 ///
-	all_decisions_dest lag1_all_decisions_dest yearly_all_decisions_dest ///
 	lag1_totaldecisions yearly_dyadic_decisions {
 			 
 		gen log_`v'_pc = log((`v' + 1) / pop_destination)
 }
 *		
+
+foreach v in ///
+ 	lag1_firsttimeapp_total firsttimeapp_total_mean6 firsttimeapp_total_sum2 ///
+		all_decisions_dest lag1_all_decisions_dest yearly_all_decisions_dest ///
+	applications_total av_app1 av_app2 av_app3 av_app4 av_app5 {
+			 
+		gen log_`v'_pc = log(`v' / pop_destination)
+}
+*	
 
 label variable log_applications_total_pc ///
 		"Log total asylum applications per capita in current year"

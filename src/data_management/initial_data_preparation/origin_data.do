@@ -8,7 +8,7 @@ set more off, permanently
 ***Political Terror Scale***
 ****************************
 
-import excel ./src/original_data/origin_country/political_terror_scale.xlsx, sheet("Sheet1") firstrow clear
+import excel ./src/original_data/origin_country/PTS-2017.xlsx, sheet("PTS-2016-final") firstrow clear
 
 rename Country origin
 rename Year year
@@ -21,13 +21,7 @@ replace origin="Moldova" if origin=="Moldova, Republic of"
 replace origin="Russia" if origin=="Russian Federation"
 replace origin="Syria" if origin=="Syrian Arab Republic"
 replace origin="Vietnam" if origin=="Viet Nam"
-replace origin="Former Serbia Montenegro" if origin=="Serbia and Montenegro"
-
-* note before 2004 no Former Serbia Montenegro, but Yugoslavia
-* use score for Yugoslavia for Fromer Serbia Montenegro
-drop if origin=="Yugoslavia" & year>2003
-drop if origin=="Former Serbia Montenegro" & year<2004
-replace origin="Former Serbia Montenegro" if origin=="Yugoslavia"
+replace origin="Former Serbia Montenegro" if origin=="Yugoslavia, Federal Republic of"
 
 merge m:1 origin using ./out/data/temp/list_of_origin_countries.dta
 keep if _merge==3
@@ -44,6 +38,10 @@ egen PTS = rowmean(PTS_A PTS_S)
 
 drop PTS_A PTS_S
 
+drop if origin=="Kosovo" & year<=2008
+drop if origin=="Former Serbia Montenegro" & year>=2007
+drop if origin=="Serbia" & year<=2006
+
 save ./out/data/temp/political_terror_scale.dta, replace
 
 
@@ -57,7 +55,6 @@ replace origin="Democratic Republic of the Congo" if origin=="Congo (Kinshasa)"
 replace origin="Former Serbia and Montenegro" if origin=="Yugoslavia (Serbia & Montenegro)"
 replace origin="Gambia" if origin=="Gambia, The"
 replace origin="Bosnia and Herzegovina" if origin=="Bosnia Herzegovina"
-replace origin="Congo" if origin=="Congo (Brazzaville)"
 replace origin="Congo" if origin=="Congo (Brazzaville)"
 replace origin="Former Serbia Montenegro" if origin=="Former Serbia and Montenegro"
 
@@ -81,9 +78,14 @@ drop if year <=2000
 replace PR=3 if origin=="Former Serbia Montenegro" & year==2006
 replace CL=2 if origin=="Former Serbia Montenegro" & year==2006
 
+drop if origin=="Kosovo" & year<=2008
+drop if origin=="Former Serbia Montenegro" & year>=2007
+drop if origin=="Serbia" & year<=2006
+
 save ./out/data/temp/freedom_house_index.dta, replace
 
 
+/*
 *********************
 ** Data for region **
 *********************
@@ -95,7 +97,7 @@ label variable ECA "Europe and Central Asia"
 label variable SEA "South and East Asia"
 
 save ./out/data/temp/origin_areas.dta, replace
-
+*/
 
 
 *******************************
@@ -220,6 +222,10 @@ append using ./out/data/temp/population_wb.dta
 
 label variable pop_origin "Origin country population"
 
+drop if origin=="Kosovo" & year<=2008
+drop if origin=="Former Serbia Montenegro" & year>=2007
+drop if origin=="Serbia" & year<=2006
+
 save ./out/data/temp/origin_population.dta, replace
 
 
@@ -229,40 +235,34 @@ save ./out/data/temp/origin_population.dta, replace
 *****************************
 use ./out/data/temp/battle_death_quarterly_01_16.dta, clear
 
+drop if origin=="Kosovo" & year<=2008
+drop if origin=="Former Serbia Montenegro" & year>=2007
+drop if origin=="Serbia" & year<=2006
+
 merge m:1 origin year using ./out/data/temp/political_terror_scale.dta, nogen
 
 merge m:1 origin year using ./out/data/temp/freedom_house_index.dta, nogen 
 
-merge m:1 origin using ./out/data/temp/origin_areas.dta, nogen
-
-drop if origin=="Kosovo" & year<=2008
-drop if origin=="Former Serbia Montenegro" & year>=2007
-drop if origin=="Serbia" & year<=2006
+/*merge m:1 origin using ./out/data/temp/origin_areas.dta, nogen*/
 
 merge m:1 origin year using ./out/data/temp/origin_population.dta, nogen
 
 merge m:1 origin year using ./out/data/temp/origin_rGDP_pc.dta, nogen
 
 
-
 **********************************************************************
 ** Impute missing values for real GDP pc and political terror scale **
 **********************************************************************
 
-* Impute missing information for real GDP pc
-* Somalia missing 2011-2016, Kosovo missing 2016
-* Syria missing 2015 and 2016
-
-* Use value of last observed year for missing years
+* Impute missing information for real GDP pc Somalia (2011 - 2014) and Afghanistan (2001)
+* Use value of closest observed year for missing years
 sort origin year quarter
-replace realGDPpc = realGDPpc[_n-1] if realGDPpc == .
+replace realGDPpc = realGDPpc[_n-1] if realGDPpc == . & origin == "Somalia"
+replace realGDPpc = realGDPpc[_n+1] if realGDPpc == . & origin == "Afghanistan"
+replace realGDPpc = realGDPpc[_n+1] if realGDPpc == . & origin == "Afghanistan"
+replace realGDPpc = realGDPpc[_n+1] if realGDPpc == . & origin == "Afghanistan"
+replace realGDPpc = realGDPpc[_n+1] if realGDPpc == . & origin == "Afghanistan"
 gen log_rGDPpc_orig = log(realGDPpc)
-
-* Impute missing information for political terror scale
-
-* Use 2015 value also for 2016**
-sort origin year quarter
-replace PTS = PTS[_n-1] if PTS == .
 
 
 *********************************************************
@@ -277,7 +277,7 @@ replace PTS = PTS[_n-1] if PTS == .
 sort  origin year quarter
 
 foreach var of varlist ///
-		PTS PR CL battle_death_vdc battle_death_ucdp log_rGDPpc_orig {
+		PTS PR CL battle_death_vdc battle_death_ucdp realGDPpc log_rGDPpc_orig {
 	
 	* generate lags
 	by  origin: gen lag1_`var'=`var'[_n-1]
@@ -290,6 +290,7 @@ foreach var of varlist ///
 *
 
 drop if year==2001
+
 
 * Rescale variables 
 gen death_thousands_ucdp = battle_death_ucdp / 1000
@@ -309,6 +310,8 @@ foreach var of varlist 	death_thousands_ucdp ///
 *
 label variable log_rGDPpc_orig "Log origin country real GDP per capita"
 label variable log_rGDPpc_orig_average "Log origin country real GDP per capita"
+
+label variable realGDPpc_average "Yearly real GDP per capita at origin"
 label variable realGDPpc "Yearly real GDP per capita at origin"
 
 label variable PTS "Political Terror Scale"

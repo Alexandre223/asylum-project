@@ -54,13 +54,6 @@ do ./src/data_management/final_data_preparation/application_samples/app_determin
 * Prepare data for the baseline sample *
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample.do
 
-* Prepare data sets on destination, origin and bilateral level for descriptives 
-do ./src/data_management/final_data_preparation/application_samples/app_base_for_descriptives.do
-
-* Prepare data for the baseline sample of destination countries
-* including years 2015 and 2016 *
-do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample_up_to_2016.do
-
 * Prepare data for the baseline sample of countries using only 5 quarters
 do ./src/data_management/final_data_preparation/application_samples/app_baseline_sample_5_quarters.do
 
@@ -107,10 +100,6 @@ do ./src/data_management/final_data_preparation/decision_samples/dec_determine_s
 * Prepare data for the baseline sample *
 do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample.do
 
-* Prepare data for the baseline sample of destination countries
-* including years 2015 and 2016 *
-do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_up_to_2016.do
-
 * Prepare data for the baseline sample of countries using only 5 quarters
 do ./src/data_management/final_data_preparation/decision_samples/dec_baseline_sample_5_quarters.do
 
@@ -133,9 +122,6 @@ do ./src/data_management/final_data_preparation/decision_samples/dec_no_missings
 * Prepare data for a sample of all destination countries that are both in the decision
 * and the application analysis (overlapping baseline sample)
 do ./src/data_management/final_data_preparation/decision_samples/dec_only_application_countries.do
-
-* Prepare data sets on destination, origin and bilateral level for descriptives 
-do ./src/data_management/final_data_preparation/decision_samples/dec_app_sample_for_descriptives.do
 
 * Prepare data for a sample of all destination countries that are both in the decision
 * and the application analysis (overlapping baseline sample) with normalized cabinet position

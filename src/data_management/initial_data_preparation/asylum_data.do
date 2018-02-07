@@ -481,7 +481,5 @@ drop if origin == "Kosovo" & year <= 2008
 drop if origin == "Former Serbia Montenegro" & year >= 2007
 drop if origin == "Serbia" & year <= 2006
 
-* add data from
 
-
-save ./out/data/temp/combined-asylum-data-02-16-q.dta, replace
+save ./out/data/temp/combined-asylum-data-02-14-q.dta, replace

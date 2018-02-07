@@ -49,7 +49,7 @@ nlcom 	(bef6: _b[bef6_right] + _b[cabinet_right]) ///
 est sto right
 
 coefplot 	(left, keep($time_m2) label(left-wing cabinet) ///
-			msymbol(S) mcolor(maroon) lcolor(maroon)) ///
+			msymbol(S) mcolor(red) lcolor(red)) ///
 			(right, keep($time_m2) label(right-wing cabinet) ///
 			msymbol(T) mcolor(navy) lcolor(navy))   ///
 			, connect(l) noci nooffset vertical ///

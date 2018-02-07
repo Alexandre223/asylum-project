@@ -27,7 +27,7 @@ nlcom 	(before:  _b[right_bef] ) ///
 est sto right
 
 coefplot 	(left, keep($time_m1) label(left-wing cabinet) ///
-			msymbol(S) mcolor(maroon) msize(medium) lcolor(maroon)) ///
+			msymbol(S) mcolor(red) msize(medium) lcolor(red)) ///
 			(right, keep($time_m1) label(right-wing cabinet) ///
 			msymbol(T) mcolor(navy) msize(medium) lcolor(navy))   ///
 			, connect(l) noci nooffset vertical ///
