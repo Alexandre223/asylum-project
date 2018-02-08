@@ -133,3 +133,8 @@ do ./src/data_management/final_data_preparation/decision_samples/dec_few_early_e
 * Prepare data for countries with no early elections
 do ./src/data_management/final_data_preparation/decision_samples/dec_no_early_elections.do
 
+
+*************************************
+** Create datasets for replication **
+*************************************
+do ./src/data_management/final_data_preparation/datasets_for_replication.do
