@@ -18,7 +18,7 @@
 \usepackage{subcaption}
 \usepackage{setspace}
 \onehalfspacing
-\geometry{a4paper, top=20mm, left=22mm, right=22mm, bottom=20mm, includefoot}
+\geometry{a4paper, top=23mm, left=23mm, right=23mm, bottom=23mm, includefoot}
 \definecolor{maroon}{RGB}{255, 0, 0}
 \definecolor{timberwolf}{rgb}{0.9, 0.89, 0.89}
 \definecolor{navy}{rgb}{0.05, 0.27, 0.44}
@@ -87,7 +87,7 @@ For the selection of the 12 destination countries for the application analysis (
 \begin{enumerate}
 	\itemsep-0.2em
 	\item We use only countries for which first-time application data is available in at least 44 out of the 52 quarters from Q1 2002 to Q4 2014.
-	\item From these countries we exclude those that only received very few first-time asylum applications. More precisely we keep only countries that have in total at least 30000 first-time applications in the time period 2002 to 2014.
+	\item From these countries we exclude those that only received very few first-time asylum applications. More precisely we keep only countries that have in total at least 30,000 first-time applications in the time period 2002 to 2014.
 	\item We exclude Cyprus, even though it fulfils the other two requirements because of several irregular cabinet changes.\footnote{We also conduct a robustness check where we include Cyprus as a destination country, which shows that our main results still hold. The regression results for that robustness check are available from the authors on request.}
 \end{enumerate}   
 
@@ -97,11 +97,11 @@ We restrict the number of origin countries to the top 90\% in terms of total fir
 
 In order to avoid having many quarters with zero first-time applications, we moreover exclude all country pairs which have less than two first-time applications per quarter on average. This leaves us with 480 out of the 612 possible country pairs (12 destination countries * 51 origin countries). In order to show that our results are not sensitive to this cut-off, we also conduct robustness checks where we drop all country pairs with less than one or less than three first-time applications per quarter on average (see R15 and R16).
 
-Our main dependent variable in the application analysis are the log first-time asylum applications per capita. To calculate this we first add 1 to the number of first-time applications and then divide it by the population of the destination country, before taking the log. This procedure is also used for most other variables that we include as log per capita in our regressions.\footnote{Adding one to the main variable before dividing by the population and taking the log makes sure that we have no cases in which the variable per capita is 0 and the log is not defined. We consequently only apply this procedure to variables that have some observations with 0.} For an additional robustness we also create the log of the first-time applications per capita of the origin country in a similar way. As can be seen in robustness check R7 this doesn't change our results.
+Our main dependent variable in the application analysis are the log first-time asylum applications per capita. To calculate this we first add 1 to the number of first-time applications and then divide it by the population of the destination country, before taking the log. This procedure is also used for all other dyadic decision or application variables that we include as log per capita in our regressions.\footnote{Adding one to the main variable before dividing by the population and taking the log makes sure that we have no cases in which the variable per capita is 0 and the log is not defined. We consequently only apply this procedure to variables that have some observations with 0.} For an additional robustness we also create the log of the first-time applications per capita of the origin country in a similar way. As can be seen in robustness check R7 this doesn't change our results.
 
-Moreover, we use data on applications and first-time applications to create some additional control variables. We use yearly data on total applications on the destination level to create the log of the average applications per capita in the previous 5 years.\footnote{We use yearly data on total applications at the destination level, because for the years before 2008 no yearly first-time application data is available and the yearly data at the destination level is available already from 1997 onwards and has very few missings.} No data on yearly applications is available for Norway in 2007. We thus impute this by taking the average of the total applications in 2006 and 2008. For the United Kingdom application data is missing for the year 2008, however there is yearly first-time application available. We thus proxy the number of total applications in the UK in 2008 by using the number of first-time applications in that year. Before taking the log we then calculate the average applications in the previous 5 years, add 1 and divide it by the destination country population. 
+Moreover, we use data on applications and first-time applications to create some additional control variables. We use yearly data on total applications on the destination level to create the log of the average applications per capita in the previous 5 years.\footnote{We use yearly data on total applications at the destination level, because for the years before 2008 no yearly first-time application data is available and the yearly data at the destination level is available already from 1997 onwards and has very few missings.} No data on yearly applications is available for Norway in 2007. We thus impute this by taking the average of the total applications in 2006 and 2008. For the United Kingdom application data is missing for the year 2008, however there is yearly first-time application available. We thus proxy the number of total applications in the UK in 2008 by using the number of first-time applications in that year. Before taking the log we then calculate the average applications in the previous 5 years and divide it by the destination country population. 
 
-We also use quarterly first-time applications both dyadic and on the destination level to create another four control variables which we use in some of the robustness checks. We calculate the following four variables and then take the log per capita as described earlier. 
+We also use quarterly first-time applications both dyadic and on the destination level to create another four control variables which we use in some of the robustness checks. We calculate the following four variables and then take the log per capita.\footnote{For all dyadic variables we add 1 before dividing by the population size and taking the log. All variables on the destination level are just divided by the population size before taking the log, because here there are no observations with a value of 0.} 
 \begin{itemize}
 	\itemsep-0.2em
 	\item The average dyadic first-time applications of the past 1 to 6 quarters (if data is available the past 6 quarters, otherwise as many of the 6 quarters as are available).
@@ -113,18 +113,18 @@ We also use quarterly first-time applications both dyadic and on the destination
 \subsubsection{Decision data}
 For the decision analysis we use a subset of the 12 destination countries for which also decision data is available in at least 44 out of the 52 quarters from Q1 2002 to Q4 2014. This leaves us with 9 destination countries, namely Czech Republic, Denmark, France, Germany, Ireland, Poland, Spain, Sweden and the United Kingdom.\footnote{In an additional robustness check (R12) we also use a larger sample of destination countries in the decision analysis which we choose according to the following rules: We use only countries for which decision data is available in at least 44 out of the 52 quarters from Q1 2002 to Q4 2014. And then in a second step, we keep only countries that have in total at least 20,000 asylum decisions in the time period 2002 to 2014. In addition to the 9 destination countries which are already in the baseline decision analysis we thus also include Austria, Finland, Greece and Hungary in that robustness check. All variables that depend on the destination country sample, e.g. the cabinet-position and the sample of origin countries, are then also calculated based on these 12 destination countries.}
 
-Decision data is missing for Ireland and for Denmark in 2002, for France in 2007 and for Ireland, Spain and the United Kingdom in Quarter 4 of 2007. Moreover no decision data is available for the origin country Former Serbia and Montenegro. The 49 origin countries for the decision analysis are chosen such that together they make 90\% of the total decisions taken in the 9 destination countries in the time period Q1 2002 to Q4 2014.\footnote{The sample of origin countries in the decision analysis is very similar to the sample of origin countries in the application analysis.The only two countries that are not in the sample of origin countries in the decision analysis are Former Serbia and Montenegro (no decision data available) and Rwanda (not in the top 90\%).} In order to avoid having many quarters with zero decisions, we moreover exclude all country pairs which have less than two total decisions per quarter on average. This leaves us with 323 out of the 441 possible country pairs (9 destination countries * 49 origin countries).
+Decision data is missing for Ireland and for Denmark in 2002, for France in 2007 and for Ireland, Spain and the United Kingdom in Quarter 4 of 2007. Moreover no decision data is available for the origin country Former Serbia and Montenegro. The 49 origin countries for the decision analysis are chosen such that together they make 90\% of the total decisions taken in the 9 destination countries in the time period Q1 2002 to Q4 2014.\footnote{The sample of origin countries in the decision analysis is very similar to the sample of origin countries in the application analysis. The only two countries that are not in the sample of origin countries in the decision analysis are Former Serbia and Montenegro (no decision data available) and Rwanda (not in the top 90\%).} In order to avoid having many quarters with zero decisions, we moreover exclude all country pairs which have less than two total decisions per quarter on average. This leaves us with 323 out of the 441 possible country pairs (9 destination countries * 49 origin countries).
 
 As there are various differences in the categories and the definitions in the decision data until 2007 and after 2007, we use only the three variables which are most comparable across the years to calculate all our decisions variables\footnote{Even with these three variables there might be some issues of comparability. In order to show that this is not driving our result, we do a robustness check which includes a dummy equal to 1 if the year is after 2007 (see R10).}: the number of decisions with any positive result, the number of decisions which resulted in full refugee status according to the Geneva Convention and the number of decisions where the asylum application was rejected. Using these variables we proxy the number of total decisions with the sum of all positive and all rejected decisions and define temporary protection decisions as all decisions which result in some kind of protection, but not in full refugee status.     
 
 From these three variables we calculate our three dependent variables which are defined as follows:
 \begin{itemize}
-	\item $Acceptance~rate~=~\frac{number~of~any~positive~decisions}{number~of~total~decisions}$ 
+	\item $Overall~recognition~rate~=~\frac{number~of~any~positive~decisions}{number~of~total~decisions}$ 
 	\item  $Refugee~status~rate~=~\frac{number~of~decisions~for~refugee~status} {number~of~total~decisions}$ 
 	\item $Temporary~protection~rate~=~ \frac{number~of~any~positive~decisions~ - ~number~of~decisions~for~refugee~status} {number~of~total~decisions}$ 
 \end{itemize}
 
-Moreover, we use the the number of total decisions to calculate two additional control variables: Log total\footnote{Total decisions refers here to the sum of all decisions taken at the destination country irrespective of the origin country. It thus also includes decisions for stateless people and people whose citizenship is unknown.} and log dyadic decisions per capita in the previous year. To get these variables we first calculate the mean of total decisions at destination or the mean of dyadic decisions respectively in the current and the past three quarters. If data is not available for all quarters, the mean of those that are available is used. In a next step similar to all variables that we use as log per capita, we add 1, divide by the population size of the destination country and finally take the log.   
+Moreover, we use the the number of total decisions to calculate two additional control variables: Log total\footnote{Total decisions refers here to the sum of all decisions taken at the destination country irrespective of the origin country. It thus also includes decisions for stateless people and people whose citizenship is unknown.} and log dyadic decisions per capita in the previous year. To get these variables we calculate the mean of total decisions at destination or the mean of dyadic decisions respectively in the current and the past three quarters. If data is not available for all quarters, the mean of those that are available is used. Both variables are included in the regressions as log per capita.\footnote{We add one to the dyadic variable before dividing by the population size and taking the log.} 
 
 \subsection{Election data}
 All data on election dates and outcomes as well as on the left-right position of different parties is taken from the Parliaments and Governments Database (ParlGov) by \textcite{parlgov2016}.
@@ -143,21 +143,21 @@ To define the position of a government on a left-right scale, we calculated the 
 LR_{cabinet} = LR_{A} * \frac{seats_{A}}{seats_{A} + seats_{B}} +LR_{B} * \frac{seats_{B}}{seats_{A} + seats_{B}} = 4*\frac{60}{140} +5*\frac{80}{140} = 4.57
 \end{equation*}
 
-After calculating this (quarterly) score for all cabinets of the 12 destination countries from 2002 to 2014, we split the distribution of cabinets at the sample median. Cabinets below the median are coded as "left-wing" and cabinets above the median as "right-wing". With the median left-right score in our baseline sample being 5.74, the cabinet in the above example would, thus, be coded as left-wing. We employ this specification where "left-wing" and "right-wing" are determined relative to average of all countries in the sample in our main specification. In the robustness, we test two alternative specifications. In one we normalize the cabinet's left-right score on the destination country level before taking the median of the entire sample (see R13). In the other specification we just code all cabinets with an average left-right position of below 5 as "left-wing" and all with a average left-right position of 5 or larger as "right-wing" (see R14).
+After calculating this (quarterly) score for all cabinets of the 12 destination countries from 2002 to 2014, we split the distribution of cabinets at the sample median.\footnote{The sample median is calculated with equal weights for all destination countries, so before we drop the country pairs with only few first-time applications or asylum decisions.} Cabinets below the median are coded as "left-wing" and cabinets above the median as "right-wing". With the median left-right score in our baseline sample being 5.86, the cabinet in the above example would, thus, be coded as "left-wing". We employ this specification where "left-wing" and "right-wing" are determined relative to the median of all countries in the sample in our main specification.\footnote{The classification of the cabinets as "left-wing" or "right-wing" depends on the sample median and consequently may change if the sample of destination countries changes. In the decision analysis, where the sample consists only of 9 destination countries the median left-right score is 5.99. A cabinet with a score of 5.92, for example, would thus be coded as "right-wing" in the sample of all 12 countries but as "left-wing" in the sample of only 9 countries.} In the robustness, we test two alternative specifications. In one we normalize the cabinet's left-right score on the destination country level before taking the median of the entire sample (see R13). In the other specification we just code all cabinets with an average left-right position of below 5 as "left-wing" and all with a average left-right position of 5 or larger as "right-wing" (see R14).
 
 \subsection{Origin country data}
 
 As one measure of the situation in the origin country we use the yearly Political Terror Scale by \textcite{PTS2017}, an index ranging from 1 (no terror) to 5 (high terror). Following the standard in the literature, we use the average of the values derived from the reports of US State Department and Amnesty International (see for example \textcite{hatton2017}). In cases where only one of the two is available, just this one is used. 
 % Freedom House Index
-Moreover, we include the Index of Civic Liberty and the Index of Political Rights provided yearly by  \textcite{FHI2017}, which both range from 1 (great degree of freedom) to 7 (no freedom at all).\footnote{There is no data for Former Serbia Montenegro in the year 2006. Therefore, we use the index values for Serbia in 2006 (which are identical to the index values for Former Serbia Montenegro in 2005) to proxy the values for Former Serbia Montenegro in 2006.}
+Moreover, we include the Index of Civic Liberty and the Index of Political Rights provided yearly by  \textcite{FHI2017}. Both indices range from 1 (great degree of freedom) to 7 (no freedom at all).\footnote{There is no data for Former Serbia Montenegro in the year 2006. Therefore, we use the index values for Serbia in 2006 (which are identical to the index values for Former Serbia Montenegro in 2005) to proxy the values for Former Serbia Montenegro in 2006.}
 
 % Battle death
 In order to capture the extend of civil war in the origin countries, we furthermore include the quarterly number of civil war battle death, which we calculate using the Georeferenced Event Dataset (Global version 17.1) from the Department of Peace and Conflict Research at Uppsala University, which covers all countries worldwide except Syria \parencites{Uppsala2013, Uppsala2017}. For each event listed in the dataset we use the best estimate of total fatalities resulting from that event (variable best\_est) and calculate the number of quarterly battle death in the countries in which the events take place as follows: In a first step we identify all conflicts/events that take place within a given quarter (start and end date in the same quarter) and sum up the total number of battle death resulting from these events at the quarter country level. In a next step we identify all events that take place over a period of more than one quarter. For all these events we average the number of total fatalities over all quarters in which the event takes place. Finally, we combine these two measures to come up with the quarterly total number of battle death for each country of origin.\footnote{In all regressions we include the number of civil war battle death as thousands.}
 
-As noted above the dataset we use covers all countries except Syria. For Syria we therefore come up with two alternative measures of the quarterly civil war battle death. For our main analysis we use data on the number of quarterly battle related deaths in Syria from the database of the \textcite{VDC2017}. For the second measure we use yearly data on deaths in Syria which is provided on the website of the  \textcite{UppsalaSyria2017}. In order to calculate quarterly values from that we use the quarterly shares of battle death from the database of the Violations Documentation Center in Syria (VDC). So if, for example, the VDC documents 20\% of the deaths in a certain year in the second quarter, we assume that also 20\% of the yearly battle death from the UCDP occured in the second quarter. Comparing the data from the two sources it becomes evident that it is very hard to find reliable data for Syria. The figures from the Uppsala Conflict database are much larger than those of the Violations Documentation Center in Syria. Nevertheless robustness check R9 shows that our results are not sensible to which of the two measures for the civil war battle death in Syria we use. 
+As noted above the dataset we use covers all countries except Syria. For Syria we therefore come up with two alternative measures of the quarterly civil war battle death. For our main analysis we use data on the number of quarterly battle related deaths in Syria from the database of the \textcite{VDC2017}. For the second measure we use yearly data on deaths in Syria which is provided on the website of the  \textcite{UppsalaSyria2017}. In order to derive quarterly values from the yearly data we use the quarterly shares of battle death from the database of the Violations Documentation Center in Syria (VDC). So if, for example, the VDC documents 20\% of the deaths in a certain year in the second quarter, we assume that also 20\% of the yearly battle death from the UCDP occured in the second quarter. Comparing the data from the two sources it becomes evident that it is very hard to find reliable data for Syria. The figures from the Uppsala Conflict database are much larger than those of the Violations Documentation Center in Syria. Nevertheless robustness check R9 shows that our results are not sensitive to which of the two measures for the civil war battle death in Syria we use. 
 
-% real GDP pc - data and log
-The real GDP per capita, moreover, measures the economic situation in the origin countries. Our main data source here is the Penn World Table (version 9.0) by \textcite{PWT2015}. We use the expenditure-side real GDP at chained PPPs (expressed in 2011 US Dollars) and divide it by the population size (which is also provided in the data) to calculate the real GDP per capita.\footnote{Serbia and Montenegro are listed as separate countries for the entire time period. We thus add the expenditure-side real GDP for Serbia and Montenegro for the years 2001 to 2006 and divide it by the sum of the population size of the two countries to derive the real GDP per capita for Former Serbia Montenegro.} In version 9.0 of the Penn World Table no data is available for Somalia, Eritrea, Afghanistan, Libya and Kosovo. Data for Eritrea, Libya and Afghanistan and Kosovo is thus taken from the World Economic Outlook by the \textcite{IMF2017}.\footnote{The variable we use for real GDP per capita is the PPP converted GDP per capita at constant prices expressed in 2011 international dollars. No data is available for Afghanistan in the year 2001. We proxy real GDP in 2001 with the value of 2002.} In order to get data for Somalia we use version 7.1 of the Penn World Table which includes all these countries, but only provides data up to the year 2010 \parencite{PWT2012}. The variable we use here is the PPP converted GDP per capita (Chain Series, at 2005 constant prices). We proxy the real GDP per capita for the years 2011 to 2014 with the value from 2010. After combining the data from the different sources we take the log. 
+% real GDP pc - 
+The real GDP per capita, moreover, measures the economic situation in the origin countries. Our main data source here is the Penn World Table (version 9.0) by \textcite{PWT2015}. We use the expenditure-side real GDP at chained PPPs (expressed in 2011 US Dollars) and divide it by the population size (which is also provided in the data) to calculate the real GDP per capita.\footnote{Serbia and Montenegro are listed as separate countries for the entire time period. We thus add the expenditure-side real GDP for Serbia and Montenegro for the years 2001 to 2006 and divide it by the sum of the population size of the two countries to derive the real GDP per capita for Former Serbia Montenegro.} In version 9.0 of the Penn World Table no data is available for Somalia, Eritrea, Afghanistan, Libya and Kosovo. Data for Eritrea, Libya and Afghanistan and Kosovo is thus taken from the World Economic Outlook by the \textcite{IMF2017}.\footnote{The variable we use for real GDP per capita is the PPP converted GDP per capita at constant prices expressed in 2011 international dollars. No data is available for Afghanistan in the year 2001. We proxy real GDP in 2001 with the value of 2002.} In order to get data for Somalia we use version 7.1 of the Penn World Table which includes Somalia, but only provides data up to the year 2010 \parencite{PWT2012}. The variable we use here is the PPP converted GDP per capita (Chain Series, at 2005 constant prices). We proxy the real GDP per capita for the years 2011 to 2014 with the value from 2010. After combining the data from the different sources we take the log. 
 
 % avergae over the years - current and past 3 quarters - robustness check where we don't do that
 To approximate the situation in the origin country at the time leading up to the decision to leave the country and to apply for asylum in another country, we use the average values of origin specific variables from the current and the 3 previous quarters.\footnote{To avoid creating any missings in this procedure we have all origin specific variables already from the year 2001 onwards.} With the exception of the number of civil war battle deaths, all our origin-specific control variables however only vary at the yearly level. The political terror scale in quarter 1 in 2005, for example, is consequently calculated as the mean of the political terror scale in 2005 and 3 times the political terror scale in 2004. As can be seen in robustness check R8, this procedure only has marginal effects on the coefficients of the origin specific control variables and does not change our main result. 
@@ -174,11 +174,14 @@ In order to derive the quarterly real GDP per capita at the destination country 
 The seasonally adjusted quarterly unemployment rate defined as a share of the active population is taken from \textcite{Eurostat2018d}. 
 
 % Hatton Policy Index
-
+Data on the quarterly asylum policy index was provided to us by Timothy J. Hatton. It includes 15 indicators of asylum policy divided into three groups - accessing policies, processing policies and welfare policies - and captures changes in a country’s laws, regulations or practice. The index increases by one unit when policy in one of the 15 categories becomes significantly less advantageous to asylum seekers and decreases by one unit if policy becomes significantly more favourable towards asylum seekers. The quarterly index starts a zero in the first quarter of 1997 and runs to the last quarter of 2014. For more details on the index see \textcites{hatton2009, hatton2015}.
 \subsection{Bilateral data}
 
 % distance
+In order to measure the distance between origin and destination countries we use the dataset on great circle distance between capital cities (in km) by \textcite{distance2017}. As Kosovo is not included in the dataset we calculate the great circle distance between Pristina and the capital cities of our destination countries ourselves using the distance calculater on http://dateandtime.info/index.php. In the regressions we include the distance as log.
+
 % immigrant stock
+Data on the stock of migrants aged 25 and above from each origin country at each destination country in the year 2000 is taken from version two of the database by \textcite{artuc2015}. The two origin countries Serbia and Kosovo, did not exist yet as separate countries in the year 2000 and are thus not covered in the dataset. We therefore use the migrant stock of people born in Serbia Montenegro for all of the three origin countries Former Serbia Montenegro, Serbia and Kosovo. In the regressions we include the migrant stock as log.\footnote{To avoid getting missings, we add 1 to the migrant stock before taking the log.} 
 
 
 \clearpage
@@ -239,50 +242,50 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	
 \end{itemize}
 
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_table1_base-R6.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\begin{figure}[!ht]
-%	
-%	\caption{First-time asylum applications per capita: predicted pattern - baseline}
-%	\centering
-%	\begin{minipage}{0.8\textwidth} 
-%		\includegraphics[width=\linewidth]{../results/applications/app_graphs_baseline.pdf}
-%		{\scriptsize Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.\par}
-%	\end{minipage}
-%\end{figure}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_coef.tex}
-%\input{../results/applications/app_graph2_coef.tex}
-%
-%
-%\clearpage
-%\FloatBarrier
-%\begin{figure}[!ht]
-%	\caption{First-time asylum applications per capita: predicted pattern - R1 to R6}
-%	\includegraphics[width=1\textwidth]{../results/applications/app_graphs_R1-R6.pdf}
-%	\scriptsize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. The navy dashed line in sub-figure R4 shows the average inflow of asylum seekers under right-wing cabinets in periods outside the election period. Significance of the coefficients of the right-wing cabinet in sub-figure R4 is reported for the distance to this average non-election period effect.}
-%\end{figure}
-%
-%\clearpage
-%\FloatBarrier
-%
-%\input{../results/applications/app_graph1_R1-R2_coef.tex}
-%\input{../results/applications/app_graph2_R1-R2_coef.tex}
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R3-R4_coef.tex}
-%\input{../results/applications/app_graph2_R3-R4_coef.tex}
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R5-R6_coef.tex}
-%\input{../results/applications/app_graph2_R5-R6_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_table1_base-R6.tex}
+
+\clearpage
+\FloatBarrier
+\begin{figure}[!ht]
+	
+	\caption{First-time asylum applications per capita: predicted pattern - baseline}
+	\centering
+	\begin{minipage}{0.8\textwidth} 
+		\includegraphics[width=\linewidth]{../results/applications/app_graphs_baseline.pdf}
+		{\scriptsize Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.\par}
+	\end{minipage}
+\end{figure}
+
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_coef.tex}
+\input{../results/applications/app_graph2_coef.tex}
+
+
+\clearpage
+\FloatBarrier
+\begin{figure}[!ht]
+	\caption{First-time asylum applications per capita: predicted pattern - R1 to R6}
+	\includegraphics[width=1\textwidth]{../results/applications/app_graphs_R1-R6.pdf}
+	\scriptsize{Note: These figures show the time evolution of refugee inflows as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. The navy dashed line in sub-figure R4 shows the average inflow of asylum seekers under right-wing cabinets in periods outside the election period. Significance of the coefficients of the right-wing cabinet in sub-figure R4 is reported for the distance to this average non-election period effect.}
+\end{figure}
+
+\clearpage
+\FloatBarrier
+
+\input{../results/applications/app_graph1_R1-R2_coef.tex}
+\input{../results/applications/app_graph2_R1-R2_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R3-R4_coef.tex}
+\input{../results/applications/app_graph2_R3-R4_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R5-R6_coef.tex}
+\input{../results/applications/app_graph2_R5-R6_coef.tex}
 
 \clearpage
 \FloatBarrier
@@ -297,19 +300,19 @@ Our main result, that the number of asylum applicants under left- and right-wing
 		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.}
 \end{figure}
 
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R7-R8_coef.tex}
-%\input{../results/applications/app_graph2_R7-R8_coef.tex}
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R9-R10_coef.tex}
-%\input{../results/applications/app_graph2_R9-R10_coef.tex}
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R11-R12_coef.tex}
-%\input{../results/applications/app_graph2_R11-R12_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R7-R8_coef.tex}
+\input{../results/applications/app_graph2_R7-R8_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R9-R10_coef.tex}
+\input{../results/applications/app_graph2_R9-R10_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R11-R12_coef.tex}
+\input{../results/applications/app_graph2_R11-R12_coef.tex}
 
 
 \clearpage
@@ -325,18 +328,18 @@ Our main result, that the number of asylum applicants under left- and right-wing
 		with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R13-R14_coef.tex}
-%\input{../results/applications/app_graph2_R13-R14_coef.tex}
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R15-R16_coef.tex}
-%\input{../results/applications/app_graph2_R15-R16_coef.tex}
-%\clearpage
-%\FloatBarrier
-%\input{../results/applications/app_graph1_R17-R18_coef.tex}
-%\input{../results/applications/app_graph2_R17-R18_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R13-R14_coef.tex}
+\input{../results/applications/app_graph2_R13-R14_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R15-R16_coef.tex}
+\input{../results/applications/app_graph2_R15-R16_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/applications/app_graph1_R17-R18_coef.tex}
+\input{../results/applications/app_graph2_R17-R18_coef.tex}
 
 
 
@@ -374,26 +377,26 @@ Our main result, that the number of asylum applicants under left- and right-wing
 \end{itemize}	
 	
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/dec_table1_baseline.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\begin{figure}[!ht]
-%	\caption{Asylum decisions per capita: predicted pattern - baseline}
-%	\centering
-%	\begin{minipage}{1\textwidth} 
-%		\includegraphics[width=\linewidth]{../results/decisions/dec_graphs_baseline.pdf}
-%		{\scriptsize Note: These figures show the time evolution of the overall recognition rate, the refugee status rate and the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. \par}
-%	\end{minipage}
-%\end{figure}
-%
-%\input{../results/decisions/dec_graph1_baseline_coef.tex}
-%\input{../results/decisions/dec_graph2_baseline_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/dec_table1_baseline.tex}
+
+\clearpage
+\FloatBarrier
+\begin{figure}[!ht]
+	\caption{Asylum decisions per capita: predicted pattern - baseline}
+	\centering
+	\begin{minipage}{1\textwidth} 
+		\includegraphics[width=\linewidth]{../results/decisions/dec_graphs_baseline.pdf}
+		{\scriptsize Note: These figures show the time evolution of the overall recognition rate, the refugee status rate and the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. \par}
+	\end{minipage}
+\end{figure}
+
+\input{../results/decisions/dec_graph1_baseline_coef.tex}
+\input{../results/decisions/dec_graph2_baseline_coef.tex}
 
 
- %=================================================================================================
+% =================================================================================================
 
 \clearpage
 \FloatBarrier
@@ -409,20 +412,20 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\scriptsize{Note: These figures show the time evolution of of the overall recognition rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. The navy dashed line in sub-figure R4 shows the average overall recognition rate under right-wing cabinets in periods outside the election period. Significance of the coefficients of the right-wing cabinet in sub-figure R4 is reported for the distance to this average non-election period effect.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/acceptance_rate_graph1_R1-R2_coef.tex}
-%\input{../results/decisions/acceptance_rate_graph2_R1-R2_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/acceptance_rate_graph1_R3-R4_coef.tex}
-%\input{../results/decisions/acceptance_rate_graph2_R3-R4_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/acceptance_rate_graph1_R5-R6_coef.tex}
-%\input{../results/decisions/acceptance_rate_graph2_R5-R6_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R1-R2_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R1-R2_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R3-R4_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R3-R4_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R5-R6_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R5-R6_coef.tex}
 
 
 
@@ -439,23 +442,23 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\scriptsize{Note: These figures show the time evolution of the overall recognition rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/acceptance_rate_graph1_R7-R8_coef.tex}
-%\input{../results/decisions/acceptance_rate_graph2_R7-R8_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/acceptance_rate_graph1_R9-R10_coef.tex}
-%\input{../results/decisions/acceptance_rate_graph2_R9-R10_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/acceptance_rate_graph1_R11-R12_coef.tex}
-%\input{../results/decisions/acceptance_rate_graph2_R11-R12_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R7-R8_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R7-R8_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R9-R10_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R9-R10_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/acceptance_rate_graph1_R11-R12_coef.tex}
+\input{../results/decisions/acceptance_rate_graph2_R11-R12_coef.tex}
 
 
- %=========================================================================================
+% =========================================================================================
 
 \clearpage
 \FloatBarrier
@@ -471,20 +474,20 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\scriptsize{Note: These figures show the time evolution of the refugee status rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. The navy dashed line in sub-figure R4 shows the average refugee status rate under right-wing cabinets in periods outside the election period. Significance of the coefficients of the right-wing cabinet in sub-figure R4 is reported for the distance to this average non-election period effect.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/refugeestatus_rate_graph1_R1-R2_coef.tex}
-%\input{../results/decisions/refugeestatus_rate_graph2_R1-R2_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/refugeestatus_rate_graph1_R3-R4_coef.tex}
-%\input{../results/decisions/refugeestatus_rate_graph2_R3-R4_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/refugeestatus_rate_graph1_R5-R6_coef.tex}
-%\input{../results/decisions/refugeestatus_rate_graph2_R5-R6_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R1-R2_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R1-R2_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R3-R4_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R3-R4_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R5-R6_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R5-R6_coef.tex}
 
 
 
@@ -500,20 +503,20 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\scriptsize{Note: These figures show the time evolution of the refugee status rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/refugeestatus_rate_graph1_R7-R8_coef.tex}
-%\input{../results/decisions/refugeestatus_rate_graph2_R7-R8_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/refugeestatus_rate_graph1_R9-R10_coef.tex}
-%\input{../results/decisions/refugeestatus_rate_graph2_R9-R10_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/refugeestatus_rate_graph1_R11-R12_coef.tex}
-%\input{../results/decisions/refugeestatus_rate_graph2_R11-R12_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R7-R8_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R7-R8_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R9-R10_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R9-R10_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/refugeestatus_rate_graph1_R11-R12_coef.tex}
+\input{../results/decisions/refugeestatus_rate_graph2_R11-R12_coef.tex}
 
 
 
@@ -532,20 +535,20 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\scriptsize{Note: These figures show the time evolution of the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background. The navy dashed line in sub-figure R4 shows the average temporary protection rate under right-wing cabinets in periods outside the election period. Significance of the coefficients of the right-wing cabinet in sub-figure R4 is reported for the distance to this average non-election period effect.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/temporary_protection_rate_graph1_R1-R2_coef.tex}
-%\input{../results/decisions/temporary_protection_rate_graph2_R1-R2_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/temporary_protection_rate_graph1_R3-R4_coef.tex}
-%\input{../results/decisions/temporary_protection_rate_graph2_R3-R4_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/temporary_protection_rate_graph1_R5-R6_coef.tex}
-%\input{../results/decisions/temporary_protection_rate_graph2_R5-R6_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R1-R2_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R1-R2_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R3-R4_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R3-R4_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R5-R6_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R5-R6_coef.tex}
 
 
 
@@ -561,20 +564,20 @@ Our main result, that the number of asylum applicants under left- and right-wing
 	\scriptsize{Note: These figures show the time evolution of the temporary protection rate as estimated in fixed effects regression with a set of dummies for before and after the election or a set of dummies for different quarters before and after an election in a quarter t = 0. Significant coefficients are indicated by filled plot markers. Periods in which the two coefficients are significantly different from each other are indicated with a grey background.}
 \end{figure}
 
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/temporary_protection_rate_graph1_R7-R8_coef.tex}
-%\input{../results/decisions/temporary_protection_rate_graph2_R7-R8_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/temporary_protection_rate_graph1_R9-R10_coef.tex}
-%\input{../results/decisions/temporary_protection_rate_graph2_R9-R10_coef.tex}
-%
-%\clearpage
-%\FloatBarrier
-%\input{../results/decisions/temporary_protection_rate_graph1_R11-R12_coef.tex}
-%\input{../results/decisions/temporary_protection_rate_graph2_R11-R12_coef.tex}
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R7-R8_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R7-R8_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R9-R10_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R9-R10_coef.tex}
+
+\clearpage
+\FloatBarrier
+\input{../results/decisions/temporary_protection_rate_graph1_R11-R12_coef.tex}
+\input{../results/decisions/temporary_protection_rate_graph2_R11-R12_coef.tex}
 
 
 \newpage

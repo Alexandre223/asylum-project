@@ -34,7 +34,7 @@ merge m:1 origin destination using ///
 
 * match origin country data		
 merge m:1 origin year quarter using ///
-		./out/data/temp/origin_data.dta
+		./out/data/temp/origin_data.dta, nogen
 
 		
 drop if destination == "Switzerland"
