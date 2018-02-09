@@ -161,9 +161,9 @@ replace se label mtitle nodepvars  ///
 keep($time_m2) title("Coefficients quarterly model decisions baseline")
 
 
-** =================================== **
-** DECISIONs FURTHER ROBUSTNESS CHECKS **
-** =================================== **
+** =========================== **
+** DECISIONS ROBUSTNESS CHECKS **
+** =========================== **
 
 *******************************
 ** ROBUSTNESS CHECKS R1 - R6 **
