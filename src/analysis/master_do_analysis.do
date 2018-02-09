@@ -15,3 +15,7 @@ do ./src/analysis/application_analysis.do
 
 * DECISION ANALYSIS
 do ./src/analysis/decision_analysis.do
+
+
+* FURTHER ROBUSTNESS CHECKS APPLICATIONS
+do ./src/analysis/further_robustness_applications.do
